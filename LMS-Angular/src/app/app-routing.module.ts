@@ -31,7 +31,7 @@ const routes: Routes = [
       ]},
       {path:'memberRecords',component:MemberRecordsComponent}
 
-      
+
     ]
   },
   {
