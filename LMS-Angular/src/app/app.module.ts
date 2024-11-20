@@ -20,11 +20,9 @@ import { MemberDashBoardComponent } from './components/Member/member-dash-board/
 import { AddBookComponent } from './components/Admin/add-book/add-book.component';
 import { BookTableComponent } from './components/Admin/book-table/book-table.component';
 import { MemberRecordsComponent } from './components/Admin/member-records/member-records.component';
-
-
-
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
 
 @NgModule({
   declarations: [
@@ -46,15 +44,13 @@ import { MemberRecordsComponent } from './components/Admin/member-records/member
     AddBookComponent,
     BookTableComponent,
     MemberRecordsComponent,
-
-
-
-
-
+    NevBarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

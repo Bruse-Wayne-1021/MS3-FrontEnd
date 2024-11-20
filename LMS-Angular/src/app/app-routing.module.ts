@@ -15,6 +15,7 @@ import { RecordsComponent } from './components/Admin/records/records.component';
 import { ReturnComponent } from './components/Admin/return/return.component';
 import { MemberRecordsComponent } from './components/Admin/member-records/member-records.component';
 import { AddBookComponent } from './components/Admin/add-book/add-book.component';
+import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
        {path:'return',component:ReturnComponent}
       ]},
       {path:'memberRecords',component:MemberRecordsComponent}
+
 
     ]
   },
@@ -47,6 +49,7 @@ const routes: Routes = [
     {path:"**",redirectTo:"login",pathMatch:'full'}
    ]
   },
+  {path:'navbar',component:NevBarComponent}
 
 ];
 
