@@ -16,6 +16,10 @@ import { ReturnComponent } from './components/Admin/return/return.component';
 import { MemberRecordsComponent } from './components/Admin/member-records/member-records.component';
 import { AddBookComponent } from './components/Admin/add-book/add-book.component';
 import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
+import { BorrowedHistoryComponent } from './components/Member/borrowed-history/borrowed-history.component';
+import { MemberDashBoardComponent } from './components/Member/member-dash-board/member-dash-board.component';
+import { ReservedBooksComponent } from './components/Member/reserved-books/reserved-books.component';
+import { authGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -36,9 +40,23 @@ const routes: Routes = [
   },
   {
     path:'member',component:UserLayoutComponent,
+    canActivate: [authGuard],
     children:[
-      {path:'gallery',component:BookGalleryComponent}
+      {path:'book-gallery',component:BookGalleryComponent},
+      {path:'borrowed-history', component:BorrowedHistoryComponent},
+      {path:'member-dash-board',component:MemberDashBoardComponent},
+      {path:'reserved-books',component:ReservedBooksComponent},
+      {path:'', redirectTo:'/member/member-dash-board',pathMatch:'full'}
     ]
+  },
+
+  {
+    path:'', redirectTo:'/member/member-dash-board', pathMatch:'full'
+  },
+
+
+  {
+    path: 'register', component:RegisterComponent
   },
 
   {

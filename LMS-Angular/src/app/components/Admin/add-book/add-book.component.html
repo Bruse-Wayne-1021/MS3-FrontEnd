@@ -1,1 +1,50 @@
-<p>add-book works!</p>
+<div class="card">
+  <div class="card-header">
+    <h2>Add a New Book</h2>
+  </div>
+
+  <div class="card-content">
+    <form [formGroup]="addBookForm" (ngSubmit)="OnSubmit()">
+      <div class="form-field">
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" placeholder="Enter book title">
+        <!-- <div *ngIf="addBookForm.get('title').hasError('required')" class="error">
+          Title is required.
+        </div> -->
+      </div>
+
+      <div class="form-field">
+        <label for="author">Author</label>
+        <input id="author" formControlName="author" placeholder="Enter author name">
+        <!-- <div *ngIf="addBookForm.get('author').hasError('required')" class="error">
+          Author is required.
+        </div> -->
+      </div>
+
+      <div class="form-field">
+        <label for="genre">Genre</label>
+        <input id="genre" formControlName="genre" placeholder="Enter genre">
+        <!-- <div *ngIf="addBookForm.get('genre').hasError('required')" class="error">
+          Genre is required.
+        </div> -->
+      </div>
+
+      <div class="form-field">
+        <label for="year">Year</label>
+        <input id="year" formControlName="year" placeholder="Enter publication year">
+        <!-- <div *ngIf="addBookForm.get('year').hasError('required')" class="error">
+          Year is required.
+        </div> -->
+        <!-- <div *ngIf="addBookForm.get('year').hasError('pattern')" class="error">
+          Enter a valid year.
+        </div> -->
+      </div>
+
+     
+
+      <div class="form-actions">
+        <button type="submit">Add Book</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+/* General dashboard styles */
+.dashboard {
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+  }
+  
+  /* Header styles */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .dashboard-header .add-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dashboard-header .add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Content styles */
+  .dashboard-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+  }
+  
+  .card p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .dashboard-content {
+      flex-direction: column;
+    }
+  
+    .card {
+      flex: none;
+      width: 100%;
+    }
+  }
+  
