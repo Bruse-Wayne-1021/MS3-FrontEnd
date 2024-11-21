@@ -11,7 +11,9 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginComponent {
 
 
-  LoginForm:FormGroup
+  LoginForm:FormGroup;
+  hidePassword:boolean = true;
+  
   constructor(private Userservice:UserService,private fb:FormBuilder){
     this.LoginForm=this.fb.group({
       email:[""],

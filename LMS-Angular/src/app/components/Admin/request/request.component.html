@@ -1,1 +1,22 @@
-<p>request works!</p>
+<div class="request-container">
+    <h2>Request Form</h2>
+    <form>
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Enter your name">
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Enter your email">
+      </div>
+      <div class="form-field">
+        <label for="request">Request</label>
+        <textarea id="request" name="request" rows="4" placeholder="Enter your request"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+  
+<router-outlet></router-outlet>

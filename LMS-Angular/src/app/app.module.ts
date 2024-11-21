@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
 import { UserLayoutComponent } from './layout/user-layout/user-layout.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,13 +21,16 @@ import { AddBookComponent } from './components/Admin/add-book/add-book.component
 import { BookTableComponent } from './components/Admin/book-table/book-table.component';
 import { MemberRecordsComponent } from './components/Admin/member-records/member-records.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BrowserModule } from '@angular/platform-browser';
+import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     AdminLayoutComponent,
     BlankLayoutComponent,
     UserLayoutComponent,
@@ -47,12 +50,18 @@ import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
     NevBarComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserModule,
+    RouterOutlet,
+    RouterModule,
+ 
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
