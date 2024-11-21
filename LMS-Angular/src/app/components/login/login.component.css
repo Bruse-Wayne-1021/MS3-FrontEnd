@@ -1,15 +1,96 @@
-.divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
 }
-.h-custom {
-height: calc(100% - 73px);
+
+.login-form {
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.input-container i {
+  margin-right: 10px;
+  color: #888;
+  font-size: 18px;
+}
+
+.form-control {
+  border: none;
+  flex: 1;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+}
+
+.checkbox {
+  margin-right: 8px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: #2575fc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 10px;
+  background-color: #2575fc;
+  color: blue;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-login:disabled {
+  background-color: #ccc;
+}
+
+.sign-up {
+  margin-top: 20px;
+}
+
+.sign-up a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
 }

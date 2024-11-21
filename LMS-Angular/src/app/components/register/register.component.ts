@@ -8,24 +8,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit{
 
-  registerForm!: FormGroup;
+  signupForm: FormGroup;
 
-
-  constructor(private fb:FormBuilder){ }
-
-  ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      username: ['', Validators.required], 
-      email: ['', [Validators.required, Validators.email]], 
-      password: ['', [Validators.required, Validators.minLength(6)]], 
-      confirmPassword: ['', Validators.required]
+  constructor(private fb: FormBuilder) {
+    this.signupForm = this.fb.group({
+      fullName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+      terms: [false, [Validators.requiredTrue]],
     });
   }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-
-  onSubmit():void{
-    if(this.registerForm.valid){
-      console.log('Register Success', this.registerForm.value);
+  onSubmit() {
+    if (this.signupForm.valid) {
+      console.log('Register Success:', this.signupForm.value);
     }
   }
  

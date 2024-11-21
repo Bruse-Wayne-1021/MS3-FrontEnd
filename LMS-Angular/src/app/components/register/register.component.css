@@ -1,55 +1,97 @@
-.register-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: auto;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .register-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
-  .form-field {
-    margin-bottom: 20px;
-  }
-  
-  .form-field label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-  }
-  
-  .form-field input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 4px;
-  }
-  
-  .form-actions {
-    text-align: center;
-  }
-  
-  .form-actions button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .form-actions button:hover {
-    background-color: #0056b3;
-  }
-  
+/* Container Layout */
+.signup-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 100px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+/* Form Container */
+.form-container {
+  background: #bbba8b;
+  padding: 30px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 50%;
+  max-width: 450px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.icon {
+  margin-right: 10px;
+  color: #6a11cb;
+  font-size: 18px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Image Container */
+.image-container {
+  flex: 1;
+  text-align: center;
+}
+
+.illustration {
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Actions (Remember Me and Submit Button) */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.checkbox {
+  margin-right: 8px;
+}
+
+/* Button Styles */
+.btn-primary {
+  padding: 10px 20px;
+  background-color: #2575fc;
+  color: blue;
+  border-radius: 54px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary:disabled {
+  background-color: rgb(218, 171, 179);
+}
+
+/* Error Messages */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

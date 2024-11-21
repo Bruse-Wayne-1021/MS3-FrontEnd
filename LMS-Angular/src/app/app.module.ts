@@ -57,6 +57,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     BrowserModule,
     RouterOutlet,
     RouterModule,
+  
  
   ],
   providers: [

@@ -1,0 +1,23 @@
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .admin-header {
+    flex: 0 0 auto;
+  }
+  
+  .admin-sidebar {
+    flex: 0 0 250px;
+  }
+  
+  .admin-content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+  
+  .admin-footer {
+    flex: 0 0 auto;
+  }
+  
