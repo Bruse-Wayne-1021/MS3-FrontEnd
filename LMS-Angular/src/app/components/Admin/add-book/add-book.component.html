@@ -1,50 +1,101 @@
 <div class="card">
   <div class="card-header">
     <h2>Add a New Book</h2>
+    
   </div>
 
   <div class="card-content">
-    <form [formGroup]="addBookForm" (ngSubmit)="OnSubmit()">
+    <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
       <div class="form-field">
         <label for="title">Title</label>
-        <input id="title" formControlName="title" placeholder="Enter book title">
-        <!-- <div *ngIf="addBookForm.get('title').hasError('required')" class="error">
+        <input id="title" formControlName="title" placeholder="Enter book title" />
+        <div *ngIf="addBookForm.get('title')?.touched && addBookForm.get('title')?.hasError('required')" class="error">
           Title is required.
-        </div> -->
+        </div>
       </div>
 
       <div class="form-field">
         <label for="author">Author</label>
-        <input id="author" formControlName="author" placeholder="Enter author name">
-        <!-- <div *ngIf="addBookForm.get('author').hasError('required')" class="error">
+        <input id="author" formControlName="author" placeholder="Enter author name" />
+        <div *ngIf="addBookForm.get('author')?.touched && addBookForm.get('author')?.hasError('required')" class="error">
           Author is required.
-        </div> -->
+        </div>
       </div>
 
       <div class="form-field">
         <label for="genre">Genre</label>
-        <input id="genre" formControlName="genre" placeholder="Enter genre">
-        <!-- <div *ngIf="addBookForm.get('genre').hasError('required')" class="error">
+        <select id="genre" formControlName="genre">
+          <option value="" disabled>Select a genre</option>
+          <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+        </select>
+        <div *ngIf="addBookForm.get('genre')?.touched && addBookForm.get('genre')?.hasError('required')" class="error">
           Genre is required.
-        </div> -->
+        </div>
       </div>
 
       <div class="form-field">
-        <label for="year">Year</label>
-        <input id="year" formControlName="year" placeholder="Enter publication year">
-        <!-- <div *ngIf="addBookForm.get('year').hasError('required')" class="error">
+        <label for="year">Publication Year</label>
+        <input id="year" formControlName="year" placeholder="Enter publication year" type="number" min="1000" max="9999" />
+        <div *ngIf="addBookForm.get('year')?.touched && addBookForm.get('year')?.hasError('required')" class="error">
           Year is required.
-        </div> -->
-        <!-- <div *ngIf="addBookForm.get('year').hasError('pattern')" class="error">
+        </div>
+        <div *ngIf="addBookForm.get('year')?.hasError('min') || addBookForm.get('year')?.hasError('max')" class="error">
           Enter a valid year.
-        </div> -->
+        </div>
       </div>
 
-     
-
       <div class="form-actions">
-        <button type="submit">Add Book</button>
+        <button type="submit" [disabled]="addBookForm.invalid" class="btn-primary">Add Book</button>
       </div>
     </form>
   </div>
+
+  <!-- <div class="card-footer">
+    <h3>Trending Books</h3>
+    <div class="trending-books">
+      <div *ngFor="let book of trendingBooks" class="trending-book">
+        <h4>{{ book.title }}</h4>
+        <p>by {{ book.author }}</p>
+        <p><em>{{ book.genre }}</em></p>
+      </div>
+    </div>
+  </div> -->
 </div>
+
+
+
+<!-- <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <span class="input-group-text" id="basic-addon2">@example.com</span>
+</div>
+
+<div class="mb-3">
+  <label for="basic-url" class="form-label">Your vanity URL</label>
+  <div class="input-group">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+  </div>
+  <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-text">.00</span>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+</div>
+
+<div class="input-group">
+  <span class="input-group-text">With textarea</span>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div> -->

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../Service/user.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -11,21 +11,19 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginComponent {
 
 
-  LoginForm:FormGroup;
-  hidePassword:boolean = true;
-  
-  constructor(private Userservice:UserService,private fb:FormBuilder){
-    this.LoginForm=this.fb.group({
-      email:[""],
-      password:[""]
+  loginForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      rememberMe: [false]
     });
   }
 
-  Login(){
-    console.log(this.LoginForm.value);
-    this.Userservice.login(this.LoginForm.value).subscribe(data=>{
-     console.log(data);
-
-    })
+  onSubmit() {
+    if (this.loginForm.valid) {
+      console.log('Login Data:', this.loginForm.value);
+    }
   }
 }

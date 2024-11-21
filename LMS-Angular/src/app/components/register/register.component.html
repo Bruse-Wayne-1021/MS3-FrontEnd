@@ -1,49 +1,78 @@
-<div class="register-container">
-  <h2>Register</h2>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-field">
-      <label for="username">Username</label>
-      <input id="username" formControlName="username" placeholder="Enter your username">
-      <!-- <div class="error" *ngIf="registerForm.get('username').hasError('required')">
-        Username is required.
-      </div> -->
-    </div>
+<div class="signup-container">
+  <!-- Form Section -->
+  <div class="form-container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Full Name -->
+      <div class="form-group">
+        <label for="fullName">
+          <i class="bi bi-person-fill icon"></i>
+        </label>
+        <input id="fullName" type="text" formControlName="fullName" placeholder="Enter your full name" class="form-control">
+        <div *ngIf="signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched" class="error">
+          Full Name is required.
+        </div>
+      </div>
 
-    <div class="form-field">
-      <label for="email">Email</label>
-      <input id="email" formControlName="email" type="email" placeholder="Enter your email">
-      <!-- <div class="error" *ngIf="registerForm.get('email').hasError('required')">
-        Email is required.
-      </div> -->
-      <!-- <div class="error" *ngIf="registerForm.get('email').hasError('email')">
-        Enter a valid email.
-      </div> -->
-    </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">
+          <i class="bi bi-envelope-fill icon"></i>
+          
+        </label>
+        <input id="email" type="email" formControlName="email" placeholder="Enter your email" class="form-control">
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="error">
+          Valid Email is required.
+        </div>
+      </div>
 
-    <div class="form-field">
-      <label for="password">Password</label>
-      <input id="password" formControlName="password" type="password" placeholder="Enter your password">
-      <!-- <div class="error" *ngIf="registerForm.get('password').hasError('required')">
-        Password is required.
-      </div> -->
-      <!-- <div class="error" *ngIf="registerForm.get('password').hasError('minlength')">
-        Password must be at least 6 characters long.
-      </div> -->
-    </div>
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">
+          <i class="bi bi-lock-fill icon"></i>
+      
+        </label>
+        <input id="password" type="password" formControlName="password" placeholder="Enter your password" class="form-control">
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="error">
+          Password is required.
+        </div>
+      </div>
 
-    <div class="form-field">
-      <label for="confirmPassword">Confirm Password</label>
-      <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm your password">
-      <!-- <div class="error" *ngIf="registerForm.get('confirmPassword').hasError('required')">
-        Confirming your password is required.
-      </div> -->
-      <!-- <div class="error" *ngIf="!checkPasswords()">
-        Passwords do not match.
-      </div> -->
-    </div>
+      <!-- Repeat Password -->
+      <div class="form-group">
+        <label for="confirmPassword">
+          <i class="bi bi-lock-fill icon"></i>
+        
+        </label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Repeat your password" class="form-control">
+        <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched" class="error">
+          Confirm Password is required.
+        </div>
+        <div *ngIf="signupForm.get('confirmPassword')?.value !== signupForm.get('password')?.value && signupForm.get('confirmPassword')?.touched" class="error">
+          Passwords do not match.
+        </div>
+      </div>
 
-    <div class="form-actions">
-      <button type="submit">Register</button>
-    </div>
-  </form>
+      <!-- Terms and Conditions -->
+      <div class="form-group terms">
+        
+        <label>
+          <input type="checkbox" formControlName="terms" class="checkbox">
+          I agree to the <a href="#">Terms of Service</a>
+        </label>
+        <div *ngIf="signupForm.get('terms')?.invalid && signupForm.get('terms')?.touched" class="error">
+          You must agree to the Terms of Service.
+          
+        </div>
+       
+  
+      </div>
+
+      <!-- Action Section -->
+      <div class="actions">
+      
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+      </div>
+    </form>
+  </div>
 </div>
