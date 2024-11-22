@@ -1,0 +1,19 @@
+<div class="reserved-books-container">
+  <h2>Reserved Books</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Reserved Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of reservedBooks">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.reservedDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
