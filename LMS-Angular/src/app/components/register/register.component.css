@@ -1,97 +1,17 @@
-/* Container Layout */
-.signup-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 100px;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
+.container-fluid {
+  font-family: Arial, sans-serif;
 }
 
-/* Form Container */
-.form-container {
-  background: #bbba8b;
-  padding: 30px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  width: 50%;
-  max-width: 450px;
-  color: #333;
+form .form-label {
+  font-weight: bold;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  position: relative;
+.btn-group .btn {
+  min-width: 100px;
 }
 
-.form-group label {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  margin-bottom: 5px;
+.btn-group .active {
+  background-color: #4A00E0;
+  color: white;
 }
 
-.icon {
-  margin-right: 10px;
-  color: #6a11cb;
-  font-size: 18px;
-}
-
-.form-control {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-/* Image Container */
-.image-container {
-  flex: 1;
-  text-align: center;
-}
-
-.illustration {
-  max-width: 90%;
-  height: auto;
-  border-radius: 10px;
-}
-
-/* Actions (Remember Me and Submit Button) */
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.checkbox {
-  margin-right: 8px;
-}
-
-/* Button Styles */
-.btn-primary {
-  padding: 10px 20px;
-  background-color: #2575fc;
-  color: blue;
-  border-radius: 54px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.btn-primary:disabled {
-  background-color: rgb(218, 171, 179);
-}
-
-/* Error Messages */
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
-}

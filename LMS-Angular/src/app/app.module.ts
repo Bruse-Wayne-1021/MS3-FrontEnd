@@ -27,6 +27,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { SideBarComponent } from './components/Admin/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     BookTableComponent,
     MemberRecordsComponent,
     NevBarComponent,
+    SideBarComponent,
   ],
   imports: [
     AppRoutingModule,
