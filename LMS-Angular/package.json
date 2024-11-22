@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "-": "^0.0.1",
     "@angular/animations": "^18.2.0",
     "@angular/cdk": "^17.0.0",
     "@angular/common": "^18.2.0",
@@ -24,6 +25,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "g": "^2.0.1",
     "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -31,7 +33,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.11",
-    "@angular/cli": "^18.2.11",
+    "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.2.0",
