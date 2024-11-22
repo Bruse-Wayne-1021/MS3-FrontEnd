@@ -19,6 +19,8 @@ export class UserService {
     return this.http.post<LToken>("http://localhost:5255/api/Login/login", user);
   }
 
+
+
   IsLoggedIn(){
     if(localStorage.getItem('Token')){
       const token=localStorage.getItem('token');
@@ -29,5 +31,10 @@ export class UserService {
       return true;
     }
     return false;
+  }
+
+
+  Register(user:any){
+    return this .http.post("http://localhost:5255/api/Member/new-member",user)
   }
 }

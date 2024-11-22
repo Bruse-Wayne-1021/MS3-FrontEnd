@@ -29,11 +29,16 @@ const routes: Routes = [
     canActivate: [authGuard],
     children:[
       {path:'',component:AdminDashBoardComponent},
+Afra
       {path : 'books', component:BooksComponent, children : [
         {path:'',component:BookTableComponent},
         {path:'add-book',component:AddBookComponent},
        
       ]},
+      // {path: '/admin-dash-board',pathMatch:'full'},
+      {path:'addBook',component:AddBookComponent},
+      {path:'booktable',component:BookTableComponent},
+
       {path:'',component:RequestComponent,children:[
        {path:'record',component:RecordsComponent},
        {path:'return',component:ReturnComponent}
@@ -60,9 +65,10 @@ const routes: Routes = [
   },
 
 
-  {
-    path: 'register', component:RegisterComponent
-  },
+
+
+
+
 
   {
    path:'login',component:BlankLayoutComponent,

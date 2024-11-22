@@ -1,3 +1,4 @@
+Afra
 <div class="admin-layout">
   
     
@@ -7,9 +8,42 @@
   
 </div>
 
-
-
-
-
-
-
+<div class="admin-layout d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar bg-light border-right vh-100">
+    <div class="position-sticky pt-3">
+      <h5 class="text-center py-2 text-secondary">Admin Panel</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/admin']" routerLinkActive="active">
+            <i class="bi bi-house-door me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin/addBook']" >
+            <i class="bi bi-people me-2"></i> Add book
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/b']" routerLinkActive="active">
+            <i class="bi bi-book me-2"></i> Book Records
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/borrowings']" routerLinkActive="active">
+            <i class="bi bi-folder me-2"></i> Borrowing Records
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/requests']" routerLinkActive="active">
+            <i class="bi bi-file-earmark me-2"></i> Requests
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Main Content Area -->
+  <div class="admin-content flex-grow-1 p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>
