@@ -1,26 +1,54 @@
-<div class="dashboard">
-    <div class="dashboard-header">
-      <h2>Admin Dashboard</h2>
-      <button class="add-button">Add New Item</button>
-    </div>
-  
-    <div class="dashboard-content">
-      <div class="card">
-        <h3>Total Users</h3>
-        <p>1,234</p>
-      </div>
-      <div class="card">
-        <h3>New Orders</h3>
-        <p>567</p>
-      </div>
-      <div class="card">
-        <h3>Sales</h3>
-        <p>$12,345</p>
-      </div>
-      <div class="card">
-        <h3>Support Tickets</h3>
-        <p>89</p>
-      </div>
-    </div>
-  </div>
-  
+<div class="dashboard-container">
+  <!-- Sidebar -->
+
+
+<!-- Main Content -->
+<div class="content">
+ <!-- Header -->
+ <div class="navbar bg-light shadow-sm py-2 px-4">
+   <h3 class="m-0">Dashboard</h3>
+   <button class="btn btn-primary">Logout</button>
+ </div>
+
+ <!-- Dashboard Cards -->
+ <div class="container-fluid mt-4">
+   <div class="row">
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm text-center p-3 bg-info text-white">
+         <h5>Books</h5>
+         <p>Total: 500</p>
+       </div>
+     </div>
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm text-center p-3 bg-success text-white">
+         <h5>Members</h5>
+         <p>Total: 120</p>
+       </div>
+     </div>
+     <div class="col-lg-4 col-md-6 mb-4">
+       <div class="card shadow-sm text-center p-3 bg-danger text-white">
+         <h5>Issued Books</h5>
+         <p>Total: 300</p>
+       </div>
+     </div>
+   </div>
+
+   <div class="row">
+     <div class="col-lg-6 col-md-12 mb-4">
+       <div class="card shadow-sm p-3 bg-warning text-white">
+         <h5>Notifications</h5>
+         <ul>
+           <li>5 books due for return</li>
+           <li>2 members added today</li>
+         </ul>
+       </div>
+     </div>
+     <div class="col-lg-6 col-md-12 mb-4">
+       <div class="card shadow-sm p-3 bg-secondary text-white">
+         <h5>Settings</h5>
+         <p>Manage library system settings here.</p>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>

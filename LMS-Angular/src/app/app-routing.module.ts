@@ -20,15 +20,20 @@ import { BorrowedHistoryComponent } from './components/Member/borrowed-history/b
 import { MemberDashBoardComponent } from './components/Member/member-dash-board/member-dash-board.component';
 import { ReservedBooksComponent } from './components/Member/reserved-books/reserved-books.component';
 import { authGuard } from './auth.guard';
+import { BooksComponent } from './components/Admin/books/books.component';
 
 
 const routes: Routes = [
   {
     path:'admin',component:AdminLayoutComponent,
+    canActivate: [authGuard],
     children:[
       {path:'',component:AdminDashBoardComponent},
-      {path:'addBook',component:AddBookComponent},
-      {path:'booktable',component:BookTableComponent},
+      {path : 'books', component:BooksComponent, children : [
+        {path:'',component:BookTableComponent},
+        {path:'add-book',component:AddBookComponent},
+       
+      ]},
       {path:'',component:RequestComponent,children:[
        {path:'record',component:RecordsComponent},
        {path:'return',component:ReturnComponent}
@@ -70,6 +75,7 @@ const routes: Routes = [
   {path:'navbar',component:NevBarComponent}
 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

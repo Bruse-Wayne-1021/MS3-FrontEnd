@@ -1,101 +1,184 @@
-<div class="card">
-  <div class="card-header">
-    <h2>Add a New Book</h2>
-    
-  </div>
+ <!-- Top Navbar -->
+  
+ <div class="container mt-4">
+  <h4 class="mb-4">Add Book</h4>
+  <form>
+    <div class="mb-3">
+      <label for="bookFile" class="form-label">Books List (xlsx format):</label>
+      <input class="form-control" type="file" id="bookFile">
+    </div>
+    <div class="mb-3">
+      <button type="button" class="btn btn-warning">Import</button>
+      <button type="button" class="btn btn-outline-secondary">Download Sample</button>
+    </div>
 
-  <div class="card-content">
-    <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
-      <div class="form-field">
-        <label for="title">Title</label>
-        <input id="title" formControlName="title" placeholder="Enter book title" />
-        <div *ngIf="addBookForm.get('title')?.touched && addBookForm.get('title')?.hasError('required')" class="error">
-          Title is required.
-        </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="title" class="form-label">Title *</label>
+        <input type="text" class="form-control" id="title" required>
       </div>
-
-      <div class="form-field">
-        <label for="author">Author</label>
-        <input id="author" formControlName="author" placeholder="Enter author name" />
-        <div *ngIf="addBookForm.get('author')?.touched && addBookForm.get('author')?.hasError('required')" class="error">
-          Author is required.
-        </div>
+      <div class="col-md-6 mb-3">
+        <label for="issueYear" class="form-label">Issue Year *</label>
+        <input type="number" class="form-control" id="issueYear" required>
       </div>
-
-      <div class="form-field">
-        <label for="genre">Genre</label>
-        <select id="genre" formControlName="genre">
-          <option value="" disabled>Select a genre</option>
-          <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+      <div class="col-md-6 mb-3">
+        <label for="publisher" class="form-label">Publisher *</label>
+        <input type="text" class="form-control" id="publisher" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="isbn" class="form-label">ISBN *</label>
+        <input type="text" class="form-control" id="isbn" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="price" class="form-label">Price *</label>
+        <input type="number" class="form-control" id="price" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="category" class="form-label">Category *</label>
+        <select class="form-select" id="category" required>
+          <option selected disabled>Select a category</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
         </select>
-        <div *ngIf="addBookForm.get('genre')?.touched && addBookForm.get('genre')?.hasError('required')" class="error">
-          Genre is required.
-        </div>
       </div>
-
-      <div class="form-field">
-        <label for="year">Publication Year</label>
-        <input id="year" formControlName="year" placeholder="Enter publication year" type="number" min="1000" max="9999" />
-        <div *ngIf="addBookForm.get('year')?.touched && addBookForm.get('year')?.hasError('required')" class="error">
-          Year is required.
-        </div>
-        <div *ngIf="addBookForm.get('year')?.hasError('min') || addBookForm.get('year')?.hasError('max')" class="error">
-          Enter a valid year.
-        </div>
+      <div class="col-md-6 mb-3">
+        <label for="author" class="form-label">Author *</label>
+        <input type="text" class="form-control" id="author" required>
       </div>
-
-      <div class="form-actions">
-        <button type="submit" [disabled]="addBookForm.invalid" class="btn-primary">Add Book</button>
+      <div class="col-md-6 mb-3">
+        <label for="subCategory" class="form-label">Sub-Category *</label>
+        <input type="text" class="form-control" id="subCategory" required>
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-warning">Add Book</button>
+    </div>
+  </form>
+</div>
+    
 
-  <!-- <div class="card-footer">
-    <h3>Trending Books</h3>
-    <div class="trending-books">
-      <div *ngFor="let book of trendingBooks" class="trending-book">
-        <h4>{{ book.title }}</h4>
-        <p>by {{ book.author }}</p>
-        <p><em>{{ book.genre }}</em></p>
+    <!-- My Agency Tab -->
+    <!-- <li class="nav-item">
+      <button
+        class="nav-link"
+        data-bs-toggle="modal"
+        data-bs-target="#agencyModal"
+        role="tab"
+      >
+        <div class="icon-circle">
+          <img src="https://via.placeholder.com/80" alt="My Agency">
+        </div>
+        My Agency
+      </button>
+    </li>
+  </ul> -->
+
+  <!-- Modals -->
+  <!-- Exhibitor Modal
+  <div
+    class="modal fade"
+    id="exhibitorModal"
+    tabindex="-1"
+    aria-labelledby="exhibitorModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exhibitorModalLabel">Exhibitor Information</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Exhibitor-related content goes here.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>
   </div> -->
-</div>
 
+  <!-- <div
+    class="modal fade"
+    id="publisherModal"
+    tabindex="-1"
+    aria-labelledby="publisherModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="publisherModalLabel">
+            Publisher Conference Details
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Publisher conference-related content goes here.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 
-
-<!-- <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2">@example.com</span>
-</div>
-
-<div class="mb-3">
-  <label for="basic-url" class="form-label">Your vanity URL</label>
-  <div class="input-group">
-    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+  <!-- My Agency Modal
+  <div
+    class="modal fade"
+    id="agencyModal"
+    tabindex="-1"
+    aria-labelledby="agencyModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="agencyModalLabel">My Agency Information</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          My agency-related content goes here.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-</div>
-
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-text">.00</span>
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-  <span class="input-group-text">@</span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
-
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
 </div> -->
+
+
