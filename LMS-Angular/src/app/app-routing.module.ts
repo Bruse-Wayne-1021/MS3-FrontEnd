@@ -27,6 +27,7 @@ const routes: Routes = [
     path:'admin',component:AdminLayoutComponent,
     children:[
       {path:'',component:AdminDashBoardComponent},
+      // {path: '/admin-dash-board',pathMatch:'full'},
       {path:'addBook',component:AddBookComponent},
       {path:'booktable',component:BookTableComponent},
       {path:'',component:RequestComponent,children:[

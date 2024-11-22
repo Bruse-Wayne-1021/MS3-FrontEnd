@@ -1,26 +1,127 @@
-<div class="dashboard">
-    <div class="dashboard-header">
-      <h2>Admin Dashboard</h2>
-      <button class="add-button">Add New Item</button>
-    </div>
-  
-    <div class="dashboard-content">
-      <div class="card">
-        <h3>Total Users</h3>
-        <p>1,234</p>
-      </div>
-      <div class="card">
-        <h3>New Orders</h3>
-        <p>567</p>
-      </div>
-      <div class="card">
-        <h3>Sales</h3>
-        <p>$12,345</p>
-      </div>
-      <div class="card">
-        <h3>Support Tickets</h3>
-        <p>89</p>
+<!-- <div class="d-flex">
+  <app-sidebar></app-sidebar>
+  <div class="flex-grow-1">
+    <app-header></app-header>
+    <div class="container mt-4">
+      <h1 class="fw-bold">Library Dashboard</h1>
+      <p>Overview of library operations</p>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card text-center p-3 shadow-sm">
+            <i class="bi bi-book fs-1 text-primary"></i>
+            <h3 class="mt-2">200</h3>
+            <p>Books</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center p-3 shadow-sm">
+            <i class="bi bi-people fs-1 text-success"></i>
+            <h3 class="mt-2">50</h3>
+            <p>Members</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center p-3 shadow-sm">
+            <i class="bi bi-arrow-down-up fs-1 text-warning"></i>
+            <h3 class="mt-2">30</h3>
+            <p>Requests</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center p-3 shadow-sm">
+            <i class="bi bi-arrow-return-left fs-1 text-danger"></i>
+            <h3 class="mt-2">20</h3>
+            <p>Returns</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+</div> -->
+<div >
+  <div class ="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <!-- Sidebar -->
+
+
+    <!-- Main Dashboard -->
+    <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
+      <div >
+        <h1 class="h2">Library Dashboard</h1>
+      </div>
+
+      <div class="row">
+        <!-- Cards Section -->
+        <div class="col-md-3 mb-4">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <h5 class="card-title">Members</h5>
+              <p class="card-text">Total: 1200</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title">Books</h5>
+              <p class="card-text">Total: 3450</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card text-white bg-warning">
+            <div class="card-body">
+              <h5 class="card-title">Borrowing Records</h5>
+              <p class="card-text">Active: 450</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title">Requests</h5>
+              <p class="card-text">Pending: 23</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Tables Section -->
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              Member Records
+            </div>
+            <div class="card-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Membership</th>
+                    <th>Joined Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>Premium</td>
+                    <td>2023-04-12</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>Basic</td>
+                    <td>2022-08-05</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
