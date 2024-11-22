@@ -1,18 +1,18 @@
 <div class="login-container">
   <div class="login-form">
     <h2>Sign In</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
       <!-- Username -->
       <div class="form-group">
         <label for="username">
         </label>
         <div class="input-container">
           <i class="bi bi-person-circle" style="color: black;"></i>
-          <input id="username" type="text" formControlName="username" placeholder="Enter your username"
-            class="form-control">
+          <input id="username" type="text" formControlName="username" placeholder="Enter your Email"
+            class="form-control" formControlName="email">
         </div>
         <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="error">
-          Username is required.
+          Email is required.
         </div>
       </div>
 
@@ -21,7 +21,7 @@
         <div class="input-container">
           <i class="bi bi-file-lock-fill" style="color: black;"></i>
           <input id="password" type="password" formControlName="password" placeholder="Enter your password"
-            class="form-control">
+            class="form-control" formControlName="password">
         </div>
         <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
           Password is required.
@@ -51,5 +51,5 @@
 </div>
 
 
- 
+
 

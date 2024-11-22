@@ -16,32 +16,44 @@
           <h3 style="color: blue;"><i class="bi bi-person-fill"></i> Apply as a Member </h3>
 
         </div>
-        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <form (ngSubmit)="RegUser()" [formGroup]="signupForm">
           <div class="row">
             <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">Nic *</label>
+              <input type="text" id="firstName" class="form-control" name="firstName" ngModel required  formControlName="nic"/>
+            </div>
+            <div class="col-md-6 mb-3">
               <label for="firstName" class="form-label">First Name *</label>
-              <input type="text" id="firstName" class="form-control" name="firstName" ngModel required />
+              <input type="text" id="firstName" class="form-control" name="firstName" ngModel required  formControlName="firstName"/>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName" class="form-label">Last Name *</label>
-              <input type="text" id="lastName" class="form-control" name="lastName" ngModel required />
+              <input type="text" id="lastName" class="form-control" name="lastName" ngModel required  formControlName="lastName"/>
             </div>
             <div class="col-md-6 mb-3">
               <label for="email" class="form-label">Your Email *</label>
-              <input type="email" id="email" class="form-control" name="email" ngModel required />
+              <input type="email" id="email" class="form-control" name="email" ngModel required formControlName="email" />
             </div>
             <div class="col-md-6 mb-3">
               <label for="phone" class="form-label">Your Phone *</label>
-              <input type="tel" id="phone" class="form-control" name="phone" ngModel required />
+              <input type="tel" id="phone" class="form-control" name="phone" ngModel required  formControlName="phoneNumber"/>
             </div>
             <div class="col-md-6 mb-3">
               <label for="password" class="form-label">Password *</label>
-              <input type="password" id="password" class="form-control" name="password" ngModel required />
+              <input type="password" id="password" class="form-control" name="password" ngModel required formControlName="password" />
             </div>
-            <div class="col-md-6 mb-3">
+            <!-- <div class="col-md-6 mb-3">
               <label for="confirmPassword" class="form-label">Confirm Password *</label>
               <input type="password" id="confirmPassword" class="form-control" name="confirmPassword" ngModel required />
+            </div> -->
+
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">Image *</label>
+              <input type="text" id="firstName" class="form-control" name="firstName" ngModel required  formControlName="imageUrl"/>
             </div>
+
+
+
             <!-- <div class="col-md-6 mb-3">
               <label for="securityQuestion" class="form-label">Security Question</label>
               <select id="securityQuestion" class="form-select" name="securityQuestion" ngModel required>
@@ -57,14 +69,15 @@
             <div class="col-md-12 mb-3">
               <label class="form-label">Gender</label>
               <div>
-                <input type="radio" id="male" name="gender" value="Male" ngModel required />
-                <label for="male" class="me-3">Male</label>
-                <input type="radio" id="female" name="gender" value="Female" ngModel required />
-                <label for="female">Female</label>
+                <label for="exampleInputPassword1" class="form-label">User Gender: </label>
+                <select name=""  class="form-control" formControlName="userGender">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                 </select>
               </div>
             </div>
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register</button>
+              <button type="submit" class="btn btn-primary w-100" >Register</button>
             </div>
           </div>
         </form>

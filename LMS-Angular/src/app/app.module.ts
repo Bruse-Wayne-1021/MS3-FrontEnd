@@ -59,8 +59,8 @@ import { SideBarComponent } from './components/Admin/side-bar/side-bar.component
     BrowserModule,
     RouterOutlet,
     RouterModule,
-  
- 
+
+
   ],
   providers: [
     provideAnimationsAsync()
