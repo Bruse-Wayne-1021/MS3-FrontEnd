@@ -1,0 +1,17 @@
+.container-fluid {
+  font-family: Arial, sans-serif;
+}
+
+form .form-label {
+  font-weight: bold;
+}
+
+.btn-group .btn {
+  min-width: 100px;
+}
+
+.btn-group .active {
+  background-color: #4A00E0;
+  color: white;
+}
+

@@ -1,0 +1,10 @@
+<div class="gallery-container">
+  <h2>Book Gallery</h2>
+  <div class="gallery">
+    <div class="book-item" *ngFor="let book of books">
+      <img [src]="book.image" alt="{{book.title}}">
+      <h3>{{book.title}}</h3>
+      <p>{{book.author}}</p>
+    </div>
+  </div>
+</div>
