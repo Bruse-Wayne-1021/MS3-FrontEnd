@@ -12,4 +12,19 @@
 <body class="mat-typography">
   <app-root></app-root>
 </body>
+
+
+<script>
+  feather.replace();
+</script>
+
+
+<script>
+  var el = document.getElementById("wrapper");
+  var toggleButton = document.getElementById("menu-toggle");
+
+  toggleButton.onclick = function () {
+      el.classList.toggle("toggled");
+  };
+</script>
 </html>
