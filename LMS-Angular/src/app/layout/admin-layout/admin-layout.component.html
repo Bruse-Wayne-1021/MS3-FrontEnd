@@ -1,36 +1,36 @@
-<div class="admin-layout d-flex">
+<div class="admin-layout d-flex" >
 
-  <div class="sidebar bg-primary text-white">
-    <h3 class="py-3 text-center">Library Admin</h3>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" [routerLink]="['/admin']" routerLinkActive="active">
-          <i class="bi bi-house-door me-2"></i> Dashboard
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/admin/books']" >
-          <i class="bi bi-people me-2"></i> Books
-        </a>
-      </li>
   
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/borrowings']" routerLinkActive="active">
-          <i class="bi bi-folder me-2"></i> Borrowing Records
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/requests']" routerLinkActive="active">
-          <i class="bi bi-file-earmark me-2"></i> Requests
-        </a>
-      </li>
-    </ul>
-  </div>
-  <!-- Sidebar -->
- 
+  <div class="bg-white" id="sidebar-wrapper">
+    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom" aria-current="page"[routerLink]="['/admin']" routerLinkActive="active"><i
+        class="fas fa-user-secret me-2"></i>Dashboard
+    </div>
 
-  <!-- Main Content Area -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="list-group list-group-flush my-3">
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/books']"><i
+          class="fas fa-project-diagram me-2"></i>Books</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/borrowings']" routerLinkActive="active"><i
+          class="fas fa-chart-line me-2"></i>Borrowing Records</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/requests']" routerLinkActive="active"><i
+          class="fas fa-paperclip me-2"></i>Requests</a>
+
+      <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
+          class="fas fa-power-off me-2"></i>Logout</a>
+    </div>
+  </div>
+  
+
+
+  
   <div class="admin-content flex-grow-1 p-4">
     <router-outlet></router-outlet>
   </div>
 </div>
+
+
+

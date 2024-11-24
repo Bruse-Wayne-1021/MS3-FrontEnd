@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AdminLayoutComponent {
 
+
+  user = {
+    name: 'John Doe',
+    email: 'johndoe@example.com',
+  };
+
 }

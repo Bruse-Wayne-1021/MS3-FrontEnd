@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-user-layout',
@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class UserLayoutComponent {
 
-}
+  activeMenu = '';
+
+  isActive(menu: string): boolean {
+    return this.activeMenu === menu;
+  }
+
+  setActiveMenu(menu: string): void {
+    this.activeMenu = menu;
+  }
+
+
+  isSidebarCollapsed = false;
+
+  toggleSidebar(): void {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+  
+
+
+ }
