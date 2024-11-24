@@ -30,6 +30,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { BooksComponent } from './components/Admin/books/books.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,8 @@ import { BooksComponent } from './components/Admin/books/books.component';
     MemberRecordsComponent,
     NevBarComponent,
     BooksComponent,
+
+
   ],
   imports: [
     AppRoutingModule,
@@ -61,7 +65,7 @@ import { BooksComponent } from './components/Admin/books/books.component';
     RouterOutlet,
     RouterModule,
     BrowserModule,
- 
+
   ],
   providers: [
     provideAnimationsAsync()
