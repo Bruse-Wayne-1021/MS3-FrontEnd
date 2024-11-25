@@ -30,4 +30,8 @@ export class UserService {
     }
     return false;
   }
+
+  Register(user:any){
+    return this .http.post("http://localhost:5255/api/Member/new-member",user)
+  }
 }
