@@ -1,10 +1,59 @@
-<div class="gallery-container">
-  <h2>Book Gallery</h2>
-  <div class="gallery">
-    <div class="book-item" *ngFor="let book of books">
-      <img [src]="book.image" alt="{{book.title}}">
-      <h3>{{book.title}}</h3>
-      <p>{{book.author}}</p>
+<div class="container my-5">
+  <h2 class="text-center mb-4">Library Gallery</h2>
+
+  <!-- Bootstrap Carousel -->
+  <div id="libraryCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Iterate through books and display images -->
+      <div
+        class="carousel-item"
+        *ngFor="let book of books; let i = index"
+        [class.active]="i === 0"
+      >
+        <img
+          [src]="book.image?.image2Path || 'assets/images/default.jpg'"
+          class="d-block w-100 rounded"
+          [alt]="book.name"
+          style="height: 500px; object-fit: cover;"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ book.name }}</h5>
+          <p>{{ book.author?.name }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#libraryCarousel"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#libraryCarousel"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        *ngFor="let book of books; let i = index"
+        data-bs-target="#libraryCarousel"
+        [attr.data-bs-slide-to]="i"
+        [class.active]="i === 0"
+        aria-current="true"
+        
+      ></button>
     </div>
   </div>
 </div>
