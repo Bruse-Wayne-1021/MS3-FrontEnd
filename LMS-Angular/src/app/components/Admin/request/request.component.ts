@@ -28,10 +28,10 @@ export class RequestComponent implements OnInit {
 
     const parsedData = JSON.parse(userData);
     this.memberId = parsedData['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
-    console.log('Member ID:', this.memberId);
+    console.log( this.memberId);
 
     const todayDate = new Date().toISOString();
-    console.log('Today\'s Date:', todayDate);
+    console.log( todayDate);
 
     this.getUserIdByMemberId();
   }
@@ -40,27 +40,27 @@ export class RequestComponent implements OnInit {
     this.requestService.getAllRequests(state.Request).subscribe({
       next: (response: any) => {
         this.request = response?.$values || [];
-        console.log('Requests:', this.request);
+        console.log( this.request);
       },
       error: (err) => {
-        console.error('Error fetching requests:', err);
+        console.error( err);
         alert('Failed to load requests.');
       },
     });
   }
 
   approveRequest(lendId: string): void {
-    console.log('Lend ID to Approve:', lendId);
+    console.log( lendId);
     this.lendID = lendId;
 
     this.requestService.approveRequest(this.lendID, state.Accept).subscribe({
       next: (response: any) => {
-        console.log('Approve Response:', response);
+        console.log( response);
         alert('Request Approved Successfully');
         const date=new Date().toISOString();
 
         const payload={
-          MemberID:this.userId,
+          MemberID:this.lendID,
           Datetype:this.dateType
         }
 
@@ -68,23 +68,23 @@ export class RequestComponent implements OnInit {
         this.updateApproveDate(payload);
       },
       error: (err) => {
-        console.error('Error approving request:', err);
+        console.error( err);
         alert('Failed to approve request.');
       },
     });
   }
 
   declineRequest(rejectId: string): void {
-    console.log('Lend ID to Decline:', rejectId);
+    console.log( rejectId);
     this.lendID = rejectId;
 
     this.requestService.approveRequest(this.lendID, state.Decline).subscribe({
       next: (response: any) => {
-        console.log('Decline Response:', response);
+        console.log( response);
         alert('Request Rejected Successfully');
       },
       error: (err) => {
-        console.error('Error declining request:', err);
+        console.error( err);
         alert('Failed to decline request.');
       },
     });
@@ -93,27 +93,28 @@ export class RequestComponent implements OnInit {
   getUserIdByMemberId(): void {
     this.requestService.getMemeberBtid(this.memberId).subscribe({
       next: (response: any) => {
-        console.log('Member Response:', response);
+        console.log( response);
         this.userId = response?.memberID;
         console.log('User ID:', this.userId);
       },
       error: (err) => {
-        console.error('Error fetching member by ID:', err);
+        console.error( err);
         alert('Failed to retrieve user information.');
       },
     });
   }
 
   updateApproveDate(details:ApproveDate): void {
-    console.log('Updating Approval Date for ID:', );
+
     this.requestService.approveDate(details).subscribe({
       next: (response: any) => {
-        console.log('Date Update Response:', response);
+        console.log( response);
       },
       error: (err) => {
-        console.error('Error updating approval date:', err);
-        
+        console.error( err);
       },
     });
   }
 }
+
+

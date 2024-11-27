@@ -5,7 +5,7 @@
       <img [src]="book.image2Path" alt="{{book.name}}">
       <h3>{{book.title}}</h3>
       <p>{{book.author?.name}}</p>
-      <button [routerLink]="['/member/book-gallery/viewbook/',book.bookid]">View Book</button>
+      <button (click)="collectBook(book.lendId)">View Book</button>
     </div>
   </div>
 </div>
