@@ -1,6 +1,6 @@
 import { state } from './book-lend.service';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, IterableDiffers } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -22,9 +22,9 @@ export class RequestService {
     );
   }
 
-  approveDate(lendId:string,dateType:string){
+  approveDate(approveDate: ApproveDate){
     const todaydate=new Date().toISOString();
-  return this.http.put(`http://localhost:5255/api/Booklend/updateDate?MemberID=${lendId}&Date=${new Date().toISOString()}&Datetype=${dateType}`,null)
+  return this.http.put(`http://localhost:5255/api/Booklend/updateDate?MemberID=${approveDate.MemberID}&Date=${todaydate}&Datetype=${approveDate.Datetype}`,null)
   }
 
    getMemeberBtid(userid:string){
@@ -32,4 +32,10 @@ export class RequestService {
   }
 }
 
+
+export interface ApproveDate{
+  MemberID: string;
+  Datetype: string;
+
+}
 

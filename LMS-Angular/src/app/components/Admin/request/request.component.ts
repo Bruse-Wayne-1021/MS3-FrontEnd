@@ -1,18 +1,20 @@
+import { ApproveDate, RequestService } from './../../../Service/request.service';
 import { state } from './../../../Service/book-lend.service';
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from '../../../Service/request.service';
+;
 
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css'], 
+  styleUrls: ['./request.component.css'],
 })
 export class RequestComponent implements OnInit {
   request: any[] = [];
   memberId!: string;
   lendID!: string;
-  dateType: string = 'approve';
+  dateType: string = "approve";
   userId!: string;
+  todaayDate!:Date;
 
   constructor(private requestService: RequestService) {}
 
@@ -55,7 +57,15 @@ export class RequestComponent implements OnInit {
       next: (response: any) => {
         console.log('Approve Response:', response);
         alert('Request Approved Successfully');
-        this.updateApproveDate(this.userId);
+        const date=new Date().toISOString();
+
+        const payload={
+          MemberID:this.userId,
+          Datetype:this.dateType
+        }
+
+
+        this.updateApproveDate(payload);
       },
       error: (err) => {
         console.error('Error approving request:', err);
@@ -94,15 +104,15 @@ export class RequestComponent implements OnInit {
     });
   }
 
-  updateApproveDate(id: string): void {
-    console.log('Updating Approval Date for ID:', id);
-    this.requestService.approveDate(id, this.dateType).subscribe({
+  updateApproveDate(details:ApproveDate): void {
+    console.log('Updating Approval Date for ID:', );
+    this.requestService.approveDate(details).subscribe({
       next: (response: any) => {
         console.log('Date Update Response:', response);
       },
       error: (err) => {
         console.error('Error updating approval date:', err);
-        alert('Failed to update approval date.');
+        
       },
     });
   }
