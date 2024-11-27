@@ -1,3 +1,4 @@
+import { ApproveDate } from './../../../Service/request.service';
 import { ReservedBook } from './../../../Service/memberside.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../Service/user.service';
@@ -16,13 +17,16 @@ export class ReservedBooksComponent implements OnInit {
   UserID!:string;
   books:any[]=[];
   data!:string;
+  selectedBook:any=null;
+  IDofLend!:string;
+  dateType:string="collect";
+  waitingBooks:any[]=[];
+
 
 
   constructor(private userServoce:UserService,private requestService:RequestService,private memberSide:MembersideService) { }
 
   ngOnInit(): void {
-
-
     const userdata = localStorage.getItem('User');
     if (!userdata) {
       alert('User not logged in!');
@@ -31,22 +35,18 @@ export class ReservedBooksComponent implements OnInit {
     const parsedata = JSON.parse(userdata);
     const member = parsedata['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
     this.UserID=member;
-    console.log(this.UserID);
     this.userServoce.getMemeberBtid(this.UserID).subscribe({
       next: (response) => {
-        console.log(response);
         this.memberid=response?.memberID        ;
-        console.log(this.memberid);
         const Request={
           MemberID:this.memberid,
           state:state.Accept
         }
+        this.getBorrowedBooks(this.memberid);
         console.log(this.memberid);
         this.memberSide.getReservedBooks(Request).subscribe({
           next: (response) => {
-            console.log(response);
             this.books=response?.$values;
-            console.log(this.books);
           },
           error:(err: any)=>{
             console.log(err);
@@ -58,31 +58,47 @@ export class ReservedBooksComponent implements OnInit {
       }
     })
 
-    console.log(this.memberid);
+
 
 
   }
 
-  // getMemberByID():void{
-  //   this.userServoce.getMemeberBtid(this.UserID).subscribe({
-  //     next: (response) => {
-  //       console.log(response);
-  //       this.memberid=response?.memberID;
-  //       console.log(this.memberid);
+  collectBook(lendId:string):void{
+    this.IDofLend=lendId
+    this.requestService.approveRequest(this.IDofLend,state.Waiting).subscribe({
+      next: (response) => {
+        const Request={
+          MemberID:this.IDofLend,
+          Datetype:this.dateType
+        }
+        this.updateCollectDate(Request)
+      },
+      error:error=>{
+        console.log(error);
 
-  //     },
-  //     error:(err: any)=>{
-  //       console.log(err);
-  //     }
-  //   })
-  // }
-
-
-  getBook():void{
-
+      }
+    })
   }
 
+  updateCollectDate(details:ApproveDate):void{
+    this.requestService.approveDate(details).subscribe({
+      next: (response:any) => {
+        console.log(response);
+      },
+      error:error=>{
+        console.log(error);
+      }
+    })
+  }
 
-
+  getBorrowedBooks(id:string):void{
+    this.memberSide.getWaitingBook(id,state.Waiting).subscribe({
+      next: (response:any) => {
+        console.log(response);
+        this.waitingBooks=response?.$values;
+        console.log(this.waitingBooks);
+      }
+    })
+  }
 
 }
