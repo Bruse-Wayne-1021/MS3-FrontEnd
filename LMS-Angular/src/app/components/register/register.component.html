@@ -1,70 +1,175 @@
-<div class="container-fluid vh-100 d-flex align-items-center" style="background: linear-gradient(to right, #4A00E0, #8E2DE2);">
+<div
+  class="container-fluid vh-100 d-flex align-items-center"
+  style="background: linear-gradient(to right, #4A00E0, #8E2DE2);"
+>
   <div class="row w-100">
     <!-- Welcome Section -->
     <div class="col-lg-5 text-white d-flex flex-column justify-content-center align-items-center">
       <div class="text-center">
-        <img src="Wisdom Wellspring.jpg" alt="Logo" width="100px">
+        <img src="Wisdom Wellspring.jpg" alt="Logo" width="100px" />
         <h1>Welcome</h1>
-        <p>You are in a Wisdom Wellspring Register Page<i class="bi bi-emoji-smile"></i></p>
-        <button class="btn btn-light mt-3 px-4">Login</button>
+        <p>
+          You are in a Wisdom Wellspring Register Page
+          <i class="bi bi-emoji-smile"></i>
+        </p>
+       
       </div>
     </div>
 
+    <!-- Registration Form Section -->
     <div class="col-lg-7 bg-white rounded">
       <div class="p-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 style="color: blue;"><i class="bi bi-person-fill"></i> Apply as a Member </h3>
-
+          <h3 style="color: blue;">
+            <i class="bi bi-person-fill"></i> Apply as a Member
+          </h3>
         </div>
-        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <form (ngSubmit)="RegUser()" [formGroup]="signupForm">
           <div class="row">
+            <!-- NIC -->
+            <div class="col-md-6 mb-3">
+              <label for="nic" class="form-label">NIC *</label>
+              <input
+                type="text"
+                id="nic"
+                class="form-control"
+                formControlName="nic"
+                placeholder="Enter your NIC"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('nic')?.invalid && signupForm.get('nic')?.touched"
+              >
+                NIC is required.
+              </small>
+            </div>
+
+            <!-- First Name -->
             <div class="col-md-6 mb-3">
               <label for="firstName" class="form-label">First Name *</label>
-              <input type="text" id="firstName" class="form-control" name="firstName" ngModel required />
+              <input
+                type="text"
+                id="firstName"
+                class="form-control"
+                formControlName="firstName"
+                placeholder="Enter your first name"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched"
+              >
+                First name is required.
+              </small>
             </div>
+
+            <!-- Last Name -->
             <div class="col-md-6 mb-3">
               <label for="lastName" class="form-label">Last Name *</label>
-              <input type="text" id="lastName" class="form-control" name="lastName" ngModel required />
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                formControlName="lastName"
+                placeholder="Enter your last name"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched"
+              >
+                Last name is required.
+              </small>
             </div>
+
+            <!-- Email -->
             <div class="col-md-6 mb-3">
               <label for="email" class="form-label">Your Email *</label>
-              <input type="email" id="email" class="form-control" name="email" ngModel required />
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+              >
+                A valid email is required.
+              </small>
             </div>
+
+            <!-- Phone -->
             <div class="col-md-6 mb-3">
-              <label for="phone" class="form-label">Your Phone *</label>
-              <input type="tel" id="phone" class="form-control" name="phone" ngModel required />
+              <label for="phoneNumber" class="form-label">Your Phone *</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                class="form-control"
+                formControlName="phoneNumber"
+                placeholder="Enter your phone number"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched"
+              >
+                Phone number is required.
+              </small>
             </div>
+
+            <!-- Password -->
             <div class="col-md-6 mb-3">
               <label for="password" class="form-label">Password *</label>
-              <input type="password" id="password" class="form-control" name="password" ngModel required />
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+              >
+                Password must be at least 6 characters long.
+              </small>
             </div>
+
+            <!-- Image -->
             <div class="col-md-6 mb-3">
-              <label for="confirmPassword" class="form-label">Confirm Password *</label>
-              <input type="password" id="confirmPassword" class="form-control" name="confirmPassword" ngModel required />
+              <label for="imageUrl" class="form-label">Profile Image URL *</label>
+              <input
+                type="text"
+                id="imageUrl"
+                class="form-control"
+                formControlName="imageUrl"
+                placeholder="Enter profile image URL"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('imageUrl')?.invalid && signupForm.get('imageUrl')?.touched"
+              >
+                Profile image URL is required.
+              </small>
             </div>
-            <!-- <div class="col-md-6 mb-3">
-              <label for="securityQuestion" class="form-label">Security Question</label>
-              <select id="securityQuestion" class="form-select" name="securityQuestion" ngModel required>
-                <option value="" disabled selected>Select your question</option>
-                <option value="favoritePet">What is your favorite pet?</option>
-                <option value="birthPlace">Where were you born?</option>
-              </select>
-            </div> -->
-            <!-- <div class="col-md-6 mb-3">
-              <label for="securityAnswer" class="form-label">Your Answer</label>
-              <input type="text" id="securityAnswer" class="form-control" name="securityAnswer" ngModel required />
-            </div> -->
+
+            <!-- Gender -->
             <div class="col-md-12 mb-3">
               <label class="form-label">Gender</label>
-              <div>
-                <input type="radio" id="male" name="gender" value="Male" ngModel required />
-                <label for="male" class="me-3">Male</label>
-                <input type="radio" id="female" name="gender" value="Female" ngModel required />
-                <label for="female">Female</label>
-              </div>
+              <select class="form-control" formControlName="userGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
             </div>
+
+            <!-- Submit Button -->
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary w-100" [disabled]="!registerForm.valid">Register</button>
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="signupForm.invalid"
+              >
+                Register
+              </button>
             </div>
           </div>
         </form>

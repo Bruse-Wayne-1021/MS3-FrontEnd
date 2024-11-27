@@ -1,10 +1,30 @@
+<div class="filter-container">
+  <label for="genreFilter">Filter by Genre:</label>
+  <select id="genreFilter" [(ngModel)]="selectedGenre" (change)="filterBook()">
+    <option value="">All Genres</option>
+    <option *ngFor="let genre of genres" [value]="genre.bookGenre">{{ genre.bookGenre }}</option>
+  </select>
+</div>
+
+<div class="filter-container">
+  <label for="genreFilter">Filter by Language:</label>
+  <select id="genreFilter" [(ngModel)]="selectedLanguage" (change)="filterBookBylanguage()">
+    <option value="">All Genres</option>
+    <option *ngFor="let languag of language" [value]="languag.typeOfLanguage">{{ languag.typeOfLanguage }}</option>
+  </select>
+</div>
+
 <div class="gallery-container">
   <h2>Book Gallery</h2>
   <div class="gallery">
-    <div class="book-item" *ngFor="let book of books">
-      <img [src]="book.image" alt="{{book.title}}">
-      <h3>{{book.title}}</h3>
-      <p>{{book.author}}</p>
+    <div class="book-item" *ngFor="let book of filterBooks" (click)="viewbook(book.bookid)">
+      <img [src]="book.image?.image2Path" alt="{{book.name}}">
+      <h3>{{book.name}}</h3>
+      <p>{{book.author?.name}}</p>
+      <button [routerLink]="['/member/book-gallery/viewbook/',book.bookid]">View Book</button>
     </div>
   </div>
+</div>
+<div>
+  <router-outlet></router-outlet>
 </div>

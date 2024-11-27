@@ -26,8 +26,9 @@ import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.component';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BooksComponent } from './components/Admin/books/books.component';
+import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
 
 
 
@@ -53,6 +54,8 @@ import { BooksComponent } from './components/Admin/books/books.component';
     MemberRecordsComponent,
     NevBarComponent,
     BooksComponent,
+    UnittBookComponent,
+    
 
 
   ],
@@ -65,6 +68,7 @@ import { BooksComponent } from './components/Admin/books/books.component';
     RouterOutlet,
     RouterModule,
     BrowserModule,
+
 
   ],
   providers: [

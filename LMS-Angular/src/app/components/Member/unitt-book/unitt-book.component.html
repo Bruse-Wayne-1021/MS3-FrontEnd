@@ -1,0 +1,18 @@
+<div class="gallery-container">
+  <h2>Book Gallery</h2>
+  <div class="gallery">
+
+      <div class="book-image">
+        <img [src]="books.image?.image2Path" alt="{{books.name}}">
+      </div>
+      <div class="book-details">
+        <h3>{{books.name}}</h3>
+        <p class="author">by {{books.author?.name}}</p>
+        <button class="view-button" (click)="BookRequest()">Request Book</button>
+      </div>
+
+  </div>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>

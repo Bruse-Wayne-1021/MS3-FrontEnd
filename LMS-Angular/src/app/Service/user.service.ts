@@ -30,4 +30,15 @@ export class UserService {
     }
     return false;
   }
+
+  Register(user:any){
+    return this .http.post("http://localhost:5255/api/Member/new-member",user)
+  }
+
+
+  getMemeberBtid(userid:string){
+    return this.http.get<any>("http://localhost:5255/api/User/"+userid)
+  }
+
+  
 }

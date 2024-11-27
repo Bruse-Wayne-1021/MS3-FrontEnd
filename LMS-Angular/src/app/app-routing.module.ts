@@ -21,60 +21,45 @@ import { MemberDashBoardComponent } from './components/Member/member-dash-board/
 import { ReservedBooksComponent } from './components/Member/reserved-books/reserved-books.component';
 import { authGuard } from './auth.guard';
 import { BooksComponent } from './components/Admin/books/books.component';
+import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
 
 
 const routes: Routes = [
   {
-    path:'admin',component:AdminLayoutComponent,
-    canActivate: [authGuard],
-    children:[
-      {path:'',component:AdminDashBoardComponent},
-      {path : 'books' , component : BooksComponent , children : [
-        {path:'',component:BookTableComponent},
-        {path:'add-book',component:AddBookComponent},
-       
+    path: 'admin', component: AdminLayoutComponent, children: [
+      { path: '', component: AdminDashBoardComponent },
+      { path: 'book', component: BooksComponent, children: [
+        { path: 'addBook', component: AddBookComponent },
+        { path: '', component: BookTableComponent }
       ]},
-      {path:'',component:RequestComponent,children:[
-       {path:'record',component:RecordsComponent},
-       {path:'return',component:ReturnComponent}
+      { path: 'request', component: RequestComponent, children: [
+        { path: 'record', component: RecordsComponent },
+        { path: 'return', component: ReturnComponent }
       ]},
-      {path:'memberRecords',component:MemberRecordsComponent}
-
-
+      { path: 'memberRecords', component: MemberRecordsComponent }
     ]
   },
   {
-    path:'member',component:UserLayoutComponent,
-    canActivate: [authGuard],
-    children:[
-      {path:'book-gallery',component:BookGalleryComponent},
-      {path:'borrowed-history', component:BorrowedHistoryComponent},
-      {path:'member-dash-board',component:MemberDashBoardComponent},
-      {path:'reserved-books',component:ReservedBooksComponent},
-      {path:'', redirectTo:'/member/member-dash-board',pathMatch:'full'}
+    path: 'member',
+    component: UserLayoutComponent,
+    children: [
+      { path: 'book-gallery', component: BookGalleryComponent },
+      { path: 'book-gallery/viewbook/:id', component: UnittBookComponent },
+      { path: 'borrowed-history', component: BorrowedHistoryComponent },
+      { path: 'member-dash-board', component: MemberDashBoardComponent },
+      { path: 'reserved-books', component: ReservedBooksComponent }
     ]
   },
-
   {
-    path:'', redirectTo:'/member/member-dash-board', pathMatch:'full'
+    path: 'login', component: BlankLayoutComponent, children: [
+      { path: '', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
+    ]
   },
-
-
-  {
-    path: 'register', component:RegisterComponent
-  },
-
-  {
-   path:'login',component:BlankLayoutComponent,
-   children:[
-    {path:'',component:LoginComponent},
-    {path:'Register',component:RegisterComponent},
-    {path:"**",redirectTo:"login",pathMatch:'full'}
-   ]
-  },
-  {path:'navbar',component:NevBarComponent}
-
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

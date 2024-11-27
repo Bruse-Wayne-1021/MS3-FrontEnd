@@ -1,0 +1,25 @@
+
+export interface Ibook{
+  name:string,
+  description:string,
+  isbn:string,
+  pageCount:number,
+  isAvailable:boolean,
+  quantity:number,
+  authorId:number,
+  publisherId:number,
+  languageId:number,
+  genreId:number,
+  image2Path:string
+}
+
+
+export interface IAuthor{
+  authorName:string,
+  imageUrl:string,
+  bio:string
+}
+
+
+
+
