@@ -1,19 +1,12 @@
-<div class="reserved-books-container">
-  <h2>Reserved Books</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Reserved Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of reservedBooks">
-        <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ book.reservedDate }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="gallery-container">
+  <h2>Book Gallery</h2>
+  <div class="gallery">
+    <div class="book-item" *ngFor="let book of books" >
+      <img [src]="book.image2Path" alt="{{book.name}}">
+      <h3>{{book.title}}</h3>
+      <p>{{book.author?.name}}</p>
+      <button [routerLink]="['/member/book-gallery/viewbook/',book.bookid]">View Book</button>
+    </div>
+  </div>
 </div>
+<div>
