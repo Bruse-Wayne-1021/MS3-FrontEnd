@@ -1,22 +1,47 @@
-<div class="request-container">
-    <h2>Request Form</h2>
-    <form>
-      <div class="form-field">
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" placeholder="Enter your name">
-      </div>
-      <div class="form-field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="Enter your email">
-      </div>
-      <div class="form-field">
-        <label for="request">Request</label>
-        <textarea id="request" name="request" rows="4" placeholder="Enter your request"></textarea>
-      </div>
-      <div class="form-actions">
-        <button type="submit">Submit</button>
-      </div>
-    </form>
-  </div>
-
-<router-outlet></router-outlet>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Book Requests</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Member Name</th>
+        <th>NIC</th>
+        <th>Approvwe</th>
+        <th>Reject</th>
+        <!-- <th>Lend Days</th>
+         <th>Approved Date</th>
+        <th>Collect Date</th>
+        <th>Return Date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of request">
+        <td>{{ request.$id }}</td>
+        <td>{{ request.title }}</td>
+        <td>
+          <img
+            [src]="request.image2Path"
+            alt="{{ request.title }}"
+            class="img-fluid"
+            style="max-height: 100px;"
+          />
+        </td>
+        <td>{{ request.memberName }}</td>
+        <td>{{ request.nic }}</td>
+        <td>
+          <button (click)="approveRequest(request. lendId
+          )">Approve</button>
+        </td>
+        <td>
+          <button (click)="declineRequest(request. lendId )">Reject</button>
+        </td>
+        <!-- <td>{{ request.lendDays }}</td>
+        <td>{{ request.approvedDate || 'N/A' }}</td>
+        <td>{{ request.collectDate || 'N/A' }}</td>
+        <td>{{ request.returnDate || 'N/A' }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

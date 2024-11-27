@@ -26,7 +26,7 @@ export class LoginComponent {
       console.log('Login Data:', this.loginForm.value);
     }
   }
-
+  
   login(){
     console.log(this.loginForm.value);
     this.userservice.login(this.loginForm.value).subscribe(data=>{

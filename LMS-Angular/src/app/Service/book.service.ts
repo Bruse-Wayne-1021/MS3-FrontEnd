@@ -43,6 +43,19 @@ export class BookService {
     return this.http.get<any>("http://localhost:5255/api/Books");
    }
 
+   getBookByid(bookid:string){
+    return this.http.get<any>("http://localhost:5255/api/Books/"+bookid)
+   }
+
+
+   filterBook(genre: string) {
+    return this.http.get<any>("http://localhost:5255/api/Books/Genre?Genre=" + genre);
+  }
+
+  filterByLanguage(language:string){
+    return this.http.get<any>("http://localhost:5255/api/Books/Languageatype?Language="+language)
+  }
+
 }
 
 export interface Ibook{
@@ -71,3 +84,5 @@ export interface Ipublisher{
   description:string,
   details:string
 }
+
+
