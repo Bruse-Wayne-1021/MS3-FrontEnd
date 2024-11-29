@@ -48,8 +48,7 @@ export class UnittBookComponent implements OnInit {
             this.bookservice.filterBook(this.genere).subscribe({
               next: (data) => {
                 this.similarBooks=data?.$values;
-
-                console.log( this.similarBooks);
+                console.log("similar books", this.similarBooks);
               },
               error:err=>{
                 alert(err)
@@ -72,6 +71,9 @@ export class UnittBookComponent implements OnInit {
     this.userid=member;
     console.log(this.userid);
 
+  }
+  viewAuthorBooks(authorId:string):void{
+    this.router.navigate(['/member/book-gallery/authorBooks',authorId])
   }
 
   BookRequest() {
@@ -107,6 +109,10 @@ export class UnittBookComponent implements OnInit {
     );
   }
 
+  viewbook(id:string):void{
+
+  }
+
 
   // getSimilarGenreBook():void{
   //   this.bookservice.getBookByid(this.currentId).subscribe({
@@ -119,7 +125,7 @@ export class UnittBookComponent implements OnInit {
   // }
 
   getAuthorBooks():void{
-    
+
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

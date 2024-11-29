@@ -80,6 +80,8 @@ export class BookGalleryComponent implements OnInit {
     this.router.navigate(['/member/book-gallery/viewbook', bookid]);
   }
 
+
+
   filterBook():void{
     if( this.selectedGenre){
       this.bookService.filterBook(this.selectedGenre).subscribe({
@@ -120,7 +122,6 @@ export class BookGalleryComponent implements OnInit {
       next: (response) => {
         this.genres = response?.data?.$values || [];
         console.log(this.genres);
-
       },
       error: (error) => {
         console.error('Error fetching genres:', error);
@@ -159,11 +160,6 @@ export class BookGalleryComponent implements OnInit {
     });
     console.log(`Favorite toggled for book ID: ${bookId}`);
   }
-
-
-
-
-
 
 
 }

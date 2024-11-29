@@ -22,6 +22,7 @@ import { ReservedBooksComponent } from './components/Member/reserved-books/reser
 import { authGuard } from './auth.guard';
 import { BooksComponent } from './components/Admin/books/books.component';
 import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
+import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: 'book-gallery/viewbook/:id', component: UnittBookComponent },
       { path: 'borrowed-history', component: BorrowedHistoryComponent },
       { path: 'member-dash-board', component: MemberDashBoardComponent },
-      { path: 'reserved-books', component: ReservedBooksComponent }
+      { path: 'reserved-books', component: ReservedBooksComponent },
+      { path: 'book-gallery/authorBooks/:id',component:AuthorBooksComponent}
     ]
   },
   {
