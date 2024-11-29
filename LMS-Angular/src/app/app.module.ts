@@ -29,6 +29,7 @@ import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.compone
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BooksComponent } from './components/Admin/books/books.component';
 import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
+import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 
 
 
@@ -55,6 +56,7 @@ import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.co
     NevBarComponent,
     BooksComponent,
     UnittBookComponent,
+    AuthorBooksComponent,
     
 
 

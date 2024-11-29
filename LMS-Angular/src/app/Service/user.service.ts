@@ -31,6 +31,10 @@ export class UserService {
     return false;
   }
 
+  getMemberdetails(memberid:string){
+    return this.http.get<any>("http://localhost:5255/api/Member/Get Member by id?memberid="+memberid)
+  }
+
   Register(user:any){
     return this .http.post("http://localhost:5255/api/Member/new-member",user)
   }
@@ -40,5 +44,14 @@ export class UserService {
     return this.http.get<any>("http://localhost:5255/api/User/"+userid)
   }
 
-  
+  VerifyMember(details:VerifyDetails){
+    return this.http.put(`http://localhost:5255/api/Member/update isverify?MemberId=${details.MemberId}&isverify=${details.isverify}`,null)
+  }
+
+
+}
+
+export interface VerifyDetails{
+  MemberId:string,
+  isverify:boolean
 }

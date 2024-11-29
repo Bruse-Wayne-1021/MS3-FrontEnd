@@ -43,3 +43,25 @@
   color: #555;
   font-size: 14px;
 }
+
+
+.gallery-container {
+  padding: 20px;
+}
+
+.gallery .book-item {
+  cursor: pointer;
+}
+
+.favorite-icon {
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.favorite-icon:hover {
+  transform: scale(1.2);
+}
+

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from '../../../Service/request.service';
+import { state } from '../../../Service/book-lend.service';
 
 @Component({
   selector: 'app-records',
@@ -8,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class RecordsComponent implements OnInit{
 
 
-  constructor(){ }
+  records:any[]=[];
+
+  constructor(private requestService:RequestService){ }
 
   ngOnInit(): void {
-    
+    this.getAllRecords();
+  }
+
+  getAllRecords():void{
+    this.requestService.getAllRequests(state.Borrowed).subscribe({
+      next : (data) => {
+        this.records=data?.$values;
+        console.log(this.records);
+
+      }
+    })
   }
 }

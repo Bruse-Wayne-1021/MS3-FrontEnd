@@ -4,29 +4,26 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Date</th>
-          <th>Status</th>
+          <th>Nic</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Approve Date</th>
+          <th>Collected Date</th>
+          <th>Return Date</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Record 1</td>
-          <td>Type A</td>
-          <td>2024-01-01</td>
-          <td>Active</td>
+        <tr *ngFor="let Record of records">
+          <td>{{Record.$id}}</td>
+          <td>{{Record.nic}}</td>
+          <td>{{Record.memberName}}</td>
+          <td>{{Record.Lastname}}</td>
+          <td>{{Record.approvedDate}}</td>
+          <td>{{Record.collectDate}}</td>
+          <td>{{Record.returnDate}}</td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>Record 2</td>
-          <td>Type B</td>
-          <td>2024-01-02</td>
-          <td>Inactive</td>
-        </tr>
-        <!-- Add more rows as needed -->
       </tbody>
     </table>
   </div>
-  
+
+

@@ -10,6 +10,7 @@
         <th>NIC</th>
         <th>Approvwe</th>
         <th>Reject</th>
+        <th>Approve</th>
         <!-- <th>Lend Days</th>
          <th>Approved Date</th>
         <th>Collect Date</th>
@@ -31,11 +32,15 @@
         <td>{{ request.memberName }}</td>
         <td>{{ request.nic }}</td>
         <td>
-          <button (click)="approveRequest(request. lendId
+          <button (click)="approveRequest(request. lendId,request. isVerify
+
           )">Approve</button>
         </td>
         <td>
           <button (click)="declineRequest(request. lendId )">Reject</button>
+        </td>
+        <td>
+          <button (click)="verifyUser(request. memberId)">Verify User</button>
         </td>
         <!-- <td>{{ request.lendDays }}</td>
         <td>{{ request.approvedDate || 'N/A' }}</td>
@@ -47,5 +52,8 @@
 
 </div>
 
+<div>
+  <router-outlet></router-outlet>
+</div>
 
 

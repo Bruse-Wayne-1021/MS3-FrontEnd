@@ -1,3 +1,4 @@
+import { ApproveDate } from './../../../Service/request.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ReturnService } from '../../../Service/return.service';
 import { state } from '../../../Service/book-lend.service';
@@ -12,6 +13,9 @@ export class ReturnComponent implements OnInit,OnDestroy{
 
   waitingBook:any[]=[];
   private refreceintervel:any;
+  IdOfLend!:string;
+  dateType:string="return";
+
 
   constructor(private returnservice:ReturnService,private requestService:RequestService){ }
   ngOnDestroy(): void {
@@ -31,7 +35,7 @@ export class ReturnComponent implements OnInit,OnDestroy{
     this.returnservice.getAllwaitingBooks(state.Waiting).subscribe({
       next: (data:any) => {
         this.waitingBook=data?.$values;
-        console.log(this.waitingBook);
+        // console.log(this.waitingBook);
       },
       error:error=>{
         console.log(error);
@@ -40,15 +44,31 @@ export class ReturnComponent implements OnInit,OnDestroy{
   }
 
   returnBook(lendId:string):void{
+    this.IdOfLend=lendId
     this.requestService.approveRequest(lendId,state.Borrowed).subscribe({
       next: (data:any) => {
+        const payload:ApproveDate={
+          MemberID:this.IdOfLend,
+          Datetype:this.dateType
+        }
+        this.updateReturnDate(payload)
         console.log(data);
       },
       error:error=>{
         console.log(error);
       }
     });
-    
+  }
+
+  updateReturnDate(details:ApproveDate):void{
+    this.requestService.approveDate(details).subscribe({
+      next: (data:any) => {
+        console.log(data);
+      },
+      error:error=>{
+        alert(error);
+      }
+    })
   }
 
 }
