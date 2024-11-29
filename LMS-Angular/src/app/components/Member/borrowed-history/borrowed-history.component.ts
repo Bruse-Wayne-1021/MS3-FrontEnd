@@ -20,7 +20,6 @@ export class BorrowedHistoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     const userdata = localStorage.getItem('User');
     if (!userdata) {
       alert('User not logged in!');
@@ -30,14 +29,12 @@ export class BorrowedHistoryComponent implements OnInit {
     const member = parsedata['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
     this.userid=member;
     console.log(this.userid);
-
     this.requestService.getMemeberBtid(this.userid).subscribe({
      next:data=>{
       console.log(data);
       this.memberId=data.memberID;
       console.log(this.memberId);
       this.getBorrowedBooks();
-
      },
      error:error=>{
       console.log(error);
@@ -51,11 +48,9 @@ export class BorrowedHistoryComponent implements OnInit {
         console.log(data);
         this.borrowedBook=data?.$values;
         console.log(this.borrowedBook);
-
       },
       error:er=>{
         console.log(er);
-
       }
     });
   }

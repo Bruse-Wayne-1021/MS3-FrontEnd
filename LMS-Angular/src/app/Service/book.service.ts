@@ -56,7 +56,14 @@ export class BookService {
     return this.http.get<any>("http://localhost:5255/api/Books/Languageatype?Language="+language)
   }
 
+
+  getBookByAuthorId(authorID:string){
+    return this.http.get<any>(`http://localhost:5255/api/Books/GetAuthorBooks?Author=${authorID}`)
+  }
+
 }
+
+
 
 export interface Ibook{
   name:string,
