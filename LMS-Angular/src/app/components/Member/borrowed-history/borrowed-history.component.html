@@ -4,15 +4,15 @@
     <thead>
       <tr>
         <th>Title</th>
-        <th>Author</th>
+        <th>Collect Date</th>
         <th>Borrowed Date</th>
         <th>Return Date</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let book of borrowedHistory">
-        <td>{{ book.bookTitle }}</td>
-        <td>{{ book.author }}</td>
+      <tr *ngFor="let book of borrowedBook">
+        <td>{{ book. title }}</td>
+        <td>{{ book. collectDate}}</td>
         <td>{{ book.borrowedDate }}</td>
         <td>{{ book.returnDate }}</td>
       </tr>

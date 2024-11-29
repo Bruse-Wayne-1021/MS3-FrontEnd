@@ -32,9 +32,8 @@ const routes: Routes = [
         { path: 'addBook', component: AddBookComponent },
         { path: '', component: BookTableComponent }
       ]},
-      { path: 'request', component: RequestComponent, children: [
-        { path: 'record', component: RecordsComponent }
-      ]},
+      { path: 'request', component: RequestComponent},
+     { path: 'record', component: RecordsComponent },
       { path: 'return', component: ReturnComponent },
       { path: 'memberRecords', component: MemberRecordsComponent }
     ]

@@ -1,9 +1,13 @@
+import { IBookRequest, state } from './../../../Service/book-lend.service';
 import { FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { BookService } from '../../../Service/book.service';
 import { tick } from '@angular/core/testing';
 import { Router } from '@angular/router';
+import { BookLendService } from '../../../Service/book-lend.service';
+import { RequestService } from '../../../Service/request.service';
+
 
 @Component({
   selector: 'app-book-gallery',
@@ -19,14 +23,43 @@ export class BookGalleryComponent implements OnInit {
   filterBooks:any[]=[];
   language:any[]=[];
   selectedLanguage!:string;
+  userid!:string;
+  memberid!:string;
+  bookid!:string;
 
 
-  constructor (private fb:FormBuilder,private bookService:BookService,private router:Router) {}
+  constructor (
+    private fb:FormBuilder,
+    private bookService:BookService,
+    private router:Router,
+    private booklendService:BookLendService,
+    private requestservice:RequestService
+  ) {}
 
   ngOnInit(): void {
     this.loadBook();
     this.loadGenres();
     this.loadLanguages();
+    const userdata = localStorage.getItem('User');
+    if (!userdata) {
+      alert('User not logged in!');
+      return;
+    }
+    const parsedata = JSON.parse(userdata);
+    const member = parsedata['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+    this.userid=member;
+    console.log(this.userid);
+
+    this.requestservice.getMemeberBtid(this.userid).subscribe({
+      next:(response)=>{
+        this.memberid=response.memberID;
+        console.log(this.memberid);
+        console.log(response);
+      },
+      error:error=>{
+        console.log(error);
+      }
+    })
   }
 
   loadBook():void{
@@ -42,7 +75,6 @@ export class BookGalleryComponent implements OnInit {
       }
     });
   }
-
 
   viewbook(bookid:number){
     this.router.navigate(['/member/book-gallery/viewbook', bookid]);
@@ -101,10 +133,8 @@ export class BookGalleryComponent implements OnInit {
     this.bookService.getAllLanguage().subscribe({
       next: (response) => {
         console.log(response.$values);
-
         this.language = response?.$values ||[];
         console.log(this.language);
-
       },
       error: (error) => {
         console.error('Error fetching languages:', error);
@@ -112,7 +142,23 @@ export class BookGalleryComponent implements OnInit {
     });
   }
 
-
+  toggleFavorite(bookId: string, event: MouseEvent): void {
+    event.stopPropagation();
+    const payload:IBookRequest={
+      bookId,
+      memebID:this.memberid,
+      state:state.Favaurite
+    }
+    this.booklendService.postBookRequest(payload).subscribe({
+      next: (response) => {
+        alert(response)
+      },
+      error:error=>{
+        console.log(error);
+      }
+    });
+    console.log(`Favorite toggled for book ID: ${bookId}`);
+  }
 
 
 

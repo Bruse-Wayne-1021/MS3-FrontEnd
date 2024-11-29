@@ -5,6 +5,7 @@ import { switchMap, tap } from 'rxjs/operators';
 import { BookService } from '../../../Service/book.service';
 import { BookLendService, IBookRequest, state } from '../../../Service/book-lend.service';
 import { UserService } from '../../../Service/user.service';
+import { setAlternateWeakRefImpl } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-unitt-book',
@@ -17,6 +18,8 @@ export class UnittBookComponent implements OnInit {
   books: any;
   memberId!: string;
   userid!:string;
+  similarBooks:any[]=[];
+  genere!:string;
 
   private subscription: Subscription = new Subscription();
 
@@ -29,6 +32,8 @@ export class UnittBookComponent implements OnInit {
   ) {
     const tid = this.route.snapshot.paramMap.get("id");
     this.currentId = String(tid);
+
+
   }
 
   ngOnInit(): void {
@@ -38,6 +43,20 @@ export class UnittBookComponent implements OnInit {
           next: (data) => {
             console.log('Book data:', data);
             this.books = data;
+            this.genere=data.genre. bookGenre
+            console.log(this.genere);
+            this.bookservice.filterBook(this.genere).subscribe({
+              next: (data) => {
+                this.similarBooks=data?.$values;
+
+                console.log( this.similarBooks);
+              },
+              error:err=>{
+                alert(err)
+              }
+            })
+
+
           },
           error: (err) => console.error('Error fetching book:', err)
         })
@@ -87,9 +106,27 @@ export class UnittBookComponent implements OnInit {
       })
     );
   }
+
+
+  // getSimilarGenreBook():void{
+  //   this.bookservice.getBookByid(this.currentId).subscribe({
+  //     next:data=>{
+  //       this.bookDetails=data?.$values
+  //       console.log(this.bookDetails);
+
+  //     }
+  //   })
+  // }
+
+  getAuthorBooks():void{
+    
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+
+
 }
 
 

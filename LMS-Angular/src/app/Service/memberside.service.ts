@@ -17,6 +17,8 @@ export class MembersideService {
     return this.http.get<any>(`http://localhost:5255/api/Booklend/GetRecervedBook?MemberID=${memberid}&state=${state}`)
   }
 
+  
+
 }
 
 
