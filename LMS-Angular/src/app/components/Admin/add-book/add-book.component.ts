@@ -5,7 +5,7 @@ import { BookService } from '../../../Service/book.service';
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css'] 
+  styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent implements OnInit {
 
@@ -14,12 +14,14 @@ export class AddBookComponent implements OnInit {
   languages: any[] = [];
   authors: any[] = [];
   publishers: any[] = [];
+  base64Image: string = '';
+  backgrounImage:string='';
+  previewImage: string | ArrayBuffer | null = null;
 
   addNewAuthorForm!: FormGroup;
   addNewPublisherForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private bookService: BookService) {
-
     this.addBookForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(200)]],
       description: ['', [Validators.maxLength(1000)]],
@@ -32,16 +34,15 @@ export class AddBookComponent implements OnInit {
       languageId: ['', Validators.required],
       genreId: ['', Validators.required],
       image2Path: ['', Validators.required],
+      image1Path: ['', Validators.required],
       publishDate: ['', Validators.required]
     });
-
 
     this.addNewAuthorForm = this.fb.group({
       authorName: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
       bio: ['', [Validators.required]],
     });
-
 
     this.addNewPublisherForm = this.fb.group({
       publisherName: ['', [Validators.required]],
@@ -58,6 +59,37 @@ export class AddBookComponent implements OnInit {
   }
 
 
+  onFileChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      const file = target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.base64Image = (e.target as FileReader).result as string;
+        this.previewImage = this.base64Image;
+        this.addBookForm.patchValue({ image2Path: this.base64Image });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  onFileChange2(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      const file = target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.backgrounImage = (e.target as FileReader).result as string;
+        this.addBookForm.patchValue({ image1Path: this.backgrounImage });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+
+
   onSubmit(): void {
     if (this.addBookForm.invalid) {
       console.error('Form is invalid!');
@@ -65,18 +97,19 @@ export class AddBookComponent implements OnInit {
     }
 
     const bookData = this.addBookForm.value;
+    console.log('Submitting book data:', bookData);
+
     this.bookService.createNewBook(bookData).subscribe({
       next: (data) => {
         console.log('Book added successfully:', data);
-
         this.addBookForm.reset();
+        this.previewImage = null;
       },
       error: (error) => {
         console.error('Error adding book:', error);
       }
     });
   }
-
 
   addNewAuthor(): void {
     if (this.addNewAuthorForm.invalid) {
@@ -97,7 +130,6 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   addNewPublisher(): void {
     if (this.addNewPublisherForm.invalid) {
       console.error('Publisher form is invalid!');
@@ -117,13 +149,11 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   loadGenres(): void {
     this.bookService.getAllGenres().subscribe({
       next: (response) => {
         this.genres = response?.data?.$values || [];
         console.log(this.genres);
-
       },
       error: (error) => {
         console.error('Error fetching genres:', error);
@@ -131,15 +161,11 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   loadLanguages(): void {
     this.bookService.getAllLanguage().subscribe({
       next: (response) => {
-        console.log(response.$values);
-
-        this.languages = response?.$values ||[];
+        this.languages = response?.$values || [];
         console.log(this.languages);
-
       },
       error: (error) => {
         console.error('Error fetching languages:', error);
@@ -147,13 +173,11 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   loadAuthors(): void {
     this.bookService.getallAuthors().subscribe({
       next: (response) => {
         this.authors = response?.$values || [];
         console.log(this.authors);
-
       },
       error: (error) => {
         console.error('Error fetching authors:', error);
@@ -161,13 +185,11 @@ export class AddBookComponent implements OnInit {
     });
   }
 
-
   loadPublishers(): void {
     this.bookService.getAllPublisher().subscribe({
       next: (response) => {
         this.publishers = response?.$values || [];
         console.log(this.publishers);
-
       },
       error: (error) => {
         console.error('Error fetching publishers:', error);

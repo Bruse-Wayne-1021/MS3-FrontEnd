@@ -36,7 +36,6 @@ export class RequestService {
 export interface ApproveDate{
   MemberID: string;
   Datetype: string;
-
 }
 
 

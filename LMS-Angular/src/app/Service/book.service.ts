@@ -61,6 +61,8 @@ export class BookService {
     return this.http.get<any>(`http://localhost:5255/api/Books/GetAuthorBooks?Author=${authorID}`)
   }
 
+
+
 }
 
 
@@ -77,6 +79,7 @@ export interface Ibook{
   languageId:string,
   genreId:string,
   image2Path:string,
+  image1Path:string,
   publishDate:Date
 }
 
@@ -90,6 +93,11 @@ export interface Ipublisher{
   publisherName:string,
   description:string,
   details:string
+}
+
+export interface IImagePath{
+  image1Path:string,
+  image2Path:string
 }
 
 

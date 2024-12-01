@@ -5,6 +5,7 @@ import { UserService } from '../../../Service/user.service';
 import { RequestService } from '../../../Service/request.service';
 import { state } from '../../../Service/book-lend.service';
 import { MembersideService } from '../../../Service/memberside.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reserved-books',
@@ -21,10 +22,21 @@ export class ReservedBooksComponent implements OnInit {
   IDofLend!:string;
   dateType:string="collect";
   waitingBooks:any[]=[];
+  AddRatingForm!:FormGroup
 
 
+  constructor(private userServoce:UserService,
+    private requestService:RequestService,
+    private memberSide:MembersideService,
+    private fb:FormBuilder) {
+      this.AddRatingForm=this.fb.group({
+        starCount:['', Validators.required],
+        feedBack:['', Validators.required],
+        // memebID:['', Validators.required],
+        // bookid:['', Validators.required]
+      });
+     }
 
-  constructor(private userServoce:UserService,private requestService:RequestService,private memberSide:MembersideService) { }
 
   ngOnInit(): void {
     const userdata = localStorage.getItem('User');
@@ -57,9 +69,6 @@ export class ReservedBooksComponent implements OnInit {
         console.log(err);
       }
     })
-
-
-
 
   }
 
@@ -97,8 +106,21 @@ export class ReservedBooksComponent implements OnInit {
         console.log(response);
         this.waitingBooks=response?.$values;
         console.log(this.waitingBooks);
+      },
+      error:error=>{
+        console.log(error);
+
       }
     })
+  }
+
+  PostRating(memberID:string,bookid:string):void{
+    if(this.AddRatingForm.invalid){
+      alert(" Rating Form is Invalid");
+      return;
+    }
+    
+
   }
 
 }

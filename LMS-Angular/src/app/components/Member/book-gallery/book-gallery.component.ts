@@ -28,6 +28,7 @@ export class BookGalleryComponent implements OnInit {
   bookid!:string;
 
 
+
   constructor (
     private fb:FormBuilder,
     private bookService:BookService,
@@ -67,11 +68,9 @@ export class BookGalleryComponent implements OnInit {
       next:(response)=>{
         this.books=response?.$values ||[];
         this.filterBooks=[...this.books]
-
       },
       error:(error)=>{
        console.log(error);
-
       }
     });
   }
@@ -79,8 +78,6 @@ export class BookGalleryComponent implements OnInit {
   viewbook(bookid:number){
     this.router.navigate(['/member/book-gallery/viewbook', bookid]);
   }
-
-
 
   filterBook():void{
     if( this.selectedGenre){
@@ -160,6 +157,6 @@ export class BookGalleryComponent implements OnInit {
     });
     console.log(`Favorite toggled for book ID: ${bookId}`);
   }
-
-
 }
+
+

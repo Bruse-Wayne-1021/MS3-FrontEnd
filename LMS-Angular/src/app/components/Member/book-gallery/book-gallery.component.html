@@ -1,54 +1,83 @@
-<div class="filter-container">
-  <label for="genreFilter">Filter by Genre:</label>
-  <select id="genreFilter" [(ngModel)]="selectedGenre" (change)="filterBook()">
-    <option value="">All Genres</option>
-    <option *ngFor="let genre of genres" [value]="genre.bookGenre">{{ genre.bookGenre }}</option>
-  </select>
-</div>
+<body>
+  <div class="filter-container">
+    <label for="genreFilter">Filter by Genre:</label>
+    <select id="genreFilter" [(ngModel)]="selectedGenre" (change)="filterBook()">
+      <option value="">All Genres</option>
+      <option *ngFor="let genre of genres" [value]="genre.bookGenre">{{ genre.bookGenre }}</option>
+    </select>
+  </div>
 
-<div class="filter-container">
-  <label for="genreFilter">Filter by Language:</label>
-  <select id="genreFilter" [(ngModel)]="selectedLanguage" (change)="filterBookBylanguage()">
-    <option value="">All Genres</option>
-    <option *ngFor="let languag of language" [value]="languag.typeOfLanguage">{{ languag.typeOfLanguage }}</option>
-  </select>
-</div>
+  <div class="filter-container">
+    <label for="genreFilter">Filter by Language:</label>
+    <select id="genreFilter" [(ngModel)]="selectedLanguage" (change)="filterBookBylanguage()">
+      <option value="">All Genres</option>
+      <option *ngFor="let languag of language" [value]="languag.typeOfLanguage">{{ languag.typeOfLanguage }}</option>
+    </select>
+  </div>
+
+
 
 <div class="gallery-container">
-  <h2>Book Gallery</h2>
-  <div class="gallery row row-cols-1 row-cols-md-3 g-4">
-    <div
-      class="col book-item"
-      *ngFor="let book of filterBooks"
-      (click)="viewbook(book.bookid)" >
-      <div class="card h-100">
-        <div class="position-relative">
-          <img
-            [src]="book.image?.image2Path"
-            class="card-img-top"
-            alt="{{book.name}}">
-          <i
-            class="bi bi-heart-fill favorite-icon position-absolute top-0 end-0 m-2 text-danger"
-            (click)="toggleFavorite(book.bookid, $event)">
-          </i>
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title">{{book.name}}</h5>
-          <p class="card-text">{{book.author?.name}}</p>
-          <button
-            class="btn btn-primary"
-            [routerLink]="['/member/book-gallery/viewbook/', book.bookid]"
-          >
-            View Book
-          </button>
+  <div class="card"  *ngFor="let book of filterBooks"
+(click)="viewbook(book.bookid)" > >
+  <span class="card__title"></span>
+  <div class="position-relative">
+    <img
+      [src]="book.image?.image2Path"
+      class="card-img-top"
+      alt="{{book.name}}">
+    <i
+      class="bi bi-heart-fill favorite-icon position-absolute top-0 end-0 m-2 text-danger"
+      (click)="toggleFavorite(book.bookid, $event)">
+    </i>
+  </div>
+  <p class="card__content">
+    Get existential crisis delivered straight to your inbox every week.
+  </p>
+  <form class="card__form">
+    <input required="" type="email" placeholder="Your life" />
+    <button class="card__button">Click me</button>
+  </form>
+</div>
+</div>
+
+  <div class="gallery-container">
+    <h2>Book Gallery</h2>
+    <div class="gallery row row-cols-1 row-cols-md-3 g-4">
+      <div
+        class="col book-item"
+        *ngFor="let book of filterBooks"
+        (click)="viewbook(book.bookid)" >
+        <div class="card h-100">
+          <div class="position-relative">
+            <img
+              [src]="book.image?.image2Path"
+              class="card-img-top"
+              alt="{{book.name}}">
+            <i
+              class="bi bi-heart-fill favorite-icon position-absolute top-0 end-0 m-2 text-danger"
+              (click)="toggleFavorite(book.bookid, $event)">
+            </i>
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{book.name}}</h5>
+            <p class="card-text">{{book.author?.name}}</p>
+            <button
+              class="btn btn-primary"
+              [routerLink]="['/member/book-gallery/viewbook/', book.bookid]"
+            >
+              View Book
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div>
-  <router-outlet></router-outlet>
-</div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 
 
 
+
+</body>

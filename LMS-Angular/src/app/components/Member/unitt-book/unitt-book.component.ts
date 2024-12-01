@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { setAlternateWeakRefImpl } from '@angular/core/primitives/signals';
   templateUrl: './unitt-book.component.html',
   styleUrls: ['./unitt-book.component.css']
 })
-export class UnittBookComponent implements OnInit {
+export class UnittBookComponent implements OnInit ,OnDestroy{
 
   currentId!: string;
   books: any;
@@ -20,6 +20,7 @@ export class UnittBookComponent implements OnInit {
   userid!:string;
   similarBooks:any[]=[];
   genere!:string;
+  private refreceintervel:any;
 
   private subscription: Subscription = new Subscription();
 
@@ -32,11 +33,6 @@ export class UnittBookComponent implements OnInit {
   ) {
     const tid = this.route.snapshot.paramMap.get("id");
     this.currentId = String(tid);
-
-
-  }
-
-  ngOnInit(): void {
     if (this.currentId) {
       this.subscription.add(
         this.bookservice.getBookByid(this.currentId).subscribe({
@@ -54,13 +50,25 @@ export class UnittBookComponent implements OnInit {
                 alert(err)
               }
             })
-
-
           },
           error: (err) => console.error('Error fetching book:', err)
         })
       );
+    };
+  }
+
+  ngOnDestroy(): void {
+    if(this.refreceintervel){
+      clearInterval(this.refreceintervel)
     }
+    // this.subscription.unsubscribe();
+  }
+
+  ngOnInit(): void {
+    // this.refreceintervel=setInterval(()=>{
+
+    // },1000)
+
     const userdata = localStorage.getItem('User');
     if (!userdata) {
       alert('User not logged in!');
@@ -70,8 +78,8 @@ export class UnittBookComponent implements OnInit {
     const member = parsedata['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
     this.userid=member;
     console.log(this.userid);
-
   }
+
   viewAuthorBooks(authorId:string):void{
     this.router.navigate(['/member/book-gallery/authorBooks',authorId])
   }
@@ -109,10 +117,11 @@ export class UnittBookComponent implements OnInit {
     );
   }
 
-  viewbook(id:string):void{
-
+  viewbook(bookid:string){
+    this.router.navigate(['/member/book-gallery/viewbook', bookid]);
   }
 
+  
 
   // getSimilarGenreBook():void{
   //   this.bookservice.getBookByid(this.currentId).subscribe({
@@ -127,9 +136,7 @@ export class UnittBookComponent implements OnInit {
   getAuthorBooks():void{
 
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+
 
 
 
