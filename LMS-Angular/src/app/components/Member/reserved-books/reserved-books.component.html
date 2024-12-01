@@ -1,5 +1,5 @@
 <div class="gallery-container">
-  <h2>Book Gallery</h2>
+  <h2>Reserved Books</h2>
   <div class="gallery">
     <div class="book-item" *ngFor="let book of books" >
       <img [src]="book.image2Path" alt="{{book.name}}">
@@ -10,3 +10,20 @@
   </div>
 </div>
 <div>
+
+
+  <div>
+    <div class="gallery-container">
+      <h2>Borrowed Books</h2>
+      <div class="gallery">
+        <div class="book-item" *ngFor="let book of waitingBooks" >
+          <img [src]="book.image2Path" alt="{{book.name}}">
+          <h3>{{book.title}}</h3>
+          <p>{{book.author?.name}}</p>
+          <button (click)="collectBook(book.lendId)">View Book</button>
+          <button (click)="PostRating(book.memebID,book.bookid)">View Book</button>
+        </div>
+      </div>
+    </div>
+    <div>
+  </div>

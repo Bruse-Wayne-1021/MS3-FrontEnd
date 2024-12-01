@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   flex-direction: row;
 }
@@ -57,7 +57,7 @@
   .toggle-button {
     display: block;
   }
-  
+
   .sidebar {
     position: fixed;
     top: 0;
@@ -73,4 +73,4 @@
   .sidebar:not(.hidden) {
     transform: translateX(0);
   }
-}
+} */

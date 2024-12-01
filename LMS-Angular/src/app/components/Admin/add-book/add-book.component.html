@@ -299,9 +299,9 @@
     </div>
 
     <div class="form-group">
-      <label for="image2Path">Image</label>
+      <label for="image2Path"> Book Image</label>
       <input
-        type="text"
+      type="file" id="imageUpload" (change)="onFileChange($event)"
         id="image2Path"
         class="form-control"
         formControlName="image2Path"
@@ -311,6 +311,21 @@
         Image URL is required.
       </small>
     </div>
+
+    <div class="form-group">
+      <label for="image2Path">BackGround Image</label>
+      <input
+      type="file" id="imageUpload" (change)="onFileChange2($event)"
+        id="image2Path"
+        class="form-control"
+        formControlName="image1Path"
+        placeholder="Enter image URL"
+      />
+      <small *ngIf="addBookForm.get('image2Path')?.invalid && addBookForm.get('image2Path')?.touched" class="text-danger">
+        Image URL is required.
+      </small>
+    </div>
+
 
     <div class="form-group">
       <label for="publishDate">Publish Date</label>

@@ -9,7 +9,6 @@ import { state } from '../../../Service/book-lend.service';
 })
 export class RecordsComponent implements OnInit{
 
-
   records:any[]=[];
 
   constructor(private requestService:RequestService){ }
@@ -23,7 +22,9 @@ export class RecordsComponent implements OnInit{
       next : (data) => {
         this.records=data?.$values;
         console.log(this.records);
-
+      },
+      error : (error) => {
+        console.log(error);
       }
     })
   }

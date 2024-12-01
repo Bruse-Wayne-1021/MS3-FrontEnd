@@ -17,7 +17,9 @@ export class MembersideService {
     return this.http.get<any>(`http://localhost:5255/api/Booklend/GetRecervedBook?MemberID=${memberid}&state=${state}`)
   }
 
-  
+  postRating(details:Rating){
+    return this.http.post<any>("http://localhost:5255/api/Rating",details)
+  }
 
 }
 
@@ -27,4 +29,12 @@ export class MembersideService {
 export interface ReservedBook{
   MemberID:string,
   state:state
+}
+
+export interface Rating{
+  starCount:number,
+  feedBack:string,
+  memebID:string,
+  bookid:string
+
 }
