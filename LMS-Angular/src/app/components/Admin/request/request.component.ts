@@ -34,43 +34,43 @@ export class RequestComponent implements OnInit {
       alert('User not logged in!');
       return;
     }
-    // const parsedData = JSON.parse(userData);
-    // this.memberId =
-    //   parsedData[
-    //     'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
-    //   ];
-    // console.log( this.memberId);
-    // const todayDate = new Date().toISOString();
-    // console.log( todayDate);
-    // this.getUserIdByMemberId();
-    // console.log(this.memberdetails);
-    // this.requestService.getMemeberBtid(this.memberId).subscribe({
-    //   next: (response: any) => {
-    //     console.log( response);
-    //     this.userId = response?.memberID;
-    //     console.log( this.userId);
-    //     // this.getMemberDetAILS(this.userId);
-    //     // this.UserService.getMemberdetails(this.userId).subscribe({
-    //     //   next: (data) => {
-    //     //     console.log( data);
-    //     //     this.memberdetails = data.isVerify;
-    //     //     console.log(this.memberdetails);
-    //     //     // const patload={
-    //     //     //   MemberId:id,
-    //     //     //   isverify:this.memberdetails
-    //     //     // }
-    //     //     // this.verifyUser(patload)
-    //     //   },
-    //     //   error: (err) => {
-    //     //     console.error('Error fetching member details:', err);
-    //     //   },
-    //     // });
-    //   },
-    //   error: (err) => {
-    //     console.error( err);
-    //     alert('Failed to retrieve user information.');
-    //   },
-    // });
+    const parsedData = JSON.parse(userData);
+    this.memberId =
+      parsedData[
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+      ];
+    console.log( this.memberId);
+    const todayDate = new Date().toISOString();
+    console.log( todayDate);
+    this.getUserIdByMemberId();
+    console.log(this.memberdetails);
+    this.requestService.getMemeberBtid(this.memberId).subscribe({
+      next: (response: any) => {
+        console.log( response);
+        this.userId = response?.memberID;
+        console.log( this.userId);
+        // this.getMemberDetAILS(this.userId);
+        // this.UserService.getMemberdetails(this.userId).subscribe({
+        //   next: (data) => {
+        //     console.log( data);
+        //     this.memberdetails = data.isVerify;
+        //     console.log(this.memberdetails);
+        //     // const patload={
+        //     //   MemberId:id,
+        //     //   isverify:this.memberdetails
+        //     // }
+        //     // this.verifyUser(patload)
+        //   },
+        //   error: (err) => {
+        //     console.error('Error fetching member details:', err);
+        //   },
+        // });
+      },
+      error: (err) => {
+        console.error( err);
+        alert('Failed to retrieve user information.');
+      },
+    });
   }
 
   getAllRequests(): void {
