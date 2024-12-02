@@ -1,0 +1,1085 @@
+/* Navbar styles */
+#ftco-navbar {
+    background-color: #2C3E50;
+    /* Dark blue background for library theme */
+    padding: 15px 0;
+}
+
+/* Navbar brand styles */
+.navbar-brand {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ECF0F1;
+    letter-spacing: 2px;
+}
+
+.navbar-brand span {
+    color: #F39C12;
+    /* Gold color for the 'Manage' part of the brand name */
+}
+
+/* Navbar links */
+.navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ECF0F1;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+    color: #F39C12;
+    /* Gold color for hover and active states */
+}
+
+/* Navbar link hover effect */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: rgba(243, 156, 18, 0.2);
+    border-radius: 4px;
+}
+
+/* Active navbar item styling */
+.navbar-nav .nav-item.active .nav-link {
+    font-weight: 700;
+    color: #F39C12;
+}
+
+/* Navbar collapse on mobile */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler .oi-menu {
+    font-size: 30px;
+    color: #ECF0F1;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 767px) {
+    #ftco-navbar {
+        padding: 10px 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 18px;
+        color: #34495E;
+    }
+}
+
+
+/* Hero Section */
+.hero-wrap {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-wrap .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Overlay for darkening the background */
+    z-index: 1;
+}
+
+.hero-wrap .container {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-wrap .row {
+    width: 100%;
+}
+
+.hero-wrap .col-lg-8 {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.hero-wrap .text {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Heading */
+.hero-wrap h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-wrap p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero-wrap .popup-vimeo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F39C12;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-wrap .popup-vimeo:hover {
+    background-color: #e67e22;
+}
+
+.hero-wrap .popup-vimeo .icon {
+    font-size: 30px;
+}
+
+.hero-wrap .popup-vimeo .heading-title {
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+/* Responsive Styles */
+@media (max-width: 1199px) {
+    .hero-wrap h1 {
+        font-size: 40px;
+    }
+
+    .hero-wrap p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-wrap {
+        height: 70vh;
+        /* Adjust height for medium screens */
+    }
+
+    .hero-wrap h1 {
+        font-size: 35px;
+    }
+
+    .hero-wrap p {
+        font-size: 15px;
+    }
+
+    .hero-wrap .popup-vimeo {
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-wrap {
+        height: 60vh;
+        /* Adjust height for smaller screens */
+    }
+
+    .hero-wrap h1 {
+        font-size: 28px;
+    }
+
+    .hero-wrap p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .hero-wrap .popup-vimeo {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-wrap {
+        height: 50vh;
+        /* Adjust height for very small screens */
+    }
+
+    .hero-wrap h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .hero-wrap p {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .hero-wrap .popup-vimeo {
+        padding: 10px 15px;
+    }
+}
+
+/* General Styling for the Section */
+.ftco-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.featured-top {
+    margin-bottom: 30px;
+}
+
+.request-form {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.request-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.request-form .form-group label {
+    font-size: 14px;
+    color: #fff;
+}
+
+.request-form .form-control {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.request-form .btn {
+    background-color: #0069d9;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 12px 30px;
+}
+
+.services-wrap {
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.services-wrap h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.services-wrap .services {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.services-wrap .icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.services-wrap .text h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.services-wrap .btn-primary {
+    background-color: #0069d9;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 1199px) {
+    .ftco-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .request-form h2 {
+        font-size: 20px;
+    }
+
+    .request-form .btn {
+        padding: 10px 25px;
+    }
+
+    .services-wrap h3 {
+        font-size: 22px;
+    }
+
+    .services-wrap .services {
+        padding: 15px;
+    }
+
+    .services-wrap .btn-primary {
+        padding: 10px 25px;
+    }
+}
+
+@media (max-width: 991px) {
+    .request-form {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .services-wrap {
+        padding: 20px;
+    }
+
+    .services-wrap .services {
+        padding: 15px;
+    }
+
+    .services-wrap .btn-primary {
+        padding: 10px 20px;
+    }
+
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-md-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .request-form h2 {
+        font-size: 18px;
+    }
+
+    .services-wrap h3 {
+        font-size: 20px;
+    }
+
+    .services-wrap .icon {
+        font-size: 30px;
+    }
+
+    .services-wrap .text h3 {
+        font-size: 16px;
+    }
+
+    .services-wrap .btn-primary {
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .request-form {
+        padding: 15px;
+    }
+
+    .services-wrap {
+        padding: 15px;
+    }
+
+    .services-wrap .services {
+        padding: 10px;
+    }
+
+    .services-wrap .btn-primary {
+        padding: 8px 15px;
+    }
+}
+
+/* General Styling for Featured Books Section */
+.ftco-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.heading-section {
+    margin-bottom: 40px;
+}
+
+.heading-section .subheading {
+    font-size: 18px;
+    color: #0069d9;
+    margin-bottom: 10px;
+}
+
+.heading-section h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.carousel-books .item {
+    margin-bottom: 30px;
+}
+
+.book-wrap {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.book-wrap .img {
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    position: relative;
+}
+
+.book-wrap .text {
+    padding: 20px;
+}
+
+.book-wrap h2 a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.book-wrap .cat {
+    font-size: 14px;
+    color: #888;
+}
+
+.book-wrap .price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.book-wrap .price span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.book-wrap .btn {
+    padding: 8px 20px;
+    font-size: 14px;
+}
+
+.book-wrap .btn-primary {
+    background-color: #0069d9;
+    color: #fff;
+    border: none;
+}
+
+.book-wrap .btn-secondary {
+    background-color: #f8f9fa;
+    border: 1px solid #0069d9;
+    color: #0069d9;
+}
+
+/* Responsive Styles */
+@media (max-width: 1199px) {
+    .heading-section h2 {
+        font-size: 26px;
+    }
+
+    .book-wrap .text h2 a {
+        font-size: 16px;
+    }
+
+    .book-wrap .btn {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+
+    .carousel-books .item {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+    .heading-section h2 {
+        font-size: 24px;
+    }
+
+    .book-wrap .text h2 a {
+        font-size: 14px;
+    }
+
+    .carousel-books .item {
+        margin-bottom: 20px;
+    }
+
+    .book-wrap .btn {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .heading-section h2 {
+        font-size: 22px;
+    }
+
+    .carousel-books .owl-carousel .item {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .book-wrap {
+        padding: 15px;
+        height: auto;
+    }
+
+    .book-wrap .img {
+        height: 200px;
+    }
+
+    .book-wrap .text {
+        padding: 15px;
+    }
+
+    .book-wrap .btn {
+        font-size: 12px;
+        padding: 8px 18px;
+    }
+
+    .carousel-books {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .heading-section h2 {
+        font-size: 20px;
+    }
+
+    .carousel-books .owl-carousel .item {
+        width: 100%;
+        padding: 0 5px;
+    }
+
+    .book-wrap {
+        padding: 10px;
+        height: auto;
+    }
+
+    .book-wrap .img {
+        height: 180px;
+    }
+
+    .book-wrap .text {
+        padding: 10px;
+    }
+
+    .book-wrap .btn {
+        font-size: 12px;
+        padding: 6px 15px;
+    }
+}
+
+/* $(document).ready(function() {
+        $(".services-carousel").owlCarousel({
+
+            loop: true,
+            margin: 30,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1 // One item per slide on small screens
+                }
+
+                ,
+                600: {
+                    items: 2 // Two items per slide on medium screens
+                }
+
+                ,
+                1000: {
+                    items: 4 // Four items per slide on large screens
+                }
+            }
+        });
+}); */
+
+/* General Styles */
+.ftco-section {
+    padding: 50px 0;
+}
+
+/* Intro Section */
+.ftco-intro {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+
+.ftco-intro .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.ftco-intro .heading-section {
+    color: white;
+    text-align: right;
+}
+
+.ftco-intro .btn {
+    margin-top: 20px;
+}
+
+/* Testimonial Section */
+.testimony-section .item {
+    padding: 15px;
+    text-align: center;
+}
+
+.testimony-section .testimony-wrap {
+    padding: 20px;
+}
+
+.testimony-section .user-img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.testimony-section .text {
+    padding: 10px;
+}
+
+.testimony-section .position {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Blog Section */
+.blog-entry .block-20 {
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+}
+
+.blog-entry .meta {
+    margin-bottom: 15px;
+}
+
+.blog-entry .meta a {
+    font-size: 14px;
+    color: #555;
+}
+
+.blog-entry .text {
+    padding: 15px;
+}
+
+.blog-entry .btn {
+    margin-top: 10px;
+}
+
+/* Library Stats Section */
+.ftco-counter .block-18 {
+    background: #fff;
+    padding: 30px;
+    text-align: center;
+}
+
+.ftco-counter .number {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.ftco-counter .text {
+    font-size: 14px;
+}
+
+.ftco-footer-widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ftco-footer-widget ul li {
+    margin-bottom: 10px;
+}
+
+.ftco-footer-widget ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ftco-footer-widget .block-23 ul {
+    padding: 0;
+}
+
+.ftco-footer-widget .block-23 ul li {
+    margin-bottom: 10px;
+}
+
+.ftco-footer-widget .block-23 ul li span {
+    margin-right: 10px;
+}
+
+.ftco-footer-widget .ftco-footer-social {
+    margin-top: 20px;
+}
+
+.ftco-footer-widget .ftco-footer-social li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+/* Responsive Styles */
+
+/* For Large Screens (Above 1199px) */
+@media (max-width: 1199px) {
+    .ftco-intro .heading-section h2 {
+        font-size: 32px;
+    }
+
+    .testimony-section .text p {
+        font-size: 16px;
+    }
+
+    .blog-entry .meta a {
+        font-size: 16px;
+    }
+
+    .library-stats .block-18 {
+        padding: 20px;
+    }
+}
+
+/* For Tablets (<= 991px) */
+@media (max-width: 991px) {
+
+    /* Intro Section */
+    .ftco-intro .heading-section {
+        text-align: center;
+        padding: 50px 15px;
+    }
+
+    /* Testimonial Section */
+    .testimony-section .item {
+        padding: 10px;
+    }
+
+    /* Blog Section */
+    .blog-entry .block-20 {
+        height: 200px;
+    }
+
+    /* Library Stats Section */
+    .ftco-counter .col-md-6 {
+        margin-bottom: 20px;
+    }
+
+    /* Footer */
+    .ftco-footer-widget {
+        margin-bottom: 30px;
+    }
+
+    .ftco-footer-widget ul li {
+        font-size: 16px;
+    }
+}
+
+/* For Small Screens (<= 767px) */
+@media (max-width: 767px) {
+
+    /* Intro Section */
+    .ftco-intro .heading-section h2 {
+        font-size: 24px;
+    }
+
+    .ftco-intro .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    /* Testimonial Section */
+    .testimony-section .item {
+        padding: 5px;
+    }
+
+    .testimony-section .user-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* Blog Section */
+    .blog-entry .block-20 {
+        height: 180px;
+    }
+
+    .blog-entry .meta a {
+        font-size: 14px;
+    }
+
+    .blog-entry .text {
+        padding: 10px;
+    }
+
+    /* Library Stats Section */
+    .ftco-counter .col-md-6 {
+        width: 100%;
+    }
+
+    .ftco-footer-widget ul li {
+        font-size: 14px;
+    }
+
+    .ftco-footer-widget .ftco-footer-social li {
+        font-size: 20px;
+    }
+}
+
+/* For Extra Small Screens (<= 576px) */
+@media (max-width: 576px) {
+
+    /* Intro Section */
+    .ftco-intro .heading-section h2 {
+        font-size: 20px;
+    }
+
+    /* Testimonial Section */
+    .testimony-section .user-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Blog Section */
+    .blog-entry .block-20 {
+        height: 150px;
+    }
+
+    .blog-entry .meta a {
+        font-size: 12px;
+    }
+
+    .blog-entry .text {
+        padding: 8px;
+    }
+
+    /* Footer */
+    .ftco-footer-widget ul li {
+        font-size: 12px;
+    }
+}
+
+/* $(document).ready(function() {
+        $(".carousel-testimony").owlCarousel({
+
+            loop: true,
+            margin: 10,
+            nav: false,
+            responsive: {
+                0: {
+                    items: 1 // Display 1 item on mobile
+                }
+
+                ,
+                600: {
+                    items: 2 // Display 2 items on tablets
+                }
+
+                ,
+                1000: {
+                    items: 3 // Display 3 items on larger screens
+                }
+            }
+        });
+}); */
+
+
+
+
+
+
+
+
+/* General Footer Styles */
+.ftco-footer {
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 40px 0;
+}
+
+.ftco-footer .logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F96D00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ftco-footer .logo span {
+    color: #fff;
+}
+
+.ftco-footer p {
+    font-size: 16px;
+    color: #bbb;
+    margin-top: 10px;
+}
+
+.ftco-footer .ftco-footer-widget {
+    margin-bottom: 30px;
+}
+
+.ftco-footer .ftco-footer-widget h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #F96D00;
+}
+
+.ftco-footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.ftco-footer .list-unstyled li {
+    margin-bottom: 10px;
+}
+
+.ftco-footer .list-unstyled li a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.ftco-footer .list-unstyled li a:hover {
+    color: #F96D00;
+}
+
+.ftco-footer .ftco-footer-social {
+    padding-left: 0;
+    list-style: none;
+}
+
+.ftco-footer .ftco-footer-social li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.ftco-footer .ftco-footer-social li a {
+    color: #bbb;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.ftco-footer .ftco-footer-social li a:hover {
+    color: #F96D00;
+}
+
+/* Footer Contact Information */
+.ftco-footer .block-23 ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.ftco-footer .block-23 ul li {
+    margin-bottom: 15px;
+}
+
+.ftco-footer .block-23 ul li .icon {
+    color: #F96D00;
+    margin-right: 15px;
+}
+
+.ftco-footer .block-23 ul li .text {
+    color: #bbb;
+    font-size: 16px;
+}
+
+.ftco-footer .block-23 ul li .text a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.ftco-footer .block-23 ul li .text a:hover {
+    color: #F96D00;
+}
+
+/* Footer Bottom */
+.ftco-footer .text-center p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.ftco-footer .text-center p a {
+    color: #F96D00;
+    text-decoration: none;
+}
+
+.ftco-footer .text-center p a:hover {
+    color: #fff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .ftco-footer .col-md {
+        margin-bottom: 30px;
+    }
+
+    .ftco-footer .ftco-footer-widget h2 {
+        font-size: 18px;
+    }
+
+    .ftco-footer .list-unstyled li a {
+        font-size: 14px;
+    }
+
+    .ftco-footer .ftco-footer-social li a {
+        font-size: 18px;
+    }
+
+    .ftco-footer .block-23 ul li .text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ftco-footer .ftco-footer-widget {
+        text-align: center;
+    }
+
+    .ftco-footer .ftco-footer-widget h2 {
+        font-size: 18px;
+    }
+
+    .ftco-footer .ftco-footer-social li {
+        margin-right: 10px;
+    }
+
+    .ftco-footer .ftco-footer-social li a {
+        font-size: 16px;
+    }
+}
