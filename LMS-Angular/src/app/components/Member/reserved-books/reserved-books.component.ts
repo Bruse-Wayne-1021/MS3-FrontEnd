@@ -23,6 +23,7 @@ export class ReservedBooksComponent implements OnInit {
   dateType:string="collect";
   waitingBooks:any[]=[];
   AddRatingForm!:FormGroup
+  Notofication:any[]=[];
 
 
   constructor(private userServoce:UserService,
@@ -49,7 +50,17 @@ export class ReservedBooksComponent implements OnInit {
     this.UserID=member;
     this.userServoce.getMemeberBtid(this.UserID).subscribe({
       next: (response) => {
-        this.memberid=response?.memberID        ;
+        this.memberid=response?.memberID;
+        this.memberSide.getNotification(this.memberid).subscribe({
+           next: response=>{
+            console.log(response);
+            this.Notofication=response;
+            console.log(this.Notofication);
+           },
+           error:err=>{
+            console.log(err);
+           }
+        })
         const Request={
           MemberID:this.memberid,
           state:state.Accept
@@ -119,7 +130,7 @@ export class ReservedBooksComponent implements OnInit {
       alert(" Rating Form is Invalid");
       return;
     }
-    
+
 
   }
 

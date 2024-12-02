@@ -30,6 +30,7 @@ import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { BooksComponent } from './components/Admin/books/books.component';
 import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
 import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
+import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
 
 
 
@@ -57,6 +58,7 @@ import { AuthorBooksComponent } from './components/Member/author-books/author-bo
     BooksComponent,
     UnittBookComponent,
     AuthorBooksComponent,
+    UserProfilComponent,
 
 
 

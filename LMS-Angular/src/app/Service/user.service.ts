@@ -48,6 +48,10 @@ export class UserService {
     return this.http.put(`http://localhost:5255/api/Member/update isverify?MemberId=${details.MemberId}&isverify=${details.isverify}`,null)
   }
 
+  getNotification(memberID:string){
+    return this.http.get<any>(`http://localhost:5255/api/Notification/SentNotifi?MemberID=${memberID}`)
+  }
+
 
 }
 
