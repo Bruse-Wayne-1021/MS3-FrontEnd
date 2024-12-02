@@ -30,12 +30,14 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminLayoutComponent, children: [
       { path: '', component: AdminDashBoardComponent },
-      { path: 'book', component: BooksComponent, children: [
-        { path: 'addBook', component: AddBookComponent },
-        { path: '', component: BookTableComponent }
-      ]},
-      { path: 'request', component: RequestComponent},
-     { path: 'record', component: RecordsComponent },
+      {
+        path: 'book', component: BooksComponent, children: [
+          { path: 'addBook', component: AddBookComponent },
+          { path: 'booktable', component: BookTableComponent }
+        ]
+      },
+      { path: 'request', component: RequestComponent },
+      { path: 'record', component: RecordsComponent },
       { path: 'return', component: ReturnComponent },
       { path: 'memberRecords', component: MemberRecordsComponent }
     ]
@@ -49,19 +51,17 @@ const routes: Routes = [
       { path: 'borrowed-history', component: BorrowedHistoryComponent },
       { path: 'member-dash-board', component: MemberDashBoardComponent },
       { path: 'reserved-books', component: ReservedBooksComponent },
-      { path: 'book-gallery/authorBooks/:id',component:AuthorBooksComponent},
-      {path:'profile',component:UserProfilComponent}
+      { path: 'book-gallery/authorBooks/:id', component: AuthorBooksComponent },
+      { path: 'profile', component: UserProfilComponent }
     ]
   },
-  {
-    path: 'login', component: BlankLayoutComponent, children: [
-      { path: '', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
-    ]
-  },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: BlankLayoutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
+
 
 
 @NgModule({

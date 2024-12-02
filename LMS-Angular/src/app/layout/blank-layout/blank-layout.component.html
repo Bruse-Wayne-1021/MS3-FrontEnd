@@ -1,13 +1,14 @@
-<body>
+<div>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
         <!-- Update brand name from "CarBook" to "LibraryManage" -->
         <a class="navbar-brand" href="index.html">Library<span>Manage</span></a>
-        
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
-  
+
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <!-- Update navigation items to fit Library Management System -->
@@ -25,9 +26,9 @@
       </div>
     </nav>
   </body>
-  
+
     <!-- END nav -->
-    
+
     <div class="hero-wrap ftco-degree-bg" style="background-image: url('');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
@@ -49,7 +50,7 @@
           </div>
         </div>
       </div>
-      
+
 
           <section class="ftco-section ftco-no-pt bg-light">
             <div class="container">
@@ -71,11 +72,11 @@
                         <span class="cat">Fiction</span>
                         <p class="price ml-auto">$15 <span>/week</span></p>
                       </div>
-                     
+
                     </div>
                   </div>
                 </div>
-          
+
                 <!-- Book 2 -->
                 <div class="col-md-3 mb-4">
                   <div class="book-wrap rounded ftco-animate">
@@ -87,11 +88,11 @@
                         <span class="cat">Classic</span>
                         <p class="price ml-auto">$12 <span>/week</span></p>
                       </div>
-                     
+
                     </div>
                   </div>
                 </div>
-          
+
                 <!-- Book 3 -->
                 <div class="col-md-3 mb-4">
                   <div class="book-wrap rounded ftco-animate">
@@ -103,11 +104,11 @@
                         <span class="cat">Dystopian</span>
                         <p class="price ml-auto">$18 <span>/week</span></p>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
-          
+
                 <!-- Book 4 -->
                 <div class="col-md-3 mb-4">
                   <div class="book-wrap rounded ftco-animate">
@@ -119,15 +120,15 @@
                         <span class="cat">Literature</span>
                         <p class="price ml-auto">$10 <span>/week</span></p>
                       </div>
-                     
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-          
-          
+
+
 
    <!-- About Us Section -->
 <section class="ftco-section ftco-about">
@@ -139,7 +140,7 @@
           <div class="heading-section heading-section-white pl-md-5">
             <span class="subheading">About Us</span>
             <h2 class="mb-4">Welcome to Our Library Management System</h2>
-  
+
             <p>Our library management system is designed to help you easily search, borrow, and manage your books. It is a simple and user-friendly platform that ensures access to an ever-growing collection of resources.</p>
             <p>We aim to provide a seamless experience for readers, enabling quick access to books, timely returns, and personalized recommendations for your next read. Join us and explore a world of knowledge.</p>
             <p><a href="#" class="btn btn-primary py-3 px-4">Search Books</a></p>
@@ -148,7 +149,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Services Section -->
   <section class="ftco-section">
     <div class="container">
@@ -198,7 +199,7 @@
       </div>
     </div>
   </section>
-  
+
 
 
    <!-- Testimonial Section -->
@@ -244,7 +245,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Blog Section -->
   <section class="ftco-section">
     <div class="container">
@@ -275,7 +276,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Library Stats Section -->
   <section class="ftco-counter ftco-section img bg-light" id="section-counter">
     <div class="overlay"></div>
@@ -308,7 +309,7 @@
       </div>
     </div>
   </section>
-  
+
 
   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
@@ -370,7 +371,7 @@
       </div>
     </div>
   </footer>
-  
+
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
@@ -378,7 +379,7 @@
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
     </svg>
   </div>
-  
+
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -396,5 +397,15 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-   
 
+
+
+
+
+
+
+</div>
+
+<div class="admin-content flex-grow-1 p-4">
+  <router-outlet></router-outlet>
+</div>
