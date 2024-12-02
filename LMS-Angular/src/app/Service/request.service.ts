@@ -30,6 +30,8 @@ export class RequestService {
    getMemeberBtid(userid:string){
     return this.http.get<any>("http://localhost:5255/api/User/"+userid)
   }
+
+  
 }
 
 

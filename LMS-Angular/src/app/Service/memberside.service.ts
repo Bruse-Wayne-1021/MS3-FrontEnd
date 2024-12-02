@@ -21,6 +21,11 @@ export class MembersideService {
     return this.http.post<any>("http://localhost:5255/api/Rating",details)
   }
 
+  getNotification(memberID:string){
+    return this.http.get<any>(`http://localhost:5255/api/Notification/SentNotifi?MemberID=${memberID}`)
+  }
+
+
 }
 
 

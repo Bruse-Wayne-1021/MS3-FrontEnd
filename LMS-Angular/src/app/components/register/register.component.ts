@@ -34,24 +34,37 @@ export class RegisterComponent implements OnInit {
 
   RegUser() {
     if (this.signupForm.valid) {
+
       const formData = {
         ...this.signupForm.value,
         userGender: this.signupForm.value.userGender === 'Male' ? 1 : 0,
       };
 
+
       this.userService.Register(formData).subscribe(
         (data) => {
 
           console.log('Registration Successful:', data);
+
+
+          window.alert('Registration successful! Redirecting to login page.');
+
+
           this.signupForm.reset();
+
+
           this.router.navigate(['/login']);
         },
         (error) => {
+       
           console.error('Registration Failed:', error);
+          window.alert('Registration failed. Please try again.');
         }
       );
     } else {
       console.log('Form is invalid');
+      window.alert('Please fill in all required fields correctly.');
     }
   }
+
 }
