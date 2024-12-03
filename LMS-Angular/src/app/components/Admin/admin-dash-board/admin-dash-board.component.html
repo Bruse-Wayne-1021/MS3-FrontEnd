@@ -1,169 +1,145 @@
-<div class="dashboard-container">
-  <div id="page-content-wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
-      <div class="d-flex align-items-center">
-        <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
-        <h2 class="fs-2 m-0">Dashboard</h2>
-      </div>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fas fa-user me-2"></i>John Doe
+<div class="container-fluid">
+  <div class="row">
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-light bg-light border-bottom sticky-top px-3">
+      <div class="d-flex justify-content-between w-100">
+        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand mb-0 h5">Welcome to Library</span>
+        <div class="d-flex align-items-center">
+          <!-- Search Bar -->
+          <div class="input-group me-3">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-secondary" type="button">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+          <!-- Icons -->
+          <div class="d-flex align-items-center">
+            <a href="#" class="text-dark me-3">
+              <i class="bi bi-grid-3x3-gap"></i>
             </a>
-            
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
+            <a href="#" class="text-dark position-relative me-3">
+              <i class="bi bi-bell"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                style="font-size: 0.6rem;">
+                5
+              </span>
+            </a>
+            <a href="#" class="text-dark">
+              <i class="bi bi-person"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse sticky-top">
+      <div class="position-sticky pt-2">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-white active d-flex align-items-center" href="#">
+              <i class="bi bi-speedometer2 me-2"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center" [routerLink]="['/admin/book']" routerLinkActive="active">
+              <i class="bi bi-person me-2"></i>
+              <span>Books</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center" href="#">
+              <i class="bi bi-list me-2"></i>
+              <span>Borrowing Records</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white d-flex align-items-center" href="#">
+              <i class="bi bi-map me-2"></i>
+              <span>Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger fw-bold" href="#">
+              <i class="fas fa-power-off me-2"></i>Logout
+            </a>
           </li>
         </ul>
       </div>
     </nav>
 
+    <!-- Main content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2"></h1>
+      </div>
 
-  
-
-    <div class="container-fluid px-4">
-      <div class="row g-3 my-2">
+      <!-- Cards -->
+      <div class="row">
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-            <div>
-              <h3 class="fs-2">720</h3>
-              <p class="fs-5">Products</p>
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Total Books</h5>
+              <p class="card-text">15000</p>
             </div>
-            <i class="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-            <div>
-              <h3 class="fs-2">4920</h3>
-              <p class="fs-5">Sales</p>
+          <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Issued Books</h5>
+              <p class="card-text">1200</p>
             </div>
-            <i class="fas fa-hand-holding-usd fs-1 primary-text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-            <div>
-              <h3 class="fs-2">3899</h3>
-              <p class="fs-5">Delivery</p>
+          <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+              <h5 class="card-title">OverDue Book</h5>
+              <p class="card-text">100</p>
             </div>
-            <i class="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
-
         <div class="col-md-3">
-          <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-            <div>
-              <h3 class="fs-2">%25</h3>
-              <p class="fs-5">Increase</p>
+          <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Total Members</h5>
+              <p class="card-text">1K</p>
             </div>
-            <i class="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
           </div>
         </div>
       </div>
 
-      <div class="row my-5">
-        <h3 class="fs-4 mb-3">Recent Orders</h3>
-        <div class="col">
-          <table class="table bg-white rounded shadow-sm  table-hover">
-            <thead>
-              <tr>
-                <th scope="col" width="50">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Television</td>
-                <td>Jonny</td>
-                <td>$1200</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Laptop</td>
-                <td>Kenny</td>
-                <td>$750</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Cell Phone</td>
-                <td>Jenny</td>
-                <td>$600</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Fridge</td>
-                <td>Killy</td>
-                <td>$300</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Books</td>
-                <td>Filly</td>
-                <td>$120</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Gold</td>
-                <td>Bumbo</td>
-                <td>$1800</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Pen</td>
-                <td>Bilbo</td>
-                <td>$75</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Notebook</td>
-                <td>Frodo</td>
-                <td>$36</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>Dress</td>
-                <td>Kimo</td>
-                <td>$255</td>
-              </tr>
-              <tr>
-                <th scope="row">10</th>
-                <td>Paint</td>
-                <td>Zico</td>
-                <td>$434</td>
-              </tr>
-              <tr>
-                <th scope="row">11</th>
-                <td>Carpet</td>
-                <td>Jeco</td>
-                <td>$1236</td>
-              </tr>
-              <tr>
-                <th scope="row">12</th>
-                <td>Food</td>
-                <td>Haso</td>
-                <td>$422</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Charts -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h6>Total Books </h6>
+            </div>
+            <div class="card-body">
+              <canvas id="dailySalesChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+              <h6>Todays Activity</h6>
+            </div>
+            <div class="card-body">
+              <canvas id="emailSubscriptionsChart"></canvas>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   </div>
 </div>
