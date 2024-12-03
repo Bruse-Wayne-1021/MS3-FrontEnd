@@ -1,6 +1,17 @@
-
-.dashboard-container{
-  font-family: Arial, sans-serif;
-  background-color: #7b97b3;
+.sidebar {
+  height: 100vh;
+  padding-top: 1rem;
 }
 
+.sidebar .nav-link {
+  padding: 0.75rem 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main {
+  margin-top: 1rem;
+}
