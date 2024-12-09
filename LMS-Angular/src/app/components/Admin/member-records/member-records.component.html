@@ -1,35 +1,75 @@
-<div class="table-container">
-    <h2>Member Records</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Member ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Join Date</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>John Doe</td>
-                <td></td>
-                <td>2023-01-15</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Jane Smith</td>
-                <td></td>
-                <td>2022-12-01</td>
-                <td>Inactive</td>
-            </tr>
-            <!-- Add more rows as needed -->
-        </tbody>
-    </table>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-dark bg-dark justify-content-between">
+                <h3 class="navbar-brand mb-0">User Management</h3>
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                        [(ngModel)]="searchText" />
+                </form>
+            </nav>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date Created</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filteredUsers(); let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <img [src]="user.image" alt="User" class="rounded-circle" width="40" height="40" />
+                        {{ user.name }}
+                    </td>
+                    <td>{{ user.dateCreated }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="{
+                  'badge-success': user.status === 'Active',
+                  'badge-warning': user.status === 'Inactive',
+                  'badge-danger': user.status === 'Suspended'
+                }">
+                            {{ user.status }}
+                        </span>
+                    </td>
+                    <td>
+                        <!-- Settings Button -->
+                        <button class="btn btn-sm btn-primary" (click)="editUser(user)">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <!-- Delete Button -->
+                        <button class="btn btn-sm btn-danger" (click)="deleteUser(user)">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-3">
+        <span>Showing 5 out of {{ users.length }} entries</span>
+        <nav aria-label="Page navigation">
+            <ul class="pagination pagination-sm">
+                <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+                    <button class="page-link" (click)="previousPage()">Previous</button>
+                </li>
+                <li class="page-item" [ngClass]="{ active: currentPage === i + 1 }" *ngFor="let i of totalPages()">
+                    <button class="page-link" (click)="setPage(i + 1)">{{ i + 1 }}</button>
+                </li>
+                <li class="page-item" [ngClass]="{ disabled: currentPage === totalPages().length }">
+                    <button class="page-link" (click)="nextPage()">Next</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
-
-
-
-
