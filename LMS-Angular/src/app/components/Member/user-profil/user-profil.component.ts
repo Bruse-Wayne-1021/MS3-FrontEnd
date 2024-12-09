@@ -1,6 +1,8 @@
 import { UserService } from './../../../Service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../../Service/request.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profil',
@@ -12,9 +14,13 @@ export class UserProfilComponent implements OnInit{
   userData:any;
   userid!:string;
   memberId!:string;
+  userForm!:FormGroup;
+  isEditMode:boolean =false;
 
-  constructor(private requestService:RequestService,private userservie:UserService){
-
+  constructor(private requestService:RequestService
+    ,private userservie:UserService,private fb:FormBuilder,
+    private router:Router
+  ){
   }
   ngOnInit(): void {
     const userdata = localStorage.getItem('User');
@@ -33,35 +39,68 @@ export class UserProfilComponent implements OnInit{
         this.memberId=response?.memberID;
         console.log(this.memberId);
         this.getmemberdetails(this.memberId);
-
       },
       error: (error:any) =>
       {
         console.error(error);
       }
     });
-
+    this.userForm=this.fb.group({
+      email:this.userData.email,
+      firstName:this.userData.firstName,
+      lastName:this.userData.lastName,
+      imageUrl:this.userData.imageUrl,
+      phoneNumber:this.userData.phoneNumber
+    });
 
   }
+
 
   getmemberdetails(memberID:string):void{
     this.userservie.getMemberdetails(memberID).subscribe({
       next:response=>{
-
         this.userData=response
         console.log(this.userData);
 
+        this.userForm.patchValue({
+          email:this.userData.email,
+          firstName:this.userData.firstName,
+          lastName:this.userData.lastName,
+          imageUrl:this.userData.imageUrl,
+          phoneNumber:this.userData.phoneNumber
+
+        })
       },
       error: (error:any) =>{
         console.log(error);
-
       }
     })
   };
 
+  enableEdit():void{
+    this.isEditMode=true;
+    this.userForm.enable();
+  }
 
 
-
+  saveDetails():void{
+    if(this.userForm.valid){
+      const updatedata=this.userForm.value;
+      console.log(updatedata);
+      this.userservie.updateMemberDetails(this.memberId,updatedata).subscribe({
+        next:()=>{
+          alert("Details Updated SuccessFull");
+          this.router.navigate(['/login']);
+        },
+        error:err=>{
+          console.log(err);
+        }
+      })
+    }
+    else{
+      alert("Form IS Invalid")
+    }
+  }
 
 
 

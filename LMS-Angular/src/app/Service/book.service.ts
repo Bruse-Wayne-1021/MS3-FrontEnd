@@ -10,7 +10,7 @@ export class BookService {
   constructor(private http:HttpClient) { }
 
   createNewBook(book:Ibook){
-    return this.http.post("http://localhost:5255/api/Books",book)
+    return this.http.post("http://localhost:5255/api/Books/create-with-extract",book)
    }
 
    getAllGenres(){
@@ -61,10 +61,29 @@ export class BookService {
     return this.http.get<any>(`http://localhost:5255/api/Books/GetAuthorBooks?Author=${authorID}`)
   }
 
+  getEbook(Booktype:number){
+    return this.http.get<any>(`http://localhost:5255/api/Books/Get-multipletypeBooks?type=${Booktype}`)
+  }
 
+  DeleteBook(Bookid:string){
+    return this.http.delete(`http://localhost:5255/api/Books/${Bookid}`)
+  }
+
+  UpdateBook(bookid:string,bookdata:any){
+    return this.http.put(`http://localhost:5255/api/Books/UpdateBook ${bookid}`,bookdata)
+  }
+
+  update(bookid:string,Cpoies:number){
+    return this.http.put(`http://localhost:5255/api/Books/UpdateBookCopies/${bookid}`,Cpoies)
+  }
 
 }
 
+  export enum Booktype{
+    Manual=0,
+    EBook,
+    Both
+  }
 
 
 export interface Ibook{
@@ -73,14 +92,15 @@ export interface Ibook{
   isbn:string,
   pageCount:number,
   isAvailable:boolean,
+  bookType:number
   quantity:number,
   authorId:string,
   publisherId:string,
   languageId:string,
   genreId:string,
   image2Path:string,
-  image1Path:string,
-  publishDate:Date
+  publishDate:Date,
+  filePath:string
 }
 
 export interface IAuthor{
@@ -100,4 +120,8 @@ export interface IImagePath{
   image2Path:string
 }
 
-
+export enum BookType{
+  Manual,
+  EBook,
+  Both
+}

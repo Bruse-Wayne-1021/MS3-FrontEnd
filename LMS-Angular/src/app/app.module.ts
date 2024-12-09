@@ -31,6 +31,7 @@ import { BooksComponent } from './components/Admin/books/books.component';
 import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
 import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
+import { EbookComponent } from './components/Member/ebook/ebook.component';
 
 
 
@@ -59,6 +60,7 @@ import { UserProfilComponent } from './components/Member/user-profil/user-profil
     UnittBookComponent,
     AuthorBooksComponent,
     UserProfilComponent,
+    EbookComponent,
 
 
 

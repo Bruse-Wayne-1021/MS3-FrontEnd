@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, numberAttribute, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../../Service/book.service';
+import { ActivatedRoute } from '@angular/router';
+import { data, error } from 'jquery';
 
 @Component({
   selector: 'app-add-book',
@@ -17,25 +20,37 @@ export class AddBookComponent implements OnInit {
   base64Image: string = '';
   backgrounImage:string='';
   previewImage: string | ArrayBuffer | null = null;
+  CurrentId!:string;
+  IsEditMode:boolean=false;
 
   addNewAuthorForm!: FormGroup;
   addNewPublisherForm!: FormGroup;
+  private  subcription:Subscription=new Subscription();
 
-  constructor(private fb: FormBuilder, private bookService: BookService) {
+  constructor(private fb: FormBuilder,
+     private bookService: BookService,
+    private route:ActivatedRoute
+  ) {
+    this.CurrentId=this.route.snapshot.paramMap.get("id")||'';
+    if(this.CurrentId){
+      this.IsEditMode=true
+    }
+
     this.addBookForm = this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(200)]],
       description: ['', [Validators.maxLength(1000)]],
       isbn: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{10}$/)]],
       pageCount: [1, [Validators.required, Validators.min(1)]],
       isAvailable: [true],
+      bookType:['',[Validators.required]],
       quantity: [1, [Validators.required, Validators.min(1)]],
       authorId: ['', Validators.required],
       publisherId: ['', Validators.required],
       languageId: ['', Validators.required],
       genreId: ['', Validators.required],
       image2Path: ['', Validators.required],
-      image1Path: ['', Validators.required],
-      publishDate: ['', Validators.required]
+      publishDate: ['', Validators.required],
+      filepath:['',Validators.required]
     });
 
     this.addNewAuthorForm = this.fb.group({
@@ -56,6 +71,10 @@ export class AddBookComponent implements OnInit {
     this.loadLanguages();
     this.loadAuthors();
     this.loadPublishers();
+    if(this.IsEditMode==true){
+      this.GetDetailsToDetails();
+    }
+
   }
 
 
@@ -74,42 +93,43 @@ export class AddBookComponent implements OnInit {
   }
 
 
-  onFileChange2(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    if (target.files && target.files[0]) {
-      const file = target.files[0];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        this.backgrounImage = (e.target as FileReader).result as string;
-        this.addBookForm.patchValue({ image1Path: this.backgrounImage });
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-
-
-
   onSubmit(): void {
-    if (this.addBookForm.invalid) {
-      console.error('Form is invalid!');
-      return;
-    }
-
     const bookData = this.addBookForm.value;
-    console.log('Submitting book data:', bookData);
-
-    this.bookService.createNewBook(bookData).subscribe({
-      next: (data) => {
-        console.log('Book added successfully:', data);
-        this.addBookForm.reset();
-        this.previewImage = null;
-      },
-      error: (error) => {
-        console.error('Error adding book:', error);
+    bookData.bookType = parseInt(bookData.bookType);
+    bookData.isAvailable = !!bookData.isAvailable;
+    if (this.IsEditMode == false) {
+      if (this.addBookForm.invalid) {
+        console.error('Form is invalid!');
+        return;
       }
-    });
+      this.bookService.createNewBook(bookData).subscribe({
+        next: (data) => {
+          alert("Success");
+          console.log('Book added successfully:', data);
+          this.addBookForm.reset();
+
+        },
+        error: (error) => {
+          console.error('Error adding book:', error);
+        }
+      });
+    } else if(this.IsEditMode==true) {
+      if (this.addBookForm.invalid) {
+        console.error('Form is invalid!');
+        return;
+      }
+
+      this.bookService.UpdateBook(this.CurrentId, bookData).subscribe({
+        next: (data) => {
+          console.log('Book updated successfully:', data);
+        },
+        error: (err) => {
+          console.error('Error updating book:', err);
+        }
+      });
+    }
   }
+
 
   addNewAuthor(): void {
     if (this.addNewAuthorForm.invalid) {
@@ -196,4 +216,19 @@ export class AddBookComponent implements OnInit {
       }
     });
   }
+
+
+  GetDetailsToDetails(){
+    if(this.CurrentId!==null){
+      this.subcription.add(
+        this.bookService.getBookByid(this.CurrentId).subscribe(
+          data=>this.addBookForm.patchValue(data),
+          error=>console.error("Error Fetchin Data")
+        )
+      );
+    }
+  }
+
+
+
 }
