@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../../../Service/book.service';
+import { Router } from '@angular/router';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-book-table',
@@ -6,20 +9,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './book-table.component.css'
 })
 export class BookTableComponent implements OnInit{
+  Books:any[]=[];
 
-  books = [
-    { id: 'B001', title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', genre: 'Fiction' },
-    { id: 'B002', title: 'To Kill a Mockingbird', author: 'Harper Lee', genre: 'Fiction' },
-    { id: 'B003', title: '1984', author: 'George Orwell', genre: 'Dystopian' },
-    { id: 'B004', title: 'Moby Dick', author: 'Herman Melville', genre: 'Adventure' },
- ];
-
- pages = [1, 2, 3, 4, 5];
-
-  constructor(){ }
+  constructor(private bookService:BookService,
+    private router:Router
+  ){ }
 
   ngOnInit(): void {
-    
+    this.bookService.getAllBooks().subscribe({
+      next:data=>{
+        console.log(data);
+        this.Books=data?.$values;
+      },
+      error:err=>{
+        console.log(err);
+
+      }
+    })
   }
+
+  EditBook(bookid:string):void{
+    this.router.navigate(['/admin/book/addBook',bookid]);
+  }
+
+  DeteteBook(bookid:string):void{
+  
+  this.bookService.DeleteBook(bookid).subscribe({
+      next:data=>{
+        console.log(data);
+      },
+      error:err=>{
+        console.log(err);
+      }
+    })
+  }
+
+
 
 }

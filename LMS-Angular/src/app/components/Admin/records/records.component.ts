@@ -10,7 +10,7 @@ import { state } from '../../../Service/book-lend.service';
 export class RecordsComponent implements OnInit{
 
   records:any[]=[];
-
+  
   constructor(private requestService:RequestService){ }
 
   ngOnInit(): void {

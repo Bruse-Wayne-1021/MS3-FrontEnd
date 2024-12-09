@@ -1,0 +1,6 @@
+
+<div *ngFor="let book of Ebook">
+  <h3>{{ book.name }}</h3>
+  <p>{{ book.description }}</p>
+  <button (click)="printEbook(book)">Print PDF</button>
+</div>

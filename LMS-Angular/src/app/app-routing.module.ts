@@ -24,6 +24,7 @@ import { BooksComponent } from './components/Admin/books/books.component';
 import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.component';
 import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
+import { EbookComponent } from './components/Member/ebook/ebook.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
       { path: '', component: AdminDashBoardComponent },
       {
         path: 'book', component: BooksComponent, children: [
-          { path: 'addBook', component: AddBookComponent },
+          {path:'addBook',component:AddBookComponent},
+          { path: 'addBook/:id', component: AddBookComponent },
           { path: 'booktable', component: BookTableComponent }
         ]
       },
@@ -52,7 +54,8 @@ const routes: Routes = [
       { path: 'member-dash-board', component: MemberDashBoardComponent },
       { path: 'reserved-books', component: ReservedBooksComponent },
       { path: 'book-gallery/authorBooks/:id', component: AuthorBooksComponent },
-      { path: 'profile', component: UserProfilComponent }
+      { path: 'profile', component: UserProfilComponent },
+      {path:'EBook',component:EbookComponent}
     ]
   },
   { path: 'home', component: BlankLayoutComponent },
@@ -61,7 +64,6 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
-
 
 
 @NgModule({
