@@ -7,19 +7,19 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class BookLendService {
-  private readonly baseUrl = "http://localhost:5255/api";
+  private readonly baseUrl = "http://localhost:5255/api/Booklend/borrow";
 
   constructor(private http: HttpClient) { }
 
   postBookRequest(request: IBookRequest) {
-    return this.http.post(`${this.baseUrl}/Booklend`, request).pipe(
+    return this.http.post(`http://localhost:5255/api/Booklend/borrow`, request).pipe(
       catchError((error) => {
         console.error('Error in Book Request:', error);
         return throwError(() => new Error('Failed to send book request.'));
       })
     );
   }
-  
+
 }
 
 export interface IBookRequest {

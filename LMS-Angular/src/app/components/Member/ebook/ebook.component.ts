@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService, Booktype } from '../../../Service/book.service';
 import { jsPDF } from 'jspdf';
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-ebook',
@@ -8,7 +9,7 @@ import { jsPDF } from 'jspdf';
   styleUrls: ['./ebook.component.css']
 })
 export class EbookComponent implements OnInit {
-  Ebook: any[] = [];
+  Ebook: any[] = []; // List to store fetched eBooks
 
   constructor(private bookService: BookService) {}
 
@@ -16,34 +17,68 @@ export class EbookComponent implements OnInit {
     this.GetEbook();
   }
 
+
   GetEbook() {
     this.bookService.getEbook(Booktype.EBook).subscribe({
       next: (data) => {
         console.log(data);
-        this.Ebook = data?.$values;
-        console.log(this.Ebook);
+        this.Ebook = data?.$values || [];
       },
       error: (error) => {
-        console.error('Error:', error);
+        console.error('Error fetching eBooks:', error);
       }
     });
   }
 
+
   printEbook(book: any) {
-    const doc = new jsPDF();
-    console.log('Book to print:', book);
-    doc.setFontSize(16);
-    doc.text('EBook Details', 10, 10);
-    doc.setFontSize(12);
-    doc.text(`Name: ${book.name || 'N/A'}`, 10, 30);
-    doc.text(`Description: ${book.description || 'N/A'}`, 10, 40);
-    doc.text(`ISBN: ${book.isbn || 'N/A'}`, 10, 50);
-    doc.text(`Page Count: ${book.pageCount || 'N/A'}`, 10, 60);
-    doc.text(`Author: ${book.authorId || 'N/A'}`, 10, 70);
-    doc.text(`Publisher: ${book.publisherId || 'N/A'}`, 10, 80);
-    doc.text(`Language: ${book.languageId || 'N/A'}`, 10, 90);
-    doc.text(`Genre: ${book.textContent || 'N/A'}`, 5, 100);
-    doc.save(`${book.name}_Details.pdf`);
+    if (!book.filePath) {
+      console.error('No eBook content available.');
+      return;
+    }
+
+    let base64Pdf = book.filePath;
+    if (base64Pdf.startsWith('data:application/pdf;base64,')) {
+      base64Pdf = base64Pdf.replace('data:application/pdf;base64,', '');
+    }
+
+    try {
+      const binaryString = atob(base64Pdf);
+      const byteArray = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        byteArray[i] = binaryString.charCodeAt(i);
+      }
+      const blob = new Blob([byteArray], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${book.name || 'ebook'}_Details.pdf`;
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error decoding base64 PDF:', error);
+    }
+  }
+
+
+  generateQRCode(book: any) {
+    let dataToEncode = book.filePath || 'No eBook available';
+    if (dataToEncode.length > 500) {
+      console.error('Data too large for QR Code.');
+      dataToEncode = 'Data is too large to encode in a QR code.';
+    }
+    QRCode.toCanvas(dataToEncode, { version: 10, errorCorrectionLevel: 'L' }, (error, canvas) => {
+      if (error) {
+        console.error('Error generating QR Code:', error);
+        return;
+      }
+
+      const qrContainer = document.getElementById(`qr-code-container-${book.id}`);
+      if (qrContainer) {
+        qrContainer.innerHTML = '';
+        qrContainer.appendChild(canvas);
+      }
+    });
   }
 
 }

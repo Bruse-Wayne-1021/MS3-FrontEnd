@@ -73,7 +73,7 @@ export class BookService {
     return this.http.put(`http://localhost:5255/api/Books/UpdateBook ${bookid}`,bookdata)
   }
 
-  update(bookid:string,Cpoies:number){
+  updateCopies(bookid:string,Cpoies:number){
     return this.http.put(`http://localhost:5255/api/Books/UpdateBookCopies/${bookid}`,Cpoies)
   }
 
