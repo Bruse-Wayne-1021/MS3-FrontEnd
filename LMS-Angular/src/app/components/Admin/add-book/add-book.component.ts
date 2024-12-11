@@ -22,6 +22,7 @@ export class AddBookComponent implements OnInit {
   previewImage: string | ArrayBuffer | null = null;
   CurrentId!:string;
   IsEditMode:boolean=false;
+  Ebook:string='';
 
   addNewAuthorForm!: FormGroup;
   addNewPublisherForm!: FormGroup;
@@ -42,7 +43,7 @@ export class AddBookComponent implements OnInit {
       isbn: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{10}$/)]],
       pageCount: [1, [Validators.required, Validators.min(1)]],
       isAvailable: [true],
-      bookType:['',[Validators.required]],
+      bookType:[''],
       quantity: [1, [Validators.required, Validators.min(1)]],
       authorId: ['', Validators.required],
       publisherId: ['', Validators.required],
@@ -50,7 +51,7 @@ export class AddBookComponent implements OnInit {
       genreId: ['', Validators.required],
       image2Path: ['', Validators.required],
       publishDate: ['', Validators.required],
-      filepath:['',Validators.required]
+      filepath:['']
     });
 
     this.addNewAuthorForm = this.fb.group({
@@ -87,6 +88,19 @@ export class AddBookComponent implements OnInit {
         this.base64Image = (e.target as FileReader).result as string;
         this.previewImage = this.base64Image;
         this.addBookForm.patchValue({ image2Path: this.base64Image });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onFileChangeToeBook(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+      const file = target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.Ebook = (e.target as FileReader).result as string;
+        this.addBookForm.patchValue({ filepath: this.Ebook });
       };
       reader.readAsDataURL(file);
     }

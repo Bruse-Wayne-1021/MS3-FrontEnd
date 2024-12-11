@@ -264,17 +264,17 @@
     </div>
 
 
-<div class="form-group">
-  <label for="pageCount">File Path</label>
-  <input
-    type="text"
-    id="filePath"
-    class="form-control"
-    formControlName="filepath"
-
-  />
-
-</div>
+    <div class="form-group">
+      <label for="image2Path"> Ebook Pdf</label>
+      <input
+      type="file" id="imageUpload" (change)="onFileChangeToeBook($event)"
+        id="filepath"
+        class="form-control"
+        formControlName="filepath"
+        placeholder="Enter image URL"
+      />
+     
+    </div>
 
 
 

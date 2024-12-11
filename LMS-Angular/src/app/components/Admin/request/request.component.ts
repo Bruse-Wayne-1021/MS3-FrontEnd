@@ -3,6 +3,7 @@ import { ApproveDate, RequestService } from './../../../Service/request.service'
 import { state } from './../../../Service/book-lend.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../Service/user.service';
+import { BookService } from '../../../Service/book.service';
 
 @Component({
   selector: 'app-request',
@@ -19,12 +20,14 @@ export class RequestComponent implements OnInit {
   isverify: boolean =true;
   memberdetails!: boolean;
   MemId!:string;
+  Copies!:number;
 
 
 
   constructor(
     private requestService: RequestService,
-    private UserService: UserService
+    private UserService: UserService,
+    private bookService:BookService
   ) {}
 
   ngOnInit(): void {
@@ -49,6 +52,8 @@ export class RequestComponent implements OnInit {
         console.log( response);
         this.userId = response?.memberID;
         console.log( this.userId);
+
+
         // this.getMemberDetAILS(this.userId);
         // this.UserService.getMemberdetails(this.userId).subscribe({
         //   next: (data) => {
@@ -91,7 +96,7 @@ export class RequestComponent implements OnInit {
   }
 
 
-  approveRequest(lendId: string, isVerify: boolean): void {
+  approveRequest(lendId: string, isVerify: boolean,bookID:string): void {
     if (!isVerify) {
       alert("Member is not verified. Approval denied.");
       return;
@@ -107,8 +112,10 @@ export class RequestComponent implements OnInit {
         const payload={
           MemberID:lendId,
           Datetype:this.dateType
-        }
+        };
+
         this.updateApproveDate(payload);
+
       },
       error: (err) => {
         console.error(err);
@@ -181,4 +188,6 @@ export class RequestComponent implements OnInit {
       },
     });
   }
+
+ 
 }

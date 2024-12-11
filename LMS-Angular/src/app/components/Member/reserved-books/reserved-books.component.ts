@@ -6,6 +6,7 @@ import { RequestService } from '../../../Service/request.service';
 import { state } from '../../../Service/book-lend.service';
 import { MembersideService } from '../../../Service/memberside.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookService } from '../../../Service/book.service';
 
 @Component({
   selector: 'app-reserved-books',
@@ -24,11 +25,15 @@ export class ReservedBooksComponent implements OnInit {
   waitingBooks:any[]=[];
   AddRatingForm!:FormGroup
   Notofication:any[]=[];
-
+  bookId!:string;
+  Copies!:number
+  bookData:any[]=[];
 
   constructor(private userServoce:UserService,
     private requestService:RequestService,
     private memberSide:MembersideService,
+    private bookService:BookService,
+
     private fb:FormBuilder) {
       this.AddRatingForm=this.fb.group({
         starCount:['', Validators.required],
@@ -36,6 +41,8 @@ export class ReservedBooksComponent implements OnInit {
         // memebID:['', Validators.required],
         // bookid:['', Validators.required]
       });
+
+
      }
 
 
@@ -69,7 +76,19 @@ export class ReservedBooksComponent implements OnInit {
         console.log(this.memberid);
         this.memberSide.getReservedBooks(Request).subscribe({
           next: (response) => {
-            this.books=response?.$values;
+            console.log('Full Response:', response);
+            this.books = response?.$values || [];
+            this.bookId = this.books.length > 0 ? this.books[0].bookId : undefined;
+            this.getBOokbyID(this.bookId)
+            console.log('Books:', this.books);
+            console.log('Book ID:', this.bookId);
+            this.bookService.getBookByid(this.bookId).subscribe({
+              next:data=>{
+                console.log(data);
+
+              }
+            })
+
           },
           error:(err: any)=>{
             console.log(err);
@@ -83,22 +102,49 @@ export class ReservedBooksComponent implements OnInit {
 
   }
 
-  collectBook(lendId:string):void{
-    this.IDofLend=lendId
-    this.requestService.approveRequest(this.IDofLend,state.Waiting).subscribe({
-      next: (response) => {
-        const Request={
-          MemberID:this.IDofLend,
-          Datetype:this.dateType
-        }
-        this.updateCollectDate(Request)
-      },
-      error:error=>{
-        console.log(error);
+  collectBook(lendId: string, bookId: string): void {
+    this.IDofLend = lendId;
 
-      }
-    })
+
+    this.requestService.approveRequest(this.IDofLend, state.Waiting).subscribe({
+      next: () => {
+        const Request = {
+          MemberID: this.IDofLend,
+          Datetype: this.dateType,
+        };
+
+
+        this.bookService.getBookByid(bookId).subscribe({
+          next: (data) => {
+            const currentQuantity = data?.quantity;
+            if (currentQuantity > 0) {
+
+              this.bookService.updateCopies(bookId, currentQuantity - 1).subscribe({
+                next: (updateResponse) => {
+                  alert('Copies updated successfully:');
+
+
+                  this.updateCollectDate(Request);
+                },
+                error: (updateError) => {
+                  console.error('Error updating copies:', updateError);
+                },
+              });
+            } else {
+              alert('No copies available to lend.');
+            }
+          },
+          error: (fetchError) => {
+            console.error('Error fetching book details:', fetchError);
+          },
+        });
+      },
+      error: (error) => {
+        console.error('Error approving request:', error);
+      },
+    });
   }
+
 
   updateCollectDate(details:ApproveDate):void{
     this.requestService.approveDate(details).subscribe({
@@ -120,7 +166,6 @@ export class ReservedBooksComponent implements OnInit {
       },
       error:error=>{
         console.log(error);
-
       }
     })
   }
@@ -131,7 +176,12 @@ export class ReservedBooksComponent implements OnInit {
       return;
     }
 
-
   }
+
+  getBOokbyID(bookid:string):void{
+
+  };
+
+
 
 }
