@@ -20,7 +20,7 @@ import { MemberDashBoardComponent } from './components/Member/member-dash-board/
 import { AddBookComponent } from './components/Admin/add-book/add-book.component';
 import { BookTableComponent } from './components/Admin/book-table/book-table.component';
 import { MemberRecordsComponent } from './components/Admin/member-records/member-records.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NevBarComponent } from './components/Admin/nev-bar/nev-bar.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -32,6 +32,8 @@ import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.co
 import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
 import { EbookComponent } from './components/Member/ebook/ebook.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 
 
@@ -61,6 +63,7 @@ import { EbookComponent } from './components/Member/ebook/ebook.component';
     AuthorBooksComponent,
     UserProfilComponent,
     EbookComponent,
+    LoadingComponent,
 
 
 
@@ -78,8 +81,14 @@ import { EbookComponent } from './components/Member/ebook/ebook.component';
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

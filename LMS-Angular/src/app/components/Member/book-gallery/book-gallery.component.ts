@@ -26,6 +26,9 @@ export class BookGalleryComponent implements OnInit {
   userid!:string;
   memberid!:string;
   bookid!:string;
+  averageRating: number = 0;
+  starDistribution: number[] = [];
+  rating:any[]=[];
 
 
 
@@ -157,6 +160,16 @@ export class BookGalleryComponent implements OnInit {
     });
     console.log(`Favorite toggled for book ID: ${bookId}`);
   }
+
+
+  // getrating(bid:string){
+  //   this.bookService.getStarSummery(bid).subscribe({
+  //     next:data=>{
+  //      console.log(data);
+
+  //     }
+  //   })
+  // }
 }
 
 

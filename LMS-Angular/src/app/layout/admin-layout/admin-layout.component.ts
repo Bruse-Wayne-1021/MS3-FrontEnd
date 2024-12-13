@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './admin-layout.component.css'
 })
 export class AdminLayoutComponent {
+  isCollapsed = false;
 
+  toggleSidebar(): void {
+    this.isCollapsed = !this.isCollapsed;
+  }
 
-  user = {
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-  };
 
 }

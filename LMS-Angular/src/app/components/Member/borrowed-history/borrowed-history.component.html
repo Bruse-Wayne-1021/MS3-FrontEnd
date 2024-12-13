@@ -1,21 +1,23 @@
-<div class="history-container">
-  <h2>Borrowed History</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Collect Date</th>
-        <th>Borrowed Date</th>
-        <th>Return Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of borrowedBook">
-        <td>{{ book. title }}</td>
-        <td>{{ book. collectDate}}</td>
-        <td>{{ book.borrowedDate }}</td>
-        <td>{{ book.returnDate }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="history-container container my-4">
+  <h2 class="text-center mb-4">Borrowed History</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="table-primary">
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Collect Date</th>
+          <th scope="col">Borrowed Date</th>
+          <th scope="col">Return Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of borrowedBook">
+          <td>{{ book.title }}</td>
+          <td>{{ book.collectDate }}</td>
+          <td>{{ book.borrowedDate }}</td>
+          <td>{{ book.returnDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

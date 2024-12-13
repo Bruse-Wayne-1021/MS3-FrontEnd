@@ -2573,6 +2573,185 @@ body.body-hidden {
   margin-bottom: 8px;
   font-weight: 600
 }
+.rating-summary {
+  font-family: Arial, sans-serif;
+}
+
+.star-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+.bar {
+  flex: 1;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.filled-bar {
+  height: 100%;
+  background: green;
+}
+.star-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.star-icon {
+  font-size: 2rem;
+  color: #ccc; /* Default unselected star color */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.star-icon.filled {
+  color: #f4c542; /* Yellow for filled stars */
+}
+
+.star-icon:hover {
+  color: #ff9800; /* Orange color on hover */
+}
+/* star-rating.component.css */
+.star-rating {
+  font-size: 30px;
+  color: gold;
+}
+
+.star-rating span {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.star-rating span.filled {
+  color: orange;
+}
+
+.feedback {
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+}
+
+
+.rating-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.member-details {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.member-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+.member-name {
+  font-weight: bold;
+}
+
+.rating-details {
+  flex: 1;
+}
+
+.stars i {
+  color: gold;
+}
+
+.feedback {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.card {
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  color: #ecf0f1;
+  position: relative;
+  width: 200px; /* Set the desired width */
+  height: 300px; /* Set the desired height */
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: auto; /* Center the card horizontally */
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 70%; /* Adjust height to fit inside the resized card */
+  object-fit: cover;
+}
+
+/* Ensure the image fills the card's available space */
+.card .position-relative {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ecf0f1;
+  padding: 10px;
+  text-align: center;
+  height: 30%; /* Adjust the overlay size for the smaller card */
+}
+
+/* Title Styling */
+.card-title {
+  font-size: 0.9rem; /* Reduce font size for smaller cards */
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  font-size: 0.8rem; /* Reduce font size for text */
+  color: #bdc3c7;
+  margin-bottom: 5px;
+}
+
+/* Button Styling */
+.btn-outline-primary {
+  border-color: #3498db;
+  color: #3498db;
+  font-size: 0.8rem; /* Reduce button font size */
+  padding: 5px 10px; /* Adjust button padding */
+}
+
+.btn-outline-primary:hover {
+  background-color: #3498db;
+  color: #ecf0f1;
+}
+
+
+
+
 
 
 

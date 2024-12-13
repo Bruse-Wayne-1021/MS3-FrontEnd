@@ -9,6 +9,8 @@ export class BookService {
 
   constructor(private http:HttpClient) { }
 
+  
+
   createNewBook(book:Ibook){
     return this.http.post("http://localhost:5255/api/Books/create-with-extract",book)
    }
@@ -77,6 +79,17 @@ export class BookService {
     return this.http.put(`http://localhost:5255/api/Books/UpdateBookCopies/${bookid}`,Cpoies)
   }
 
+  getStarSummery(bookid:string){
+    return this.http.get(`http://localhost:5255/api/Rating/Summery${bookid}`)
+  }
+
+  postStarRating(payload:Rating){
+    return this.http.post("http://localhost:5255/api/Rating",payload)
+  }
+
+  getMembersRating(memberId:string){
+    return this.http.get<any>(`http://localhost:5255/api/Rating/${memberId}`)
+  }
 }
 
   export enum Booktype{
@@ -85,6 +98,12 @@ export class BookService {
     Both
   }
 
+  export interface Rating{
+    starCount:number,
+    feedBack:string,
+    memebID:string,
+    bookid:string
+  }
 
 export interface Ibook{
   name:string,

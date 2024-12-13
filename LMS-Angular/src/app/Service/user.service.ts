@@ -12,9 +12,6 @@ export class UserService {
   constructor(private http:HttpClient) {
 
    }
-
-
-
    login(user :any) {
     return this.http.post<LToken>("http://localhost:5255/api/Login/login", user);
   }
@@ -55,10 +52,22 @@ export class UserService {
     return this.http.put(`http://localhost:5255/api/Member?id=${memberid}`,userDetails)
   }
 
+  getAllMembers(){
+    return this.http.get<any>("http://localhost:5255/api/Member/Get all members")
+  }
+
+  verifyOtp(otpDetails:optDetails){
+    return this.http.post("http://localhost:5255/api/OTP/verify-otp",otpDetails)
+  }
 
 }
 
 export interface VerifyDetails{
   MemberId:string,
   isverify:boolean
+}
+
+export interface optDetails{
+  userId:string,
+  otpCode:string
 }

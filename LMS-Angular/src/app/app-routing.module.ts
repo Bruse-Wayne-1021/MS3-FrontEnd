@@ -26,7 +26,6 @@ import { AuthorBooksComponent } from './components/Member/author-books/author-bo
 import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
 import { EbookComponent } from './components/Member/ebook/ebook.component';
 
-
 const routes: Routes = [
   {
     path: 'admin', component: AdminLayoutComponent, children: [
@@ -35,13 +34,13 @@ const routes: Routes = [
         path: 'book', component: BooksComponent, children: [
           {path:'addBook',component:AddBookComponent},
           { path: 'addBook/:id', component: AddBookComponent },
-          { path: 'booktable', component: BookTableComponent }
+          { path: 'booktable', component: BookTableComponent },
+          { path: 'request', component: RequestComponent },
+          { path: 'record', component: RecordsComponent },
+          { path: 'return', component: ReturnComponent },
+          { path: 'memberRecords', component: MemberRecordsComponent }
         ]
-      },
-      { path: 'request', component: RequestComponent },
-      { path: 'record', component: RecordsComponent },
-      { path: 'return', component: ReturnComponent },
-      { path: 'memberRecords', component: MemberRecordsComponent }
+      }
     ]
   },
   {
@@ -50,14 +49,21 @@ const routes: Routes = [
     children: [
       { path: 'book-gallery', component: BookGalleryComponent },
       { path: 'book-gallery/viewbook/:id', component: UnittBookComponent },
-      { path: 'borrowed-history', component: BorrowedHistoryComponent },
+
       { path: 'member-dash-board', component: MemberDashBoardComponent },
-      { path: 'reserved-books', component: ReservedBooksComponent },
+      {
+        path: 'profile',
+        component: UserProfilComponent,
+        children: [
+          { path: 'reserved-books', component: ReservedBooksComponent },
+          { path: 'borrowed-history', component: BorrowedHistoryComponent },
+        ]
+      },
       { path: 'book-gallery/authorBooks/:id', component: AuthorBooksComponent },
-      { path: 'profile', component: UserProfilComponent },
-      {path:'EBook',component:EbookComponent}
+      { path: 'EBook', component: EbookComponent }
     ]
   },
+
   { path: 'home', component: BlankLayoutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
