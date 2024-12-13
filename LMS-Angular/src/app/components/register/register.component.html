@@ -12,7 +12,7 @@
           You are in a Wisdom Wellspring Register Page
           <i class="bi bi-emoji-smile"></i>
         </p>
-       
+
       </div>
     </div>
 
@@ -177,3 +177,32 @@
     </div>
   </div>
 </div>
+
+
+ <!-- OTP Modal -->
+<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="otpModalLabel">Verify OTP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-3">We sent a code to your email.</p>
+        <div class="otp-inputs d-flex justify-content-center mb-4">
+          <input
+            *ngFor="let num of otpCode; let i = index"
+            type="text"
+            maxlength="1"
+            class="form-control text-center me-2"
+            [(ngModel)]="otpCode[i]"  
+            name="otp-{{ i }}"
+          />
+        </div>
+        <button class="btn btn-primary w-100" (click)="verifyOtp()">Verify OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

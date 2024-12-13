@@ -1,3 +1,46 @@
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container d-flex justify-content-between">
+    <!-- Left: Library Logo -->
+    <a class="navbar-brand d-flex align-items-center me-5" routerLink="/member/member-dash-board">
+      <img src="/Wisdom Wellspring.jpg" alt="Library Logo" width="40" height="40" class="me-2">
+      <span class="text-white">Library</span>
+    </a>
 
-  <router-outlet></router-outlet>
+    <!-- Center: Navigation Links -->
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/member/book-gallery" routerLinkActive="active">Book Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/member/EBook" routerLinkActive="active">E-Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/member/profile/reserved-books" routerLinkActive="active">Reserved Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/member/profile/borrowed-history" routerLinkActive="active">Borrowed History</a>
+        </li>
+      </ul>
+    </div>
 
+    <!-- Right: User Profile -->
+    <div class="d-flex align-items-center">
+      <div class="dropdown">
+        <button class="btn btn-dark dropdown-toggle d-flex align-items-center" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="profile-placeholder.png" alt="Profile" class="rounded-circle" width="35" height="35">
+          <span class="ms-2 text-white">User</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" routerLink="/member/profile" routerLinkActive="active">Profile</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

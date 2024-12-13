@@ -1,4 +1,29 @@
-.responsive {
+/* Enhance the table for professional look */
+.table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+}
+
+.table thead th {
+  vertical-align: middle;
+}
+
+.table tbody tr {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table tbody tr:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.table-responsive {
   overflow-x: auto;
-  white-space: nowrap;
+}
+
+
+.btn i {
+  margin-right: 5px;
 }

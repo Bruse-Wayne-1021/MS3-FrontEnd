@@ -132,6 +132,22 @@
                                                   </div>
                                                   <div class="clearfix"></div>
                                               </div>
+                                              <!-- star-rating.component.html -->
+                                          <div class="star-rating">
+                                        <span *ngFor="let star of stars; let i = index"
+                                      (click)="rate(i + 1)"
+                                  [class.filled]="i < ratings">
+                                 &#9733;
+                                </span>
+                                      </div>
+
+                         <div class="feedback">
+                         <textarea [(ngModel)]="feedback" placeholder="Leave your feedback here"></textarea>
+                        </div>
+
+                          <button (click)="submitRating()">Submit Rating</button>
+
+
                                               <div class="row-tags">
                                                   <button class="view-button " (click)="BookRequest()">Request Book</button>
                                                   <!-- <h2 class="btn btn-sm btn-light btn-dtag">Venom: The Last Dance Online
@@ -143,6 +159,24 @@
                                                   <h2 class="btn btn-sm btn-light btn-dtag">Venom: The Last Dance free
                                                       online</h2> -->
                                               </div>
+                                              <div class="rating-summary">
+                                                <h3>{{ averageRating }}</h3>
+                                                <div *ngFor="let count of starDistribution; let i = index">
+                                                  <div class="star-row">
+                                                    <span>{{ 5 - i }} stars</span>
+                                                    <div class="bar">
+                                                      <div
+                                                        class="filled-bar"
+                                                        [style.width.%]="maxStarCount > 0 ? (count / maxStarCount) * 100 : 0"
+                                                      ></div>
+                                                    </div>
+                                                    <span>{{ count }}</span>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+
+
                                           </div>
                                           <div class="clearfix"></div>
                                       </div>
@@ -197,7 +231,23 @@
       </div>
 
 
+      <div *ngFor="let rating of membersRating" class="rating-item">
+        <div class="member-details">
+          <img [src]="rating.memberImage" alt="Member Image" class="member-image" />
+          <span class="member-name">{{ rating.memberName }}</span>
+        </div>
+        <div class="rating-details">
+          <span class="stars">
+            <ng-container *ngFor="let star of [].constructor(rating.starCount); let i = index">
+              <i class="fas fa-star" [ngClass]="{ 'filled': i < rating.starCount }"></i>
+            </ng-container>
+          </span>
+          <p class="feedback">{{ rating.feedBack }}</p>
+        </div>
+      </div>
 
 
 
 </body>
+
+

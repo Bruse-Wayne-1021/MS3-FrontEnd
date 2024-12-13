@@ -1,79 +1,85 @@
-<body style="margin: 0; padding: 0; height: 100vh;">
+<body>
 
-  <div class="col col-lg-12 col-xl-12" style="height: 100%;" >
-    <div class="card" style="height: 100%;">
-      <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
-        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-          <img [src]="userData.
-          imageUrl
-          "
-            alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-            style="width: 150px; z-index: 1;">
-          <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-dark text-body"
-            data-mdb-ripple-color="dark" style="z-index: 1;">
-            Edit profile
+  <div class="profile-dashboard">
+    <div class="header">
+      <img src="/Saji Photo.jpg.jpg" class="header-image" alt="Header Image">
+    </div>
+
+    <div class="profile-container">
+      <div class="profile-card">
+        <img src="/AddBook.png" class="profile-pic" alt="Profile Picture">
+        <h3 class="profile-name">Benjamin Hoppe</h3>
+        <p class="profile-handle">benjaminhoppe</p>
+        <p class="profile-bio">Wannabe employee<br>Twitter</p>
+        <p class="profile-joined">📅 April 2012</p>
+        <div class="profile-actions">
+          <!-- Trigger Modal -->
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+            Edit Profile
           </button>
         </div>
-        <div class="ms-3" style="margin-top: 130px;">
-          <h5>{{userData.firstName}}</h5>
-          <p>New York</p>
+        <p class="followers">194 Followers you know</p>
+      </div>
+
+      <div class="content">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/member/profile/reports']" routerLinkActive="active">Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/member/profile/reserved-books']" routerLinkActive="active">Reserved Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/member/profile/borrowed-history']" routerLinkActive="active">Borrowed Book</a>
+          </li>
+        </ul>
+
+        <!-- Router Outlet for ReservedBooksComponent and other children -->
+        <div class="tab-content mt-4">
+          <router-outlet></router-outlet>
         </div>
       </div>
-      <div class="p-4 text-black bg-body-tertiary">
-        <div class="d-flex justify-content-end text-center py-1 text-body">
-          <div>
-            <p class="mb-1 h5">253</p>
-            <p class="small text-muted mb-0">Photos</p>
-          </div>
-          <div class="px-3">
-            <p class="mb-1 h5">1026</p>
-            <p class="small text-muted mb-0">Followers</p>
-          </div>
-          <div>
-            <p class="mb-1 h5">478</p>
-            <p class="small text-muted mb-0">Following</p>
-          </div>
-        </div>
-      </div>
-      <div class="card-body p-4 text-black">
-        <div class="mb-5 text-body">
-          <p class="lead fw-normal mb-1">About</p>
-          <div class="p-4 bg-body-tertiary">
-            <p class="font-italic mb-1">Web Developer</p>
-            <p class="font-italic mb-1">Lives in New York</p>
-            <p class="font-italic mb-0">Photographer</p>
+    </div>
 
-
+    <!-- Modal for Editing Profile -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <button type="button" class="btn-close bg-dark" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="d-flex justify-content-between align-items-center mb-4 text-body">
-          <p class="lead fw-normal mb-0">Recent photos</p>
-          <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
-        </div>
-        <div class="row g-2">
-          <div class="col mb-2">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1"
-              class="w-100 rounded-3">
-          </div>
-          <div class="col mb-2">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1"
-              class="w-100 rounded-3">
-          </div>
-        </div>
-        <div class="row g-2">
-          <div class="col">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1"
-              class="w-100 rounded-3">
-          </div>
-          <div class="col">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1"
-              class="w-100 rounded-3">
+          <div class="modal-body bg-dark text-white p-4 rounded">
+            <div class="text-center">
+              <div class="profile-image-container mb-3">
+                <img src="/Saji Photo.jpg" alt="Profile Picture" class="rounded-circle border border-light" />
+              </div>
+              <h5>Edit Profile</h5>
+            </div>
+            <form>
+              <div class="mb-3">
+                <label for="profileName" class="form-label">Your Name</label>
+                <input type="text" class="form-control bg-secondary text-white" id="profileName" placeholder="Enter your name" />
+              </div>
+              <div class="mb-3">
+                <label for="profileEmail" class="form-label">Email</label>
+                <input type="email" class="form-control bg-secondary text-white" id="profileEmail" placeholder="Enter your email" />
+              </div>
+              <div class="mb-3">
+                <label for="profileRegion" class="form-label">Region</label>
+                <input type="text" class="form-control bg-secondary text-white" id="profileRegion" placeholder="Enter your region" />
+              </div>
+              <div class="mb-3">
+                <label for="profileBirthday" class="form-label">Your Birthday</label>
+                <input type="date" class="form-control bg-secondary text-white" id="profileBirthday" />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary w-50">Save</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
 
 </body>

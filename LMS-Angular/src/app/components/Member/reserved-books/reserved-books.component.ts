@@ -80,8 +80,7 @@ export class ReservedBooksComponent implements OnInit {
             this.books = response?.$values || [];
             this.bookId = this.books.length > 0 ? this.books[0].bookId : undefined;
             this.getBOokbyID(this.bookId)
-            console.log('Books:', this.books);
-            console.log('Book ID:', this.bookId);
+            
             this.bookService.getBookByid(this.bookId).subscribe({
               next:data=>{
                 console.log(data);
@@ -119,11 +118,9 @@ export class ReservedBooksComponent implements OnInit {
             const currentQuantity = data?.quantity;
             if (currentQuantity > 0) {
 
-              this.bookService.updateCopies(bookId, currentQuantity - 1).subscribe({
+              this.bookService.updateCopies(bookId, currentQuantity -1).subscribe({
                 next: (updateResponse) => {
                   alert('Copies updated successfully:');
-
-
                   this.updateCollectDate(Request);
                 },
                 error: (updateError) => {

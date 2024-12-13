@@ -1,59 +1,94 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import Chart from 'chart.js/auto';
-
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../Service/user.service';
+import { BookService } from '../../../Service/book.service';
+import { SubcriptionService } from '../../../Service/subcription.service';
 
 @Component({
   selector: 'app-admin-dash-board',
   templateUrl: './admin-dash-board.component.html',
-  styleUrl: './admin-dash-board.component.css'
+  styleUrls: ['./admin-dash-board.component.css']
 })
-export class AdminDashBoardComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    this.renderCharts();
-  }
+export class AdminDashBoardComponent implements OnInit {
+  memberCount: number | null = null;
+  allMembers: any[] = [];
+  bookCount: number | null = null;
+  allBooks: any[] = [];
+  ebookCount: number | null = null;
+  paperBook:number|null=null;
+  allsubs: any[] = [];
+  MonthlySub:number | null = null;
+  yearlySub:number | null = null;
+  subsCount: number | null = null;
+  ActiveSubsCount:number | null = null;
 
-  private renderCharts(): void {
-    // Daily Sales Chart
-    const dailySalesCtx = document.getElementById('dailySalesChart') as HTMLCanvasElement;
-    new Chart(dailySalesCtx, {
-      type: 'line',
-      data: {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        datasets: [
-          {
-            label: 'Books',
-            data: [10, 20, 15, 30, 25, 35, 50],
-            borderColor: '#007bff',
-            tension: 0.4,
-            fill: true,
-          },
-        ],
-      },
-    });
-
-
-    // Email Subscriptions Chart
-    const emailSubscriptionsCtx = document.getElementById('emailSubscriptionsChart') as HTMLCanvasElement;
-    new Chart(emailSubscriptionsCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [
-          {
-            label: 'Daily Update',
-            data: [5, 10, 15, 20, 25, 30],
-            backgroundColor: '#28a745',
-          },
-        ],
-      },
-    });
-  }
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private bookService: BookService,
+    private subcriptionServie:SubcriptionService
+  ) {}
 
   ngOnInit(): void {
+    this.getMembersCount();
+    this.getAllBooks();
+    this.GetSubcription();
+  }
 
+  getMembersCount(): void {
+    this.userService.getAllMembers().subscribe({
+      next: (response) => {
+        if (response && response.$values) {
+          this.allMembers = response.$values;
+          this.memberCount = this.allMembers.length;
+          console.log(this.memberCount);
+        } else {
+          console.error('Unexpected data format:', response);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching members:', err);
+      }
+
+    });
+  }
+
+  getAllBooks(): void {
+    this.bookService.getAllBooks().subscribe({
+      next: (response) => {
+        if (response && response.$values) {
+          this.allBooks = response.$values;
+          this.ebookCount = this.allBooks.filter((book) => book.bookType === 1).length;
+          this.paperBook=this.allBooks.filter((book)=>book.bookType===0).length;
+          this.bookCount = this.allBooks.length;
+          console.log('Total Book Count:', this.bookCount);
+        } else {
+          console.error('Unexpected data format:', response);
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching books:', err);
+      }
+    });
+  }
+
+  GetSubcription():void{
+    this.subcriptionServie.getAllSubscription().subscribe({
+      next:data=>{
+        console.log(data);
+        if(data&&data.$values){
+          this.allsubs=data.$values;
+          this.subsCount=this.allsubs.length;
+          this.MonthlySub=this.allsubs.filter((d)=>d.subType===0).length;
+          this.yearlySub=this.allsubs.filter((f)=>f.subType===0).length;
+          this.ActiveSubsCount=this.allsubs.filter((s)=>s.isActive===true).length;
+        }else{
+          console.error();
+        }
+      },
+      error:err=>{
+        console.log(err);
+      }
+    })
   }
 
   
-
 }
