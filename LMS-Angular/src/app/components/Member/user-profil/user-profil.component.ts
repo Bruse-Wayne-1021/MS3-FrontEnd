@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../../../Service/request.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profil',
@@ -19,7 +20,8 @@ export class UserProfilComponent implements OnInit{
 
   constructor(private requestService:RequestService
     ,private userservie:UserService,private fb:FormBuilder,
-    private router:Router
+    private router:Router,
+    private toastr: ToastrService
   ){
   }
   ngOnInit(): void {
@@ -89,7 +91,7 @@ export class UserProfilComponent implements OnInit{
       console.log(updatedata);
       this.userservie.updateMemberDetails(this.memberId,updatedata).subscribe({
         next:()=>{
-          alert("Details Updated SuccessFull");
+          this.toastr.success('Edit Profile Successfully', 'Success');
           this.router.navigate(['/login']);
         },
         error:err=>{

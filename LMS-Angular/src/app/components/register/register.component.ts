@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { optDetails, UserService } from '../../Service/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare var bootstrap: any; // Declare for Bootstrap's JS functionality
 
@@ -19,7 +20,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.signupForm = this.fb.group({
       nic: ['', [Validators.required]],
@@ -44,8 +46,7 @@ export class RegisterComponent implements OnInit {
 
       this.userService.Register(formData).subscribe(
         (data) => {
-          console.log('Registration Successful:', data);
-          window.alert('Registration successful!');
+          this.toastr.success('Registration Successful!', 'Success');
           this.signupForm.reset();
 
           // Save user details and ID
@@ -61,8 +62,7 @@ export class RegisterComponent implements OnInit {
           otpModal.show();
         },
         (error) => {
-          console.error('Registration Failed:', error);
-          window.alert('Registration failed. Please try again.');
+          this.toastr.error('Registration Failed!', 'Error');
         }
       );
     } else {

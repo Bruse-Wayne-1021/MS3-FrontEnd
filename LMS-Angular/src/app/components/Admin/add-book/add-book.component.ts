@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookService } from '../../../Service/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { data, error } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-book',
@@ -29,8 +30,9 @@ export class AddBookComponent implements OnInit {
   private  subcription:Subscription=new Subscription();
 
   constructor(private fb: FormBuilder,
-     private bookService: BookService,
-    private route:ActivatedRoute
+    private bookService: BookService,
+    private route:ActivatedRoute,
+    private toastr: ToastrService
   ) {
     this.CurrentId=this.route.snapshot.paramMap.get("id")||'';
     if(this.CurrentId){
@@ -119,12 +121,12 @@ export class AddBookComponent implements OnInit {
       this.bookService.createNewBook(bookData).subscribe({
         next: (data) => {
           alert("Success");
-          console.log('Book added successfully:', data);
+          this.toastr.success('Book added successfully', 'Success');
           this.addBookForm.reset();
 
         },
         error: (error) => {
-          console.error('Error adding book:', error);
+          this.toastr.error('Book Added Failed', 'Error');
         }
       });
     } else if(this.IsEditMode==true) {
@@ -135,10 +137,10 @@ export class AddBookComponent implements OnInit {
 
       this.bookService.UpdateBook(this.CurrentId, bookData).subscribe({
         next: (data) => {
-          console.log('Book updated successfully:', data);
+          this.toastr.success('Book updated successfully', 'Success');
         },
         error: (err) => {
-          console.error('Error updating book:', err);
+          this.toastr.error('Update Failed', 'Error');;
         }
       });
     }
