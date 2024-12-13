@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoadingService {
-  private _loading = new BehaviorSubject<boolean>(false);
-  loading$ = this._loading.asObservable();
+  private requestCount = 0;
 
-  show() {
-    this._loading.next(true);
+  constructor(private spinner: NgxSpinnerService) {}
+
+  show(): void {
+    this.requestCount++;
+    if (this.requestCount === 1) {
+      this.spinner.show();
+    }
   }
 
-  hide() {
-    this._loading.next(false);
+  hide(): void {
+    this.requestCount--;
+    if (this.requestCount === 0) {
+      this.spinner.hide();
+    }
   }
+
 }

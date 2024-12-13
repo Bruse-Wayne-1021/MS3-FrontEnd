@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { LoadingService } from './Service/loading-service.service';
 
-
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
   constructor(private loadingService: LoadingService) {}
@@ -19,6 +18,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     this.loadingService.show();
+
     return next.handle(request).pipe(
       finalize(() => this.loadingService.hide())
     );
