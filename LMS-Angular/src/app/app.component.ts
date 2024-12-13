@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingService } from './Service/loading-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,4 @@ import { LoadingService } from './Service/loading-service.service';
 })
 export class AppComponent {
   title = 'LMS-Angular';
-  isLoading = false;
-
-  constructor(private loadingService: LoadingService) {
-    this.loadingService.loading$.subscribe(
-      (loading) => (this.isLoading = loading)
-    );
-  }
 }

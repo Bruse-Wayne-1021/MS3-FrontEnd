@@ -32,9 +32,9 @@ import { UnittBookComponent } from './components/Member/unitt-book/unitt-book.co
 import { AuthorBooksComponent } from './components/Member/author-books/author-books.component';
 import { UserProfilComponent } from './components/Member/user-profil/user-profil.component';
 import { EbookComponent } from './components/Member/ebook/ebook.component';
-import { LoadingComponent } from './components/loading/loading.component';
 import { LoadingInterceptor } from './loading.interceptor';
-
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -63,7 +63,7 @@ import { LoadingInterceptor } from './loading.interceptor';
     AuthorBooksComponent,
     UserProfilComponent,
     EbookComponent,
-    LoadingComponent,
+
 
 
 
@@ -76,8 +76,14 @@ import { LoadingInterceptor } from './loading.interceptor';
     BrowserModule,
     RouterOutlet,
     RouterModule,
-    BrowserModule,
-
+    NgxSpinnerModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right', 
+      preventDuplicates: true, 
+      closeButton: true, 
+      progressBar: true
+    })
 
   ],
   providers: [
