@@ -211,9 +211,11 @@ export class AddBookComponent implements OnInit {
 
   loadAuthors(): void {
     this.bookService.getallAuthors().subscribe({
-      next: (response) => {
-        this.authors = response?.$values || [];
-        console.log(this.authors);
+      next: (response:any[]) => {
+        this.authors = response;
+      },
+      complete:()=>{
+        console.log('Author',this.authors);
       },
       error: (error) => {
         console.error('Error fetching authors:', error);

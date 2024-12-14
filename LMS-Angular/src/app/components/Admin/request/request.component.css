@@ -1,6 +1,6 @@
 /* Container Background */
 .container {
-  background-color: #001f3f;
+  background-color: #f2f5f8;
   padding: 20px;
   border-radius: 10px;
   color: white;
@@ -57,4 +57,7 @@
 
 .pagination .page-link:hover {
   background-color: #003d80;
+}
+h2{
+  color: black;
 }

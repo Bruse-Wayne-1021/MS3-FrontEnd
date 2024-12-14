@@ -4,7 +4,7 @@
             <nav class="navbar navbar-dark bg-dark justify-content-between">
                 <h3 class="navbar-brand mb-0">User Management</h3>
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                    <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search"
                         [(ngModel)]="searchText" />
                 </form>
             </nav>
@@ -43,7 +43,7 @@
                     </td>
                     <td>
                         <!-- Settings Button -->
-                        <button class="btn btn-sm btn-primary" (click)="editUser(user)">
+                        <button class="btn btn-sm btn-primary mr-3" (click)="editUser(user)">
                             <i class="fas fa-cog"></i>
                         </button>
                         <!-- Delete Button -->

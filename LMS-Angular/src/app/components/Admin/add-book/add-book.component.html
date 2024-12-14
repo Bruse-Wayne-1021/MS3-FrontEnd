@@ -1,498 +1,267 @@
- <!-- Top Navbar -->
 
- <!-- <div class="container mt-4">
-  <h4 class="mb-4">Add Book</h4>
-  <form>
-    <div class="mb-3">
-      <label for="bookFile" class="form-label">Books List (xlsx format):</label>
-      <input class="form-control" type="file" id="bookFile">
-    </div>
-    <div class="mb-3">
-      <button type="button" class="btn btn-warning">Import</button>
-      <button type="button" class="btn btn-outline-secondary">Download Sample</button>
-    </div>
-
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <label for="title" class="form-label">Title *</label>
-        <input type="text" class="form-control" id="title" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="issueYear" class="form-label">Issue Year *</label>
-        <input type="number" class="form-control" id="issueYear" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="publisher" class="form-label">Publisher *</label>
-        <input type="text" class="form-control" id="publisher" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="isbn" class="form-label">ISBN *</label>
-        <input type="text" class="form-control" id="isbn" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="price" class="form-label">Price *</label>
-        <input type="number" class="form-control" id="price" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="category" class="form-label">Category *</label>
-        <select class="form-select" id="category" required>
-          <option selected disabled>Select a category</option>
-          <option value="fiction">Fiction</option>
-          <option value="non-fiction">Non-Fiction</option>
-        </select>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="author" class="form-label">Author *</label>
-        <input type="text" class="form-control" id="author" required>
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="subCategory" class="form-label">Sub-Category *</label>
-        <input type="text" class="form-control" id="subCategory" required>
-      </div>
-    </div>
-    <div class="mb-3">
-      <button type="submit" class="btn btn-warning">Add Book</button>
-    </div>
-  </form>
-</div> -->
-
-
-    <!-- My Agency Tab -->
-    <!-- <li class="nav-item">
-      <button
-        class="nav-link"
-        data-bs-toggle="modal"
-        data-bs-target="#agencyModal"
-        role="tab"
-      >
-        <div class="icon-circle">
-          <img src="https://via.placeholder.com/80" alt="My Agency">
-        </div>
-        My Agency
-      </button>
-    </li>
-  </ul> -->
-
-  <!-- Modals -->
-  <!-- Exhibitor Modal
-  <div
-    class="modal fade"
-    id="exhibitorModal"
-    tabindex="-1"
-    aria-labelledby="exhibitorModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exhibitorModalLabel">Exhibitor Information</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          Exhibitor-related content goes here.
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div
-    class="modal fade"
-    id="publisherModal"
-    tabindex="-1"
-    aria-labelledby="publisherModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="publisherModalLabel">
-            Publisher Conference Details
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          Publisher conference-related content goes here.
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- My Agency Modal
-  <div
-    class="modal fade"
-    id="agencyModal"
-    tabindex="-1"
-    aria-labelledby="agencyModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="agencyModalLabel">My Agency Information</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          My agency-related content goes here.
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
+<!-- Add New Book Form -->
 <div class="container mt-4">
-  <h2>Add New Book</h2>
-  <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Book Name</label>
-      <input
-        type="text"
-        id="name"
-        class="form-control"
-        formControlName="name"
-        placeholder="Enter book name"
-      />
-      <small *ngIf="addBookForm.get('name')?.invalid && addBookForm.get('name')?.touched" class="text-danger">
-        Book name is required and cannot exceed 200 characters.
-      </small>
-    </div>
+  <div class="card shadow-lg">
+     <div class="card-header bg-secondary text-white">
+        <h4 class="mb-0 ">Add New Book</h4>
+     </div>
+     <div class="card-body">
+        <form [formGroup]="addBookForm" (ngSubmit)="onSubmit()">
+           <div class="row g-3"> <!-- Use Bootstrap's gutter classes for spacing -->
+              <div class="col-12 col-md-6">
+                 <label for="name" class="form-label">Book Name</label>
+                 <input type="text" 
+                 id="name" class="form-control" 
+                 formControlName="name" 
+                    placeholder="Enter book name" />
+                    <small *ngIf="addBookForm.get('name')?.invalid && addBookForm.get('name')?.touched" class="text-danger">
+                      Book name is required and cannot exceed 200 characters.
+                    </small>
+              </div>
 
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea
-        id="description"
-        class="form-control"
-        formControlName="description"
-        placeholder="Enter book description"
-      ></textarea>
-      <small *ngIf="addBookForm.get('description')?.invalid && addBookForm.get('description')?.touched" class="text-danger">
-        Description cannot exceed 1000 characters.
-      </small>
-    </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea
+                  id="description"
+                  class="form-control"
+                  formControlName="description"
+                  placeholder="Enter book description"
+                ></textarea>
+                <small *ngIf="addBookForm.get('description')?.invalid && addBookForm.get('description')?.touched" class="text-danger">
+                  Description cannot exceed 1000 characters.
+                </small>
+              </div>
 
-    <div class="form-group">
-      <label for="isbn">ISBN</label>
-      <input
-        type="text"
-        id="isbn"
-        class="form-control"
-        formControlName="isbn"
-        placeholder="978-1234567890"
-      />
-      <small *ngIf="addBookForm.get('isbn')?.invalid && addBookForm.get('isbn')?.touched" class="text-danger">
-        ISBN is required and must match the format 978-1234567890.
-      </small>
-    </div>
+              <div class="col-12 col-md-6">
+                 <label for="isbn" class="form-label">ISBN</label>
+                 <input type="text" id="isbn" class="form-control"
+                  formControlName="isbn"
+                    placeholder="978-1234567890" />
+                    <small *ngIf="addBookForm.get('isbn')?.invalid && addBookForm.get('isbn')?.touched" class="text-danger">
+                      ISBN is required and must match the format 978-1234567890.
+                    </small>
+              </div>
 
-    <div class="form-group">
-      <label for="pageCount">Page Count</label>
-      <input
-        type="number"
-        id="pageCount"
-        class="form-control"
-        formControlName="pageCount"
-        min="1"
-      />
-      <small *ngIf="addBookForm.get('pageCount')?.invalid && addBookForm.get('pageCount')?.touched" class="text-danger">
-        Page count must be greater than 0.
-      </small>
-    </div>
+              <div class="col-12 col-md-6">
+                 <label for="pageCount" class="form-label">Page Count</label>
+                 <input type="number" id="pageCount" 
+                 class="form-control" formControlName="pageCount" 
+                 min="1" />
+                 <small *ngIf="addBookForm.get('pageCount')?.invalid && addBookForm.get('pageCount')?.touched" class="text-danger">
+                  Page count must be greater than 0.
+                </small>
+              </div>
 
-    <div class="form-group">
-      <label for="quantity">Quantity</label>
-      <input
-        type="number"
-        id="quantity"
-        class="form-control"
-        formControlName="quantity"
-        min="1"
-      />
-      <small *ngIf="addBookForm.get('quantity')?.invalid && addBookForm.get('quantity')?.touched" class="text-danger">
-        Quantity must be at least 1.
-      </small>
-    </div>
+              <div class="col-12 col-md-6">
+                 <label for="quantity" class="form-label">Quantity</label>
+                 <input type="number" id="quantity"
+                  class="form-control" formControlName="quantity" 
+                  min="1" />
+                  <small *ngIf="addBookForm.get('quantity')?.invalid && addBookForm.get('quantity')?.touched" class="text-danger">
+                    Quantity must be at least 1.
+                  </small>
+              </div>
+              <div class="form-group">
+                <label for="bookType">Book Type</label>
+                <select id="bookType" formControlName="bookType" class="form-control">
+                  <option [value]="0">Manual</option>
+                  <option [value]="1">EBook</option>
+                  <option [value]="2">Both</option>
+                </select>
+              </div>
 
-    <div class="form-group">
-      <label for="bookType">Book Type</label>
-      <select id="bookType" formControlName="bookType" class="form-control">
-        <option [value]="0">Manual</option>
-        <option [value]="1">EBook</option>
-        <option [value]="2">Both</option>
-      </select>
-    </div>
+              <div class="form-group">
+                <label for="image2Path"> Ebook Pdf</label>
+                <input
+                type="file" id="imageUpload" (change)="onFileChangeToeBook($event)"
+                  id="filepath"
+                  class="form-control"
+                  formControlName="filepath"
+                  placeholder="Enter image URL"
+                />
+          
+              </div>
 
+              <!-- Author Section -->
+              <div class="col-12 col-md-6">
+                 <div class="d-flex justify-content-between align-items-center">
+                    <label for="authorId" class="form-label mb-0">Author</label>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                       data-bs-target="#addAuthorModal">
+                       Add New Author
+                    </button>
+                 </div>
+                 <select id="authorId" class="form-control mt-2" formControlName="authorId">
+                    <option value="" disabled>Select an author</option>
+                    <ng-container *ngFor="let item of authors">
+                     <option [value]="item.id">{{item.authorName}}</option>
+                    </ng-container>
+                 </select>
+              </div>
 
-    <div class="form-group">
-      <label for="image2Path"> Ebook Pdf</label>
-      <input
-      type="file" id="imageUpload" (change)="onFileChangeToeBook($event)"
-        id="filepath"
-        class="form-control"
-        formControlName="filepath"
-        placeholder="Enter image URL"
-      />
+              <!-- Publisher Section -->
+              <div class="col-12 col-md-6">
+                 <div class="d-flex justify-content-between align-items-center">
+                    <label for="publisherId" class="form-label mb-0">Publisher</label>
+                    <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                       data-bs-target="#addPublisherModal">
+                       Add New Publisher
+                    </button>
+                 </div>
+                 <select id="publisherId" class="form-control mt-2" formControlName="publisherId">
+                    <option value="" disabled>Select a publisher</option>
+                    <option></option>
+                 </select>
+              </div>
 
-    </div>
+              <div class="col-12 col-md-6">
+                 <label for="languageId" class="form-label">Language</label>
+                 <select id="languageId" class="form-control" formControlName="languageId">
+                    <option value="" disabled>Select a language</option>
+                    <option></option>
+                 </select>
+              </div>
 
+              <div class="col-12 col-md-6">
+                 <label for="genreId" class="form-label">Genre</label>
+                 <select id="genreId" class="form-control" formControlName="genreId">
+                    <option value="" disabled>Select a genre</option>
+                    <option></option>
+                 </select>
+              </div>
 
+              <div class="col-12 col-md-6">
+                 <label for="image2Path" class="form-label">Book Image</label>
+                 <input type="file" id="imageUpload" class="form-control" formControlName="image2Path" />
+              </div>
 
+              <div class="col-12 col-md-6">
+                 <label for="image1Path" class="form-label">Book Image</label>
+                 <input type="file" id="imageUpload" class="form-control" formControlName="image2Path" placeholder="Enter image URL"/>
+                 <small *ngIf="addBookForm.get('image2Path')?.invalid && addBookForm.get('image2Path')?.touched" class="text-danger">
+                  Image URL is required.
+                </small>
+              </div>
 
-    <div class="form-group">
-      <label for="authorId">Author</label>
-      <select id="authorId" class="form-control" formControlName="authorId">
-        <option value="" disabled>Select an author</option>
-        <option *ngFor="let author of authors" [value]="author.authorId">{{ author.authorName}}</option>
-      </select>
-      <small *ngIf="addBookForm.get('authorId')?.invalid && addBookForm.get('authorId')?.touched" class="text-danger">
-        Author is required.
-      </small>
-    </div>
+              <div class="col-12 col-md-6">
+                 <label for="publishDate" class="form-label">Publish Date</label>
+                 <input type="date" id="publishDate" 
+                 class="form-control" formControlName="publishDate" />
+                 <small *ngIf="addBookForm.get('publishDate')?.invalid && addBookForm.get('publishDate')?.touched" class="text-danger">
+                  Publish date is required.
+                </small>
+              </div>
 
-    <div class="form-group">
-      <label for="publisherId">Publisher</label>
-      <select id="publisherId" class="form-control" formControlName="publisherId">
-        <option value="" disabled>Select a publisher</option>
-        <option *ngFor="let publisher of publishers" [value]="publisher.publisherId">{{ publisher.publisherName }}</option>
-      </select>
-      <small *ngIf="addBookForm.get('publisherId')?.invalid && addBookForm.get('publisherId')?.touched" class="text-danger">
-        Publisher is required.
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label for="languageId">Language</label>
-      <select id="languageId" class="form-control" formControlName="languageId">
-        <option value="" disabled>Select a language</option>
-        <option *ngFor="let language of languages" [value]="language.languageId">{{ language.typeOfLanguage }}</option>
-      </select>
-      <small *ngIf="addBookForm.get('languageId')?.invalid && addBookForm.get('languageId')?.touched" class="text-danger">
-        Language is required.
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label for="genreId">Genre</label>
-      <select id="genreId" class="form-control" formControlName="genreId">
-        <option value="" disabled>Select a genre</option>
-        <option *ngFor="let genre of genres" [value]="genre.genreId">{{ genre.bookGenre }}</option>
-      </select>
-      <small *ngIf="addBookForm.get('genreId')?.invalid && addBookForm.get('genreId')?.touched" class="text-danger">
-        Genre is required.
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label for="image2Path"> Book Image</label>
-      <input
-      type="file" id="imageUpload" (change)="onFileChange($event)"
-        id="image2Path"
-        class="form-control"
-        formControlName="image2Path"
-        placeholder="Enter image URL"
-      />
-      <small *ngIf="addBookForm.get('image2Path')?.invalid && addBookForm.get('image2Path')?.touched" class="text-danger">
-        Image URL is required.
-      </small>
-    </div>
-
-    <!-- <div class="form-group">
-      <label for="image2Path">BackGround Image</label>
-      <input
-      type="file" id="imageUpload" (change)="onFileChange2($event)"
-        id="image2Path"
-        class="form-control"
-        formControlName="image1Path"
-        placeholder="Enter image URL"
-      />
-      <small *ngIf="addBookForm.get('image2Path')?.invalid && addBookForm.get('image2Path')?.touched" class="text-danger">
-        Image URL is required.
-      </small>
-    </div> -->
-
-
-    <div class="form-group">
-      <label for="publishDate">Publish Date</label>
-      <input
-        type="date"
-        id="publishDate"
-        class="form-control"
-        formControlName="publishDate"
-      />
-      <small *ngIf="addBookForm.get('publishDate')?.invalid && addBookForm.get('publishDate')?.touched" class="text-danger">
-        Publish date is required.
-      </small>
-    </div>
-
-    <button type="submit" class="btn btn-primary" >Add Book</button>
-  </form>
-
-  <hr />
-
-  <h3 class="mt-4">Add New Author</h3>
-<form [formGroup]="addNewAuthorForm" (ngSubmit)="addNewAuthor()">
-  <div class="form-group">
-    <label for="authorName">Author Name</label>
-    <input
-      type="text"
-      id="authorName"
-      class="form-control"
-      formControlName="authorName"
-      placeholder="Enter author's name"
-    />
-    <small
-      *ngIf="addNewAuthorForm.get('authorName')?.invalid && addNewAuthorForm.get('authorName')?.touched"
-      class="text-danger"
-    >
-      Author name is required.
-    </small>
+              <div class="col-12">
+                 <button type="submit" class="btn btn-primary w-100 w-md-auto">Add Book</button>
+              </div>
+           </div>
+        </form>
+     </div>
   </div>
-
-  <div class="form-group">
-    <label for="imageUrl">Image URL</label>
-    <input
-      type="text"
-      id="imageUrl"
-      class="form-control"
-      formControlName="imageUrl"
-      placeholder="Enter image URL"
-    />
-    <small
-      *ngIf="addNewAuthorForm.get('imageUrl')?.invalid && addNewAuthorForm.get('imageUrl')?.touched"
-      class="text-danger"
-    >
-      Image URL is required.
-    </small>
-  </div>
-
-  <div class="form-group">
-    <label for="bio">Bio</label>
-    <textarea
-      id="bio"
-      class="form-control"
-      formControlName="bio"
-      placeholder="Enter author's bio"
-    ></textarea>
-    <small
-      *ngIf="addNewAuthorForm.get('bio')?.invalid && addNewAuthorForm.get('bio')?.touched"
-      class="text-danger"
-    >
-      Bio is required.
-    </small>
-  </div>
-
-  <button type="submit" class="btn btn-secondary mt-2" [disabled]="addNewAuthorForm.invalid">
-    Add Author
-  </button>
-
-</form>
-
-<h3 class="mt-4">Add New Publisher</h3>
-<form [formGroup]="addNewPublisherForm" (ngSubmit)="addNewPublisher()">
-  <!-- Publisher Name -->
-  <div class="form-group">
-    <label for="publisherName">Publisher Name</label>
-    <input
-      type="text"
-      id="publisherName"
-      class="form-control"
-      formControlName="publisherName"
-      placeholder="Enter publisher's name"
-    />
-    <small
-      *ngIf="addNewPublisherForm.get('publisherName')?.invalid && addNewPublisherForm.get('publisherName')?.touched"
-      class="text-danger"
-    >
-      Publisher name is required.
-    </small>
-  </div>
-
-  <!-- Description -->
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea
-      id="description"
-      class="form-control"
-      formControlName="description"
-      rows="3"
-      placeholder="Enter publisher's description"
-    ></textarea>
-    <small
-      *ngIf="addNewPublisherForm.get('description')?.invalid && addNewPublisherForm.get('description')?.touched"
-      class="text-danger"
-    >
-      Description is required.
-    </small>
-  </div>
-
-  <!-- Details -->
-  <div class="form-group">
-    <label for="details">Details</label>
-    <textarea
-      id="details"
-      class="form-control"
-      formControlName="details"
-      rows="3"
-      placeholder="Enter additional details about the publisher"
-    ></textarea>
-    <small
-      *ngIf="addNewPublisherForm.get('details')?.invalid && addNewPublisherForm.get('details')?.touched"
-      class="text-danger"
-    >
-      Details are required.
-    </small>
-  </div>
-
-  <!-- Submit Button -->
-  <button type="submit" class="btn btn-primary mt-3" [disabled]="addNewPublisherForm.invalid">
-    Add Publisher
-  </button>
-</form>
-
-<router-outlet></router-outlet>
-
 </div>
 
+<!-- Modal Structure for Add Author -->
+<div class="modal fade" id="addAuthorModal" tabindex="-1" aria-labelledby="addAuthorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+           <h5 class="modal-title" id="addAuthorModalLabel">Add New Author</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <form [formGroup]="addNewAuthorForm" (ngSubmit)="addNewAuthor()">
+              <div class="mb-3">
+                 <label for="authorName" class="form-label">Author Name</label>
+                 <input type="text" id="authorName" class="form-control"    formControlName="authorName" placeholder="Enter author's name" />
+                 <small
+                 *ngIf="addNewAuthorForm.get('authorName')?.invalid && addNewAuthorForm.get('authorName')?.touched"
+                 class="text-danger"
+               >
+                 Author name is required.
+               </small>
+              </div>
 
+              <div class="mb-3">
+                 <label for="imageUrl" class="form-label">Image URL</label>
+                 <input type="text" id="imageUrl" class="form-control"     formControlName="imageUrl" placeholder="Enter image URL" />
+                 <small
+                 *ngIf="addNewAuthorForm.get('imageUrl')?.invalid && addNewAuthorForm.get('imageUrl')?.touched"
+                 class="text-danger"
+               >
+                 Image URL is required.
+               </small>
+              </div>
 
+              <div class="mb-3">
+                 <label for="bio" class="form-label">Bio</label>
+                 <textarea id="bio" class="form-control" rows="3"  formControlName="bio" placeholder="Enter author's bio"></textarea>
+                 <small
+                 *ngIf="addNewAuthorForm.get('bio')?.invalid && addNewAuthorForm.get('bio')?.touched"
+                 class="text-danger"
+               >
+                 Bio is required.
+               </small>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100" [disabled]="addNewAuthorForm.invalid">Add Author</button>
+           </form>
+        </div>
+     </div>
+  </div>
+</div>
+
+<!-- Modal Structure for Add Publisher -->
+<div class="modal fade" id="addPublisherModal" tabindex="-1" aria-labelledby="addPublisherModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+           <h5 class="modal-title" id="addPublisherModalLabel">Add New Publisher</h5>
+           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+           <form [formGroup]="addNewPublisherForm" (ngSubmit)="addNewPublisher()">
+              <div class="mb-3">
+                 <label for="publisherName" class="form-label">Publisher Name</label>
+                 <input type="text" id="publisherName" class="form-control"  formControlName="publisherName" 
+                  placeholder="Enter publisher's name" />
+                  <small
+                  *ngIf="addNewPublisherForm.get('publisherName')?.invalid && addNewPublisherForm.get('publisherName')?.touched"
+                  class="text-danger"
+                >
+                  Publisher name is required.
+                </small>
+              </div>
+
+              <div class="mb-3">
+                 <label for="description" class="form-label">Description</label>
+                 <textarea id="description" class="form-control" rows="3"  formControlName="description"
+                    placeholder="Enter publisher's description"></textarea>
+                    <small
+                    *ngIf="addNewPublisherForm.get('description')?.invalid && addNewPublisherForm.get('description')?.touched"
+                    class="text-danger"
+                  >
+                    Description is required.
+                  </small>
+              </div>
+
+              <div class="mb-3">
+                 <label for="details" class="form-label">Details</label>
+                 <textarea id="details" class="form-control" rows="3"  formControlName="details"
+                    placeholder="Enter additional details about the publisher"></textarea>
+                    <small
+                    *ngIf="addNewPublisherForm.get('details')?.invalid && addNewPublisherForm.get('details')?.touched"
+                    class="text-danger"
+                  >
+                    Details are required.
+                  </small>
+              </div>
+
+              <button type="submit" class="btn btn-secondary w-100" [disabled]="addNewPublisherForm.invalid">Add Publisher</button>
+           </form>
+        </div>
+     </div>
+  
+  </div>
+</div>

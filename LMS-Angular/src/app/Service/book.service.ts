@@ -28,7 +28,7 @@ export class BookService {
    }
 
    getallAuthors(){
-    return this.http.get<any>("http://localhost:5255/api/Author/AllAuthors");
+    return this.http.get<any[]>("http://localhost:5255/api/Author/AllAuthors");
    }
 
 
