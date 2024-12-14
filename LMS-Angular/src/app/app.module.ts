@@ -35,6 +35,10 @@ import { EbookComponent } from './components/Member/ebook/ebook.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 
@@ -63,10 +67,6 @@ import { ToastrModule } from 'ngx-toastr';
     AuthorBooksComponent,
     UserProfilComponent,
     EbookComponent,
-
-
-
-
   ],
   imports: [
     AppRoutingModule,
@@ -77,13 +77,16 @@ import { ToastrModule } from 'ngx-toastr';
     RouterOutlet,
     RouterModule,
     NgxSpinnerModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right', 
       preventDuplicates: true, 
       closeButton: true, 
       progressBar: true
-    })
+    }),
+    NgxChartsModule
 
   ],
   providers: [

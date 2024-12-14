@@ -47,7 +47,8 @@
               "node_modules/owl.carousel/dist/assets/owl.carousel.css",
               "node_modules/owl.carousel/dist/assets/owl.theme.default.css",
               "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
 
             ],
             "scripts": [

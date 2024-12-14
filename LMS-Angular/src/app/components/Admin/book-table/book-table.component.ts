@@ -32,7 +32,7 @@ export class BookTableComponent implements OnInit{
     this.router.navigate(['/admin/book/addBook',bookid]);
   }
 
-  DeteteBook(bookid:string):void{
+  DeleteBook(bookid:string):void{
   
   this.bookService.DeleteBook(bookid).subscribe({
       next:data=>{

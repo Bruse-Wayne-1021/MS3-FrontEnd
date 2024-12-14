@@ -1,145 +1,203 @@
-/* General styling */
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  background: linear-gradient(135deg, #ff7eb3, #ff758c);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  /* background-color: #f8f9fa; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+h4{
+  text-align: center;
+}
+h2 {
+  color: #343a40;
+  font-weight: bold;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between fields */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  flex: 1;
+  min-width: calc(50% - 8px); 
+}
+
+.form-control {
+  /* border: 1px solid #ced4da; */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+}
+textarea {
+  resize: none; /* Disable resizing for a cleaner UI */
+}
+
+button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  margin: 16px auto;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+/* Define Navy Blue Color */
+:root {
+  --navy-blue: #003366; /* Navy Blue Color */
+}
+
+/* Apply navy blue to header, buttons, and form labels */
+.card-header {
+  /* background-color: var(--navy-blue); */
+  text-align: center;
+}
 .card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  padding: 34px;
-  max-width: 600px;
-  width: 100%;
-  animation: fadeIn 0.5s ease-in-out;
+  border-radius: 8px;
   overflow: hidden;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.card-header h2 {
-  margin: 0;
-  font-size: 1.8rem;
-  text-align: center;
-  color: #333;
-}
-
-.subtitle {
-  font-size: 1rem;
-  color: #777;
-  text-align: center;
-  margin-top: 8px;
-}
-
-.form-field {
-  margin-bottom: 20px;
-}
-
-.form-field label {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-.form-field input,
-.form-field select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  transition: border-color 0.3s;
-}
-
-.form-field input:focus,
-.form-field select:focus {
-  border-color: #ff758c;
-  outline: none;
-}
-
-.error {
-  color: #ff4d4d;
-  font-size: 0.85rem;
-  margin-top: 4px;
+.card-header h4 {
+  color: white;
 }
 
 .btn-primary {
-  width: 100%;
-  background-color: #ff758c;
+  background-color: #002244;
+  border-color: #002244;
+}
+
+.btn-primary:hover {
+  background-color: #002244;
+  border-color: #002244;
+}
+
+.form-label {
+  color: var(--navy-blue);
+}
+
+.modal-content {
+  border: 2px solid var(--navy-blue);
+}
+
+.modal-header {
+  background-color: var(--navy-blue);
   color: white;
-  padding: 10px;
+}
+
+/* General Form Styling */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.btn-primary:disabled {
-  background-color: #ffc1cc;
-  cursor: not-allowed;
-}
-
-.btn-primary:hover:not(:disabled) {
-  background-color: #ff4d75;
-}
-
-/* Trending Books Section */
-.card-footer {
-  margin-top: 32px;
-}
-
-.card-footer h3 {
-  text-align: center;
-  color: #333;
-}
-
-.trending-books {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.trending-book {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  flex: 1 1 calc(33% - 16px);
-  min-width: 150px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
-.trending-book:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, #007bff);
 }
 
-.trending-book h4 {
-  font-size: 1.1rem;
-  margin: 0;
-  color: #333;
+.btn-outline-primary {
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.trending-book p {
-  font-size: 0.9rem;
-  color: #666;
+.btn-outline-primary:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Card Customizations */
+.card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* Labels and Placeholders */
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+::placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+/* Custom Select Styling */
+select.form-control {
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+}
+
+/* File Input */
+#imageUpload {
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+}
+
+/* Premium Shadows */
+.shadow-lg {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  margin-top: 8px;
 }

@@ -1,25 +1,29 @@
-<div class="admin-layout d-flex" >
+<!-- <div class="admin-layout d-flex">
   <div class="bg-white" id="sidebar-wrapper">
-    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom" aria-current="page"[routerLink]="['/admin']" routerLinkActive="active"><i
-        class="fas fa-user-secret me-2"></i>Dashboard
+    <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"
+      aria-current="page" [routerLink]="['/admin']" routerLinkActive="active"><i
+        class="fas fa-user-secret me-2"></i>Dashboard Analytics
     </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="list-group list-group-flush my-3">
-      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/book/addBook']"><i
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
           class="fas fa-project-diagram me-2"></i>Add Book</a>
-      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/book/booktable']" routerLinkActive="active"><i
-          class="fas fa-chart-line me-2"></i>Book Table</a>
-      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/book/request']" routerLinkActive="active"><i
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        [routerLink]="['/admin/book/booktable']" routerLinkActive="active"><i class="fas fa-chart-line me-2"></i>Book
+        Table</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        [routerLink]="['/admin/book/request']" routerLinkActive="active"><i
           class="fas fa-paperclip me-2"></i>Requests</a>
-      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/book/record']" routerLinkActive="active"><i
-         class="fas fa-paperclip me-2"></i>Requests</a>
-      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" [routerLink]="['/admin/book/return']" routerLinkActive="active"><i
-          class="fas fa-paperclip me-2"></i>Return</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        [routerLink]="['/admin/book/record']" routerLinkActive="active"><i
+          class="fas fa-paperclip me-2"></i>Requests</a>
+      <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        [routerLink]="['/admin/book/return']" routerLinkActive="active"><i class="fas fa-paperclip me-2"></i>Return</a>
       <a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"><i
           class="fas fa-power-off me-2"></i>Logout</a>
     </div>
@@ -28,9 +32,77 @@
   <div class="admin-content flex-grow-1 p-4">
     <router-outlet></router-outlet>
   </div>
+</div> -->
+<div class="dashboard-container">
+  <div class="sidebar">
+    <ul class="nav flex-column">
+      <li>
+        <i class="bi bi-house-dash-fill"></i>
+        <span class="nav-text" [routerLink]="['/admin']" >DashBoard</span>
+      </li>
+      
+      <li>
+        <i class="bi bi-bookmark-plus-fill"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/addBook']">Add Book</span>
+      </li>
+      <li>
+        <i class="bi bi-table"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/booktable']">Book Table</span>
+      </li>
+      <li>
+        <i class="bi bi-bell-fill"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/request']">Requests</span>
+      </li>
+      <li>
+        <i class="bi bi-folder-fill"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/record']">Records</span>
+      </li>
+      <li>
+        <i class="bi bi-arrow-return-right"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/return']">Returns</span>
+      </li>
+      <li>
+        <i class="bi bi-people-fill"></i>
+        <span class="nav-text" [routerLink]="['/admin/book/memberRecords']">Members</span>
+      </li>
+      <li>
+        <i class="bi bi-power" style="color: red;"></i>
+        <span class="nav-text" [routerLink]="['/login']" style="color: red;">Log out</span>
+      </li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <header class="dashboard-header">
+      <h3>Dashboard Analytics</h3>
+      <div class="header-right">
+        <input type="search" class="search-bar" placeholder="Search">
+        <i class="bi bi-bell "></i>
+        <div class="profile">
+          <span>Sajilan Bruswayn</span>
+          <img src="/Saji Photo.jpg" class="profile-pic" alt="Profile" width="50px">
+        </div>
+      </div>
+    </header>
+    <div class="cards-container">
+      <div class="card analytics-card">
+        <h4>{{bookCount}}</h4>
+        <p>Total Books</p>
+      </div>
+      <div class="card analytics-card">
+        <h4>{{paperBook}}</h4>
+        <p>Available Physical Books</p>
+      </div>
+      <div class="card analytics-card">
+        <h4>{{subsCount}}</h4>
+        <p>Total Subscription</p>
+      </div>
+      <div class="card analytics-card">
+        <h4>{{ActiveSubsCount}}</h4>
+        <p>Active Subscription</p>
+      </div>
+    </div>
+    <div class="admin-content flex-grow-1 p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-
-
-
-
-
