@@ -1,0 +1,24 @@
+<body>
+  <div class="gallery-container">
+    <h2 style="color: antiquewhite;">Book Gallery</h2>
+    <div class="gallery">
+      <div *ngFor="let book of AuthorsBooks" class="book-item">
+        <div class="book-card">
+          <div class="book-image">
+            <img [src]="book.image?.image2Path || 'default-image-path.jpg'" alt="{{book.name}}">
+          </div>
+          <div class="book-details">
+            <h3>{{book.name}}</h3>
+            <p class="author">by {{book.author?.name}}</p>
+            <button (click)="viewbook(book.bookid)" class="btn btn-primary">Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</body>
+

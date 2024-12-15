@@ -1,0 +1,81 @@
+<body style="background-color: #293744; color: #ecf0f1;">
+  <div class="container my-5">
+    <div class="row mb-4">
+      <!-- Filter Section -->
+      <div class="col-md-4 mb-3 mt-4">
+        <label for="genreFilter" class="form-label">Filter by Genre:</label>
+        <select
+          id="genreFilter"
+          class="form-select"
+          [(ngModel)]="selectedGenre"
+          (change)="filterBook()"
+        >
+          <option value="">All Genres</option>
+          <option *ngFor="let genre of genres" [value]="genre.bookGenre">
+            {{ genre.bookGenre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3 mt-4">
+        <label for="languageFilter" class="form-label">Filter by Language:</label>
+        <select
+          id="languageFilter"
+          class="form-select"
+          [(ngModel)]="selectedLanguage"
+          (change)="filterBookBylanguage()"
+        >
+          <option value="">All Languages</option>
+          <option *ngFor="let languag of language" [value]="languag.typeOfLanguage">
+            {{ languag.typeOfLanguage }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Search Box -->
+      <div class="col-md-4 mb-3 mt-4">
+        <label for="searchBox" class="form-label">Search Books:</label>
+        <input
+          type="text"
+          id="searchBox"
+          class="form-control"
+          [(ngModel)]="searchText"
+          placeholder="Search by title, author, or genre..."
+        />
+      </div>
+    </div>
+
+    <!-- Book Gallery -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div
+        class="col"
+        *ngFor="let book of filterBooks | gellery:searchText"
+        (click)="viewbook(book.bookid)"
+      >
+        <div class="card h-100 shadow-sm">
+          <img
+            [src]="book.image?.image2Path"
+            class="card-img-top"
+            alt="{{book.name}}"
+          />
+          <i
+          class="bi bi-heart-fill favorite-icon position-absolute top-0 end-0 m-2 text-danger"
+          (click)="toggleFavorite(book.bookid, $event)">
+        </i>
+          <div class="card-body">
+            <h5 class="card-title text-truncate">{{ book.name }}</h5>
+            <p class="card-text text-muted">{{ book.author?.name }}</p>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              [routerLink]="['/member/book-gallery/viewbook/', book.bookid]"
+            >
+              View Book
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</body>

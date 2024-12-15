@@ -1,0 +1,35 @@
+
+<h2 class="text-center mb-4">Book Gallery</h2>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+  <div
+    class="col"
+    *ngFor="let book of borrowedBook"
+    (click)="viewbook(book.
+    bookId
+    )"
+  >
+    <div class="card h-100 shadow-sm">
+      <div class="position-relative">
+        <img
+          [src]="book.
+          image2Path
+          "
+          class="card-img-top"
+          alt="{{book.
+            title
+            }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-truncate">{{ book.name }}</h5>
+          <p class="card-text text-muted">{{ book.author?.name }}</p>
+          <button
+            class="btn btn-outline-primary btn-sm"
+          >
+            View Book
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

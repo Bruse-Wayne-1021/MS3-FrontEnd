@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Return Book</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Member Name</th>
+        <th>NIC</th>
+
+        <th>return Book</th>
+        <!-- <th>Lend Days</th>
+         <th>Approved Date</th>
+        <th>Collect Date</th>
+        <th>Return Date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of waitingBook">
+        <td>{{ request.$id }}</td>
+        <td>{{ request.title }}</td>
+        <td>
+          <img
+            [src]="request.image2Path"
+            alt="{{ request.title }}"
+            class="img-fluid"
+            style="max-height: 100px;"
+          />
+        </td>
+        <td>{{ request.memberName }}</td>
+        <td>{{ request.nic }}</td>
+        <td>
+          <button
+            (click)="returnBook(request.lendId, request.bookId)"
+            class="btn btn-danger btn-sm shadow-sm px-4 py-2">
+            Return
+          </button>
+        </td>
+
+        <td>
+          <!-- <button (click)="declineRequest(request. lendId )">Reject</button> -->
+        </td>
+        <!-- <td>{{ request.lendDays }}</td>
+        <td>{{ request.approvedDate || 'N/A' }}</td>
+        <td>{{ request.collectDate || 'N/A' }}</td>
+        <td>{{ request.returnDate || 'N/A' }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+

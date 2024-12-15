@@ -1,0 +1,193 @@
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.carousel-caption h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.carousel-indicators li {
+  background-color: #007bff;
+}
+.navbar-brand>p{
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#navbar-right {
+  position: relative;
+  right: 0px;
+  left: 40%;
+  top: 0;
+  width: 100%;
+}
+
+.container-fluid p::first-letter{
+      font-size: 25px;
+      font-weight: bolder;
+      color: rgb(250, 249, 247);
+      /* font-family:cursive; */
+      margin-left: 30px;
+      margin-top: 10px;
+}
+.container-fluid{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+      margin-left: 0px;
+      /* margin-top: 20px; */
+
+}
+.container-fluid ul {
+  display: flex;
+  list-style: none;
+  width: 220px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+.container-fluid ul li{
+  margin-left: 20px;
+}
+.container-fluid ul li a{
+  text-decoration: none;
+  color: white;
+  font-family:cursive;
+  font-size: 20px;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 80px;
+  background: linear-gradient(to right, #424242, #b6b4b4);
+}
+
+.card {
+  margin: 15px;
+}
+.card {
+border-radius: 8px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+transform: scale(1.05);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+height: 200px;
+object-fit: cover;
+}
+
+.card-title {
+font-size: 1.25rem;
+font-weight: bold;
+}
+
+.card-text {
+font-size: 0.95rem;
+}
+
+.btn-primary {
+font-size: 0.9rem;
+padding: 0.5rem 1.5rem;
+}
+#quotes{
+text-align: center;
+background: linear-gradient(to right, #b0aaaa, #f6f4f4);
+}
+nav ul li::after {
+content: '';
+width: 0%;
+height: 2px;
+background: #b39974;
+display: block;
+margin: auto;
+transition: 0.5s;
+}
+#about-us{
+text-align: center;
+}
+.home{
+background:  linear-gradient(to right, #b0aaaa, #f6f4f4);
+}
+#featured-books{
+background:  linear-gradient(to right, #b0aaaa, #f6f4f4);
+}
+.card-body{
+background-color: #eee2cf;
+}
+
+#limited-offer h2 {
+font-size: 2.5rem; /* Adjust the heading size */
+font-weight: bold;
+}
+
+#countdown-clock {
+background-color: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+padding: 20px;
+border-radius: 10px;
+}
+
+#countdown-clock .time {
+color: white;
+font-size: 2rem;
+}
+
+#countdown-clock span {
+color: #f56b2a; /* Primary color for the ":" */
+}
+
+.btn {
+background-color: #f56b2a; /* Button color */
+color: white;
+padding: 10px 30px;
+font-size: 1.1rem;
+border-radius: 30px;
+text-transform: uppercase;
+}
+.img-fluid{
+border-radius: 8px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+.img-fluid:hover{
+transform: scale(1.05);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+#categories{
+text-align: center;
+}
+.shadow-sm:hover {
+box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+.bg-primary:hover {
+background-color: #787d82; /* Darker shade of primary */
+}
+
+#quotes blockquote p {
+font-size: 1.25rem;
+font-style: italic;
+}
+
+#quotes .blockquote-footer {
+font-size: 1rem;
+}
+
+

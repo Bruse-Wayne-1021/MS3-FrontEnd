@@ -1,0 +1,203 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  /* background-color: #f8f9fa; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h4{
+  text-align: center;
+}
+h2 {
+  color: #343a40;
+  font-weight: bold;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between fields */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  flex: 1;
+  min-width: calc(50% - 8px); 
+}
+
+.form-control {
+  /* border: 1px solid #ced4da; */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.text-danger {
+  font-size: 0.9rem;
+}
+textarea {
+  resize: none; /* Disable resizing for a cleaner UI */
+}
+
+button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  margin: 16px auto;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+/* Define Navy Blue Color */
+:root {
+  --navy-blue: #003366; /* Navy Blue Color */
+}
+
+/* Apply navy blue to header, buttons, and form labels */
+.card-header {
+  /* background-color: var(--navy-blue); */
+  text-align: center;
+}
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-header h4 {
+  color: white;
+}
+
+.btn-primary {
+  background-color: #002244;
+  border-color: #002244;
+}
+
+.btn-primary:hover {
+  background-color: #002244;
+  border-color: #002244;
+}
+
+.form-label {
+  color: var(--navy-blue);
+}
+
+.modal-content {
+  border: 2px solid var(--navy-blue);
+}
+
+.modal-header {
+  background-color: var(--navy-blue);
+  color: white;
+}
+
+/* General Form Styling */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, #007bff);
+}
+
+.btn-outline-primary {
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Card Customizations */
+.card {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+/* Modal Styling */
+.modal-content {
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background: linear-gradient(45deg, #007bff, #0056b3);
+  color: #fff;
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* Labels and Placeholders */
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+::placeholder {
+  color: #adb5bd;
+  font-style: italic;
+}
+
+/* Custom Select Styling */
+select.form-control {
+  background: #f8f9fa;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+}
+
+/* File Input */
+#imageUpload {
+  border: 1px solid #ced4da;
+  border-radius: 10px;
+  padding: 8px;
+  background: #f8f9fa;
+}
+
+/* Premium Shadows */
+.shadow-lg {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  margin-top: 8px;
+}

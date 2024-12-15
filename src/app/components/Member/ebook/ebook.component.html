@@ -1,0 +1,62 @@
+
+
+
+<div class="gallery-container">
+  <h2>E-Book Gallery.</h2>
+  <div class="gallery row row-cols-1 row-cols-md-3 g-4 mt-4">
+    <div
+      class="col book-item"
+      *ngFor="let book of Ebook"
+      >
+      <div class="card h-100">
+        <div class="position-relative">
+          <img
+            [src]="book.image?.image2Path"
+            class="card-img-top"
+            alt="{{book.name}}">
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">{{book.name}}</h5>
+          <p class="card-text">{{book.author?.name}}</p>
+          <button class="btn btn-primary btn-sm" (click)="printEbook(book)">Download PDF</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="modalVisible" class="modal">
+  <div class="modal-content">
+    <h2>Subscription Required</h2>
+    <p>Please subscribe to access eBooks.</p>
+    <div>
+      <label for="subType">Subscription Type:</label>
+      <select [(ngModel)]="subscriptionDetails.subType">
+        <option [value]="0">Monthly</option>
+        <option [value]="1">Yearly</option>
+      </select>
+    </div>
+    <div>
+      <label for="paymentType">Payment Method:</label>
+      <select [(ngModel)]="subscriptionDetails.paymentType">
+        <option [value]="0">Credit Card</option>
+        <option [value]="1">Debit Card</option>
+      </select>
+    </div>
+    <div>
+      <label for="paymentAmount">Payment Amount:</label>
+      <input
+        type="number"
+        [(ngModel)]="subscriptionDetails.paymentAmount"
+        placeholder="Enter amount"
+      />
+    </div>
+    <div class="modal-buttons">
+      <button (click)="confirmSubscription()">Subscribe</button>
+      <button (click)="closeSubscriptionModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+

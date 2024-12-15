@@ -1,0 +1,48 @@
+/* Style for the table */
+.table {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for table rows */
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Style for the modal content */
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles */
+.btn-info, .btn-warning, .btn-danger {
+  border-radius: 5px;
+}
+
+/* Modal Header Styling */
+.modal-header {
+  background-color: #007bff;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-footer {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* Enhance modal body padding */
+.modal-body {
+  padding: 2rem;
+}
+
+/* Additional modal styling */
+.modal-dialog {
+  max-width: 80%;
+}
+
+/* Style for action buttons */
+button.btn {
+  margin-right: 10px;
+}

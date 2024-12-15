@@ -1,0 +1,116 @@
+/* Navbar Styling */
+.navbar {
+  background-color: #2c3e50; /* Dark blue-gray */
+  border-bottom: 1px solid #34495e; /* Slightly lighter for separation */
+}
+
+.navbar-brand span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #387685; /* Light text for contrast */
+}
+
+.navbar a.nav-link {
+  color: #ecf0f1; /* Light text for nav links */
+  transition: color 0.3s ease;
+}
+
+.navbar a.nav-link:hover,/* Navbar Styling */
+.navbar {
+  background-color: #313333; /* Dark blue-gray */
+  border-bottom: 1px solid #d2dc1a; /* Slightly lighter border for separation */
+}
+
+/* Navbar Brand */
+.navbar-brand span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ecf0f1; /* Light text for logo */
+}
+
+/* Navigation Links */
+.navbar-nav .nav-link {
+  color: #ecf0f1; /* Light text for nav links */
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #3498db; /* Highlighted link color */
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+  background-color: #34495e; /* Dropdown matches navbar theme */
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu .dropdown-item {
+  color: #ecf0f1; /* Light text for dropdown items */
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #3498db; /* Highlighted dropdown item */
+  color: #fff;
+}
+
+.dropdown-item.text-danger {
+  color: #e74c3c; /* Danger color for logout */
+}
+
+.dropdown-item.text-danger:hover {
+  background-color: #e74c3c; /* Red hover for logout */
+  color: #fff;
+}
+
+/* Profile Image */
+.dropdown-toggle img {
+  border: 2px solid #ecf0f1; /* Border around profile picture */
+}
+
+/* Toggler Icon */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar a.nav-link.active {
+  color: #3498db; /* Highlighted link color */
+}
+
+/* Dropdown Styling */
+.navbar .dropdown-toggle {
+  border: none;
+  background: none;
+  color: #ecf0f1; /* Light dropdown button text */
+}
+
+.dropdown-menu {
+  background-color: #34495e; /* Darker dropdown background */
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  color: #ecf0f1; /* Light text for dropdown items */
+}
+
+.dropdown-item:hover {
+  color: white;
+  background-color: #3498db; /* Hover background */
+}
+
+.dropdown-item.text-danger {
+  color: #e74c3c; /* Danger color for logout */
+}
+
+.dropdown-item.text-danger:hover {
+  color: white;
+  background-color: #e74c3c; /* Red hover for danger */
+}
+
+/* Profile Image Styling */
+.navbar .dropdown-toggle img {
+  border: 2px solid #ecf0f1; /* Border for profile picture */
+  background-color: #2c3e50;
+}

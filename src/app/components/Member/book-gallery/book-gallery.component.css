@@ -1,0 +1,76 @@
+/* General Page Styling */
+body {
+  background-color: #585d62;
+  color: #ecf0f1;
+  font-family: Arial, sans-serif;
+  background-image: url("imagee.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  color: #ecf0f1;
+}
+
+/* Card Styling */
+.card {
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  color: #ecf0f1;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Image covers the full card */
+.card .position-relative {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ecf0f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Title Styling */
+.card-title {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+/* Button Styling */
+.btn-outline-primary {
+  border-color: #4f8ab1;
+  color: #3498db;
+}
+
+.btn-outline-primary:hover {
+  background-color: #3498db;
+  color: #ecf0f1;
+}

@@ -1,0 +1,29 @@
+<div class="gallery-container">
+  <h2>Reserved Books</h2>
+  <div class="gallery">
+    <div class="book-item" *ngFor="let book of books" >
+      <img [src]="book.image2Path" alt="{{book.name}}">
+      <h3>{{book.title}}</h3>
+      <p>{{book.author?.name}}</p>
+      <button
+      (click)="collectBook(book.lendId, book.bookId)"
+      class="btn btn-primary btn-lg shadow-sm px-4 py-2">
+      Collect Book
+    </button>
+    </div>
+  </div>
+</div>
+<div>
+  <div>
+    <div class="gallery-container">
+
+      <div class="gallery">
+        <div class="book-item" *ngFor="let book of waitingBooks" >
+          <img [src]="book.image2Path" alt="{{book.name}}">
+          <h3>{{book.title}}</h3>
+          <p>{{book.author?.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div>
+  </div>

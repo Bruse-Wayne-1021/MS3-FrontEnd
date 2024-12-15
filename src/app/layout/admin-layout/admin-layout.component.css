@@ -1,0 +1,183 @@
+/* General Layout */
+.dashboard-container {
+  display: flex;
+  background-color: #f3f5f8;
+  color: #0c0c0c;
+  height: 100vh;
+  /* background-image: url(/backgimage.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  
+}
+
+/* Sidebar */
+.sidebar {
+width: 60px; 
+background-color: #0b0b18;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px 0;
+transition: width 0.3s ease; 
+}
+
+.nav {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.nav li {
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 20px 0;
+font-size: 24px;
+color: #e0e0e0;
+cursor: pointer;
+transition: color 0.2s ease;
+}
+
+.nav li:hover {
+color: #ffffff;
+}
+
+.nav-text {
+margin-left: 10px;
+display: none; 
+font-size: 16px;
+color: #e0e0e0;
+}
+
+/* Larger screen - Show names */
+@media (min-width: 768px) {
+.sidebar {
+  width: 200px; /* Expand width */
+  align-items: flex-start; /* Align items to the left */
+  padding-left: 20px;
+}
+
+.nav li {
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.nav-text {
+  display: inline; /* Show text */
+}
+}
+
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Header */
+.dashboard-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 20px;
+}
+
+/* Group search bar, notification, and profile */
+.header-right {
+display: flex;
+align-items: center;
+gap: 15px; /* Adjust spacing between elements */
+}
+
+.search-bar {
+padding: 8px 12px;
+border-radius: 20px;
+border: none;
+background-color: #4a4a57; /* Adjust background as needed */
+color: #e0e0e0;
+outline: none;
+}
+
+.search-bar::placeholder {
+color: #a8a8b3; /* Placeholder color */
+}
+
+.bi-bell {
+font-size: 24px;
+color: #0a0a0a; /* Icon color */
+cursor: pointer;
+}
+
+.bi-bell:hover {
+color: #ffffff; /* Change color on hover */
+}
+
+/* Profile Section */
+.profile {
+display: flex;
+align-items: center;
+}
+
+.profile span {
+margin-right: 8px; /* Space between text and image */
+}
+
+.profile-pic {
+border-radius: 40px;
+}
+
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #0d0e16;
+  padding: 20px;
+  border-radius: 10px;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.analytics-card h4 {
+  font-size: 24px;
+  color: #c0bdd6;
+}
+
+/* Charts */
+.charts-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.chart {
+  flex: 1;
+}
+
+/* Bottom Section */
+.bottom-section {
+  display: flex;
+  gap: 20px;
+}
+
+.expense-card {
+  flex: 1;
+}
+
+.calendar {
+  flex: 1;
+  text-align: center;
+}
+p{
+  color:white
+}
+h5{
+  color: azure;
+}
+
+

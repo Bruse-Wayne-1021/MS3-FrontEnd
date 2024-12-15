@@ -1,0 +1,146 @@
+<body>
+  <div class="profile-dashboard">
+    <!-- Header Section -->
+    <div class="header">
+      <img src="/Saji Photo.jpg.jpg" class="header-image" alt="Header Image" />
+    </div>
+
+    <!-- Profile Card and Navigation -->
+    <div class="profile-container d-flex">
+      <!-- Profile Card -->
+      <div class="profile-card text-center">
+        <img [src]="userData.imageUrl" class="profile-pic rounded-circle" alt="Profile Picture" />
+        <h3 class="profile-name">{{userData.firstName}}</h3>
+        <p class="profile-handle">{{userData.lastName}}</p>
+        <p class="profile-bio">{{userData.nic}}</p>
+        <p class="profile-joined">{{userData.email}}</p>
+        <p class="profile-joined">{{userData.phoneNumber}}</p>
+        <div class="profile-actions mt-3">
+          <!-- Trigger Modal -->
+          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+            Edit Profile
+          </button>
+        </div>
+        <p class="followers mt-3">194 Followers you know</p>
+      </div>
+
+      <!-- Tab Navigation and Content -->
+      <div class="content flex-grow-1">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/member/profile/reports']" routerLinkActive="active">Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/member/profile/reserved-books']" routerLinkActive="active">Reserved Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/member/profile/borrowed-history']" routerLinkActive="active">Borrowed Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/member/profile/favorite']" routerLinkActive="active">Favourite Book</a>
+          </li>
+        </ul>
+
+        <!-- Router Outlet for Child Components -->
+        <div class="tab-content mt-4">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Editing Profile -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content custom-modal-content">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <h5 class="modal-title text-center mb-4">Edit Profile</h5>
+        <form [formGroup]="userForm" (ngSubmit)="saveDetails()">
+          <div class="mb-3">
+            <label for="nic" class="form-label">Nic Number</label>
+            <input
+              type="text"
+              id="nic"
+              class="form-control"
+              formControlName="nic"
+              placeholder="Enter Nic Number"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              class="form-control"
+              formControlName="firstName"
+              placeholder="Enter first name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              class="form-control"
+              formControlName="lastName"
+              placeholder="Enter last name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="Enter email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              class="form-control"
+              formControlName="phoneNumber"
+              placeholder="Enter phone number"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">Image</label>
+            <input
+              type="file"
+              id="imageUrl"
+              (change)="onFileChange($event)"
+              class="form-control"
+              formControlName="imageUrl"
+            />
+          </div>
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-primary me-3"
+              (click)="enableEdit()"
+              *ngIf="!isEditMode"
+            >
+              Edit
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="isSubmitting"
+              *ngIf="isEditMode"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</body>

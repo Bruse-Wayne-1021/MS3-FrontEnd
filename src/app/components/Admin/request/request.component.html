@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Book Requests</h2>
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Member Name</th>
+        <th>NIC</th>
+        <th>Approve</th>
+        <th>Reject</th>
+        <th>Approve</th>
+        <!-- <th>Lend Days</th>
+         <th>Approved Date</th>
+        <th>Collect Date</th>
+        <th>Return Date</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of request">
+        <td>{{ request.$id }}</td>
+        <td>{{ request.title }}</td>
+        <td>
+          <img
+            [src]="request.image2Path"
+            alt="{{ request.title }}"
+            class="img-fluid"
+            style="max-height: 100px;"
+          />
+        </td>
+        <td>{{ request.memberName }}</td>
+        <td>{{ request.nic }}</td>
+        <td>
+          <button
+            (click)="approveRequest(request.lendId, request.isVerify, request.bookId)"
+            class="btn btn-success btn-sm mx-1">
+            Approve
+          </button>
+        </td>
+        <td>
+          <button
+            (click)="declineRequest(request.lendId)"
+            class="btn btn-danger btn-sm mx-1">
+            Reject
+          </button>
+        </td>
+        <td>
+          <button
+            (click)="verifyUser(request.memberId)"
+            class="btn btn-warning btn-sm mx-1">
+            Verify User
+          </button>
+        </td>
+
+        <!-- <td>{{ request.lendDays }}</td>
+        <td>{{ request.approvedDate || 'N/A' }}</td>
+        <td>{{ request.collectDate || 'N/A' }}</td>
+        <td>{{ request.returnDate || 'N/A' }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+

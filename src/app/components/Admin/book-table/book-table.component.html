@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="text-primary">Library Management - Book Records</h3>
+    <div class="input-group w-25">
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search..." />
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped align-middle">
+      <thead class="table-primary text-center">
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th>Book Isbn</th>
+          <th>Book Title</th>
+          <th>Copies</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Publisher</th>
+          <th>Language</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of Books | searchBook:searchText">
+          <td class="text-center"><input type="checkbox" /></td>
+          <td>{{ book.isbn }}</td>
+          <td>{{ book.name }}</td>
+          <td>{{ book.quantity }}</td>
+          <td>{{ book.author.name }}</td>
+          <td>{{ book.genre.bookGenre }}</td>
+          <td>{{ book.publisher.name }}</td>
+          <td>{{ book.language.typeOfLanguage }}</td>
+          <td><img
+            [src]="book.image.image2Path"
+            alt="{{ book.name }}"
+            class="img-fluid"
+            style="max-height: 100px;"
+          />
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-outline-warning me-1" [routerLink]="['/admin/book/addBook', book.bookid]">
+              <i class="bi bi-pencil"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="DeteteBook(book.bookid)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

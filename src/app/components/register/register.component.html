@@ -1,0 +1,205 @@
+<div class="container-fluid justify-content-center align-items-center fade-in">
+  <div class="row justify-content-center align-items-center ">
+    <!-- Welcome Section -->
+    <!-- <div class="col-lg-5 text-white d-flex flex-column justify-content-center align-items-center">
+      <div class="text-center">
+        <img src="Wisdom Wellspring.jpg" alt="Logo" width="100px" />
+        <h1>Welcome</h1>
+        <p>
+          You are in a Wisdom Wellspring Register Page
+          <i class="bi bi-emoji-smile"></i>
+        </p>
+
+      </div>
+    </div> -->
+
+    <!-- Registration Form Section -->
+    <div class="col-lg-7 transparent-form p-0 slide-in">
+      <div class="p-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 style="color: rgb(0, 0, 0);">
+            <i class="bi bi-person-fill"></i> Apply as a Member
+          </h3>
+        </div>
+        <form (ngSubmit)="RegUser()" [formGroup]="signupForm">
+          <div class="row">
+            <!-- NIC -->
+            <div class="col-md-6 mb-3">
+              <label for="nic" class="form-label">NIC *</label>
+              <input
+                type="text"
+                id="nic"
+                class="form-control"
+                formControlName="nic"
+                placeholder="Enter your NIC"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('nic')?.invalid && signupForm.get('nic')?.touched"
+              >
+                NIC is required.
+              </small>
+            </div>
+
+            <!-- First Name -->
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-control"
+                formControlName="firstName"
+                placeholder="Enter your first name"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched"
+              >
+                First name is required.
+              </small>
+            </div>
+
+            <!-- Last Name -->
+            <div class="col-md-6 mb-3">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                formControlName="lastName"
+                placeholder="Enter your last name"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched"
+              >
+                Last name is required.
+              </small>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Your Email *</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+              >
+                A valid email is required.
+              </small>
+            </div>
+
+            <!-- Phone -->
+            <div class="col-md-6 mb-3">
+              <label for="phoneNumber" class="form-label">Your Phone *</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                class="form-control"
+                formControlName="phoneNumber"
+                placeholder="Enter your phone number"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched"
+              >
+                Phone number is required.
+              </small>
+            </div>
+
+            <!-- Password -->
+            <div class="col-md-6 mb-3">
+              <label for="password" class="form-label">Password *</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Enter your password"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+              >
+                Password must be at least 6 characters long.
+              </small>
+            </div>
+
+            <!-- Image -->
+            <div class="col-md-6 mb-3">
+              <label for="imageUrl" class="form-label">Profile Image  *</label>
+              <input
+                type="file"
+                id="imageUrl"(change)="onFileChange($event)"
+                class="form-control"
+                formControlName="imageUrl"
+                placeholder="Enter profile image URL"
+              />
+              <small
+                class="text-danger"
+                *ngIf="signupForm.get('imageUrl')?.invalid && signupForm.get('imageUrl')?.touched"
+              >
+                Profile image URL is required.
+              </small>
+            </div>
+
+            <!-- Gender -->
+            <div class="col-md-12 mb-3">
+              <label class="form-label">Gender</label>
+              <select class="form-control" formControlName="userGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-md-12">
+              <button
+                type="submit"
+                class="btn btn-secondary w-100"
+                [disabled]="signupForm.invalid"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- OTP Modal -->
+<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="otpModalLabel">Verify OTP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-3">We sent a code to your email.</p>
+        <div class="otp-inputs d-flex justify-content-center mb-4">
+          <input
+            *ngFor="let num of otpCode; let i = index"
+            type="text"
+            maxlength="1"
+            class="form-control text-center me-2"
+            [(ngModel)]="otpCode[i]"
+            name="otp-{{ i }}"
+          />
+        </div>
+        <button class="btn btn-primary w-100" (click)="verifyOtp()">Verify OTP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
