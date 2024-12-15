@@ -23,7 +23,9 @@ export class UserProfilComponent  implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toster:ToastrService
+
   ) {}
 
   ngOnInit(): void {
@@ -104,14 +106,16 @@ export class UserProfilComponent  implements OnInit {
       const updatedData = this.userForm.value;
       this.userService.updateMemberDetails(this.memberId, updatedData).subscribe({
         next: () => {
-          alert('Details updated successfully!');
+          // alert('Details updated successfully!');
+          this.toster.success("Details updated successfully!")
           this.isEditMode = false;
           this.userForm.disable(); // Disable form controls after saving
           this.isSubmitting = false; // Re-enable save button
         },
         error: (err) => {
           console.error(err);
-          alert('Failed to update details.');
+          // alert('Failed to update details.');
+          this.toster.error("Failed to update details.")
           this.isSubmitting = false; // Re-enable save button
         }
       });
